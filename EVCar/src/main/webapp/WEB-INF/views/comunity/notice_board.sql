@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 create sequence seq_board;
 
 create table notice_board (

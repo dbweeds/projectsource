@@ -14,6 +14,6 @@ public class ComunityController {
 	
 	@GetMapping("/qna")
 	public void getQna() {
-		log.info("qna시작");
+		log.info("qna start");
 	}
 }
