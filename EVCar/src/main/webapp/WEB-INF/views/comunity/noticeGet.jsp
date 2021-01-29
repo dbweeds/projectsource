@@ -71,7 +71,7 @@
 					</form>
 				</div>
 			</div>
-			<!--  end panel-body -->
+			<!-- end panel-body -->
 		</div>
 	</div>
 </div>

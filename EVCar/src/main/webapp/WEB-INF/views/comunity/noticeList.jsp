@@ -34,7 +34,7 @@
 		</nav>
 	</div>
 </div>
-<!-- /End Breadcrumbs -->
+<!-- /EndBreadcrumbs -->
 
 <!-- Start page content -->
 <div class="container" style="margin-bottom:50px">

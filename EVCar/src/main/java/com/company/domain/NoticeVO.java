@@ -14,3 +14,4 @@ public class NoticeVO {
 	private Date updateDate;
 	private int readCnt;
 }
+

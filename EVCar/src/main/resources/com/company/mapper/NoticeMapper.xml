@@ -29,6 +29,7 @@
 	select * from notice_board where bno = #{bno}
 </select>
 
+
 <!-- 글 삭제 -->
 <delete id="delete">
 	delete from notice_board where bno = #{bno}

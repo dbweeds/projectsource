@@ -24,6 +24,7 @@ public class NoticeController {
 	
 	
 	
+	
 	@GetMapping("/noticeList")
 	public void list(Model model) {
 		

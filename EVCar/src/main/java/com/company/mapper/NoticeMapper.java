@@ -19,6 +19,7 @@ public interface NoticeMapper {
 	
 	public int update(NoticeVO notice);
 
+	
 	public boolean plusCnt(int bno);
 	
 }
