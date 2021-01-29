@@ -18,4 +18,7 @@ public interface NoticeMapper {
 	public int delete(int bno);
 	
 	public int update(NoticeVO notice);
+
+	public boolean plusCnt(int bno);
+	
 }

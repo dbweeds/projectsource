@@ -15,4 +15,6 @@ public interface NoticeService {
 	public boolean remove(int bno);
 	
 	public List<NoticeVO> getList();
+	
+	public boolean plusCnt(int bno);
 }

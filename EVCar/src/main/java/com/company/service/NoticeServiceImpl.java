@@ -60,4 +60,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.getList();
 	}
 
-}
+	@Override
+	public boolean plusCnt(int bno) {
+		return mapper.plusCnt(bno);
+	}
+
+		
+	}
