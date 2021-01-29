@@ -332,4 +332,3 @@
 
     <!-- Start Footer 2 Background Image  -->
 <%@include file="includes/footer.jsp" %>   
-

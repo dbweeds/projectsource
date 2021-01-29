@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 create sequence seq_board;
 
 drop table notice_board;
