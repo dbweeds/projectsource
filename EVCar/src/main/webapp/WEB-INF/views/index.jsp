@@ -87,6 +87,7 @@
           </div>
         </div>
       </div>
+      </div>
       <div class="container-fluid overflow-hidden">
         <div class="row mt-0 mt-lg-5">
           <div class="col-12 col-md-6 p-0">
@@ -331,4 +332,3 @@
 
     <!-- Start Footer 2 Background Image  -->
 <%@include file="includes/footer.jsp" %>   
-
