@@ -25,6 +25,10 @@
 	values (#{bno}, #{title}, #{writer}, #{content})
 </insert>
 
+<select id="read" resultType="com.company.domain.NoticeVO">
+	select * from notice_board where bno = #{bno}
+</select>
+
 <!-- 글 삭제 -->
 <delete id="delete">
 	delete from notice_board where bno = #{bno}
@@ -41,7 +45,7 @@
 </update>
 
 <!-- 조회수 -->
-<update id="noticeReadCnt" parameterType="int">
+<update id="plusCnt" parameterType="int">
 	update notice_board
 	set readCnt = readCnt+1
 	where bno = #{bno}

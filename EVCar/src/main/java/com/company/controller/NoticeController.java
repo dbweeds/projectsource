@@ -1,5 +1,6 @@
 package com.company.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +19,25 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/comunity/*")
 public class NoticeController {
 	
+	@Autowired
 	private NoticeService service;
 	
-	@GetMapping("/list")
+	
+	
+	@GetMapping("/noticeList")
 	public void list(Model model) {
 		
 		log.info("noticeList");
 		
-		model.addAttribute("list", service.getList());
+		model.addAttribute("notice", service.getList());
 	}
 	
-	@PostMapping("/register")
+	@GetMapping("/noticeRegister")
+	public void register() {
+		
+	}
+	
+	@PostMapping("/noticeRegister")
 	public String register(NoticeVO notice, RedirectAttributes rttr) {
 		
 		log.info("notice register" + notice);
@@ -40,19 +49,17 @@ public class NoticeController {
 		return "redirect:/comunity/noticeList";
 	}
 	
-	@GetMapping("/get")
-	public String get(@RequestParam("bno") int bno, Model model) {
+	@GetMapping({"/noticeGet", "/noticeModify"})
+	public void get(@RequestParam("bno") int bno, Model model) {
 		
-		log.info("notice get");
+		log.info("noticeGet or noticeModify");
 		model.addAttribute("notice", service.get(bno));
 		
 		//조회수+1
 		service.plusCnt(bno);
-		
-		return "redirect:/comunity/noticeGet";
 	}
 	
-	@PostMapping("")
+	@PostMapping("/noticeModify")
 	public String modify(NoticeVO notice, RedirectAttributes rttr) {
 		log.info("notice modify:" + notice);
 		
@@ -62,7 +69,7 @@ public class NoticeController {
 		return "redirect:/comunity/noticeList";
 	}
 	
-	@PostMapping("/remove")
+	@PostMapping("/noticeRemove")
 	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) {
 		
 		log.info("notice delete" + bno);
