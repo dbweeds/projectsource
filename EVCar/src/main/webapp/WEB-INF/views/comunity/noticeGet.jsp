@@ -10,7 +10,7 @@
 
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">notice Register</h1>
+		<h1 class="page-header">공지사항</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -19,72 +19,78 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-			<div class="container"
-				style="border-style: solid; border-width: 1.5px">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item active" aria-current="page"><c:out
-								value="${notice.title}" /></li>
-					</ol>
-				</nav>
+			<div class="container">
+				<div class="panel-heading">공지사항</div>
 				<!-- /.panel-heading -->
 				<div class="panel-body">
-					<div class="form-group">
-						<label>공지사항 번호</label> <input class="form-control" name="bno"
-							value='<c:out value="${notice.bno }"/>' readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1" style="text-weight: bolder">제목</label>
-						<input class="form-control" id="exampleFormControlInput1"
-							name='title' value='<c:out value="${notice.title}" />'
-							readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1" style="text-weight: bolder">작성자</label>
-						<input class="form-control" id="exampleFormControlInput1"
-							name='writer' value='<c:out value="${notice.writer}" />'
-							readonly="readonly">
-					</div>
-					<div class="form-group">
-						<label>내용</label>
-						<textarea class="form-control" rows="3" name='content'
-							readonly="readonly"><c:out value="${notice.content}" /></textarea>
-					</div>
-					<div>
 
-						<button data-oper='modify' class="btn btn-primary">수정</button>
-						<button data-oper='notice' class="btn btn-primary"
-							onclick="location.href='/comunity/noticeList'">목록</button>
-					</div>
-					<form id='operForm' action="/comunity/noticeModify" method="get">
-						<input type='hidden' id='bno' name='bno'
-							value='<c:out value="${notice.bno}"/>'>
-							 <%-- <input
-							type='hidden' name='pageNum'
-							value='<c:out value="${cri.pageNum}"/>'> <input
-							type='hidden' name='amount'
-							value='<c:out value="${cri.amount}"/>'> <input
-							type='hidden' name='keyword'
-							value='<c:out value="${cri.keyword}"/>'> <input
-							type='hidden' name='type' value='<c:out value="${cri.type}"/>'> --%>
+					<form role="form" action="/comunity/noticeModify" method="get">
 
+
+						<div class="form-group">
+							<label>공지사항 번호</label> <input class="form-control" name='bno'
+								value='<c:out value="${notice.bno }"/>' readonly="readonly">
+						</div>
+
+						<div class="form-group">
+							<label>제목</label> <input class="form-control" name='title' readonly="readonly"
+								value='<c:out value="${notice.title }"/>'>
+						</div>
+						
+						<div class="form-group">
+							<label>작성자</label> <input class="form-control" name='writer'
+								value='<c:out value="${notice.writer}"/>' readonly="readonly">
+						</div>
+
+						<div class="form-group">
+							<label>내용</label>
+							<textarea class="form-control" rows="3" name='content' readonly="readonly"><c:out 
+									value="${notice.content}" /></textarea>
+						</div>
+
+						
+
+						<div class="form-group">
+							<label>작성일</label> <input class="form-control" name='regDate'
+								value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${notice.regDate}" />'
+								readonly="readonly">
+						</div>
+
+
+
+						<button type="submit" data-oper='noticeModify'
+							class="btn btn-default">수정</button>
+						<button type="submit" data-oper='noticeList' class="btn btn-info">목록보기</button>
 					</form>
+
+
 				</div>
+				<!--  end panel-body -->
 			</div>
-			<!-- end panel-body -->
 		</div>
+		<!--  end panel-body -->
 	</div>
+	<!-- end panel -->
 </div>
+<!-- /.row -->
+
 <script type="text/javascript">
-$(document).ready(function() {
-  
-  var operForm = $("#operForm"); 
-  
-  $("button[data-oper='modify']").on("click", function(e){
-    
-    operForm.attr("action","/comunity/noticeModify").submit();
-    
-  });
-});
+	$(document).ready(function() {
+
+		var operForm = $("#operForm");
+
+		$("button[data-oper='noticeModify']").on("click", function(e) {
+
+			operForm.attr("action", "/comunity/noticeModify").submit();
+
+		});
+
+		$("button[data-oper='noticeList']").on("click", function(e) {
+
+			operForm.find("#bno").remove();
+			operForm.attr("action", "/comunity/noticeList")
+			operForm.submit();
+		});
+	});
 </script>
 <%@include file="../includes/footer.jsp"%>

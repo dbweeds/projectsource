@@ -71,12 +71,13 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/noticeRemove")
-	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) {
+		 public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr)
+		 {
 		
-		log.info("notice delete" + bno);
-		if(service.remove(bno)) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		return "redirect:/comunity/noticeList";
-	}
+		 log.info("remove..." + bno);
+		 if (service.remove(bno)) {
+		 rttr.addFlashAttribute("result", "success");
+		 }
+		 return "redirect:/comunity/noticeList";
+		 }
 } 

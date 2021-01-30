@@ -82,9 +82,9 @@
 							<td><a href='/comunity/noticeGet?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.bno}"/></a></td>
 							<td><c:out value="${notice.title}" /></td>
 							<td><c:out value="${notice.writer}" /></td>
-							<td><fmt:formatDate pattern="yyyy-mm-dd"
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${notice.regDate}" /></td>
-							<td><fmt:formatDate pattern="yyyy-mm-dd"
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${notice.updateDate}" /></td>
 							<td><c:out value="${notice.readCnt}" /></td>
 						</tr>
@@ -95,7 +95,7 @@
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">공지사항 작성완료</h5>
+							<h5 class="modal-title">공지사항</h5>
 							<button type="button" class="close" data-dismiss="modal"
 								aria-label="Close">
 								<span aria-hidden="true">&times;</span>
