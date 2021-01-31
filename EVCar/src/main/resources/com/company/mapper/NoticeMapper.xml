@@ -51,4 +51,14 @@
 	set readCnt = readCnt+1
 	where bno = #{bno}
 </update>
+
+<!-- 페이징 -->
+<select id="getListWithPaging" resultType="com.company.domain.NoticeVO">
+<![CDATA[
+	select bno, title, writer, content, regDate, updateDate
+	from (select /*+INDEX_DESC(notice_board pk_board) */
+		rownum rn, bno, title, writer, content, regDate, updateDate
+		from notice_board where rownum <= #{pageNum} * #{amount}) where rn > (#{pageNum} -1) * #{amount}
+]]>
+</select>
 </mapper>

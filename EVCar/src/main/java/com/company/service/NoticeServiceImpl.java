@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.company.domain.Criteria;
 import com.company.domain.NoticeVO;
 import com.company.mapper.NoticeMapper;
 
@@ -53,17 +54,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.delete(bno) == 1;
 	}
 
-	@Override
-	public List<NoticeVO> getList() {
-		
-		log.info("getList...");
-		
-		return mapper.getList();
-	}
+
 
 	@Override
 	public boolean plusCnt(int bno) {
 		return mapper.plusCnt(bno);
+	}
+
+	@Override
+	public List<NoticeVO> getList(Criteria cri) {
+		
+		log.info("get List with criteria: " + cri);
+		
+		return mapper.getListWithPaging(cri);
 	}
 
 		

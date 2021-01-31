@@ -2,6 +2,7 @@ package com.company.service;
 
 import java.util.List;
 
+import com.company.domain.Criteria;
 import com.company.domain.NoticeVO;
 
 public interface NoticeService {
@@ -14,7 +15,7 @@ public interface NoticeService {
 	
 	public boolean remove(int bno);
 	
-	public List<NoticeVO> getList();
+	public List<NoticeVO> getList(Criteria cri);
 	
 	public boolean plusCnt(int bno);
 	

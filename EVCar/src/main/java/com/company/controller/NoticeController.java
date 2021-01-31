@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.company.domain.Criteria;
 import com.company.domain.NoticeVO;
+import com.company.domain.PageDTO;
 import com.company.service.NoticeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,11 +28,12 @@ public class NoticeController {
 	
 	
 	@GetMapping("/noticeList")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
 		
-		log.info("noticeList");
+		log.info("list: "+cri);
 		
-		model.addAttribute("notice", service.getList());
+		model.addAttribute("notice", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 2));
 	}
 	
 	@GetMapping("/noticeRegister")

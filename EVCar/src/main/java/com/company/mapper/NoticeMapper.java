@@ -2,12 +2,15 @@ package com.company.mapper;
 
 import java.util.List;
 
+import com.company.domain.Criteria;
 import com.company.domain.NoticeVO;
 
 public interface NoticeMapper {
 
 	//전체 조회
 	public List<NoticeVO> getList();
+	
+	public List<NoticeVO> getListWithPaging(Criteria cri);
 	
 	public void insert(NoticeVO notice);
 	
@@ -18,7 +21,6 @@ public interface NoticeMapper {
 	public int delete(int bno);
 	
 	public int update(NoticeVO notice);
-
 	
 	public boolean plusCnt(int bno);
 	
