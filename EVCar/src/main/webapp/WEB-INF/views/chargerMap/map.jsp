@@ -78,6 +78,14 @@ var map = new naver.maps.Map('map', mapOptions);//지도구현
 var myIp = "";
 var myAddr = [];
 var markers = [];
+var bounds = map.getBounds(),
+	southWest = bounds.getSW(),
+	northEast = bounds.getNE();
+var maxLat = northEast.y;
+var maxLng = northEast.x;
+var minLat = southWest.y;
+var minLng = southWest.x;
+
 $(function() {//내위치
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
         function(data) {
@@ -96,55 +104,11 @@ $(function() {//내위치
 	})
     
 });
+			 
  $(function() {//마커표시
-	$.getJSON("/chargerMap/getMapList",
-		function(data) {
-		  console.log(data);
-		  var bounds = map.getBounds(),
-			 southWest = bounds.getSW(),
-			 northEast = bounds.getNE(),
-			 lngSpan = northEast.lng() - southWest.lng(),
-			 latSpan = northEast.lat() - southWest.lat();
-
-
-		  $.each(data,function(idx,item){
-			   var marker = new naver.maps.Marker({
-				    position: new naver.maps.LatLng(item.lat, item.lon),
-				    map: map
-				    });
-			   markers.push(marker);
-
-				naver.maps.Event.addListener(marker, "click", function(e) {
-					var contentString = "";
-					contentString +='<div class="sub_group" style="width:450px">';
-				    contentString +='<h4 style="text-align: center">상 세 정 보</h4>';
-				    contentString +='<table class="table_02"><tbody>';
-				    contentString +='<tr><th style="width: 100px">위 치</th><td colspan="3">'+item.place+'</td></tr>';
-				    contentString +='<tr><th style="width: 100px">주 소</th><td colspan="3">'+item.addr+'</td></tr>';
-				    contentString +='<tr><th style="width: 100px">급속충전기</th><td>'+item.f_char+'개</td><th style="width: 100px">완속충전기</th><td>'+item.s_char+'개</td></tr>';
-				    contentString +='<tr><th style="width: 100px">충전가능차량</th><td colspan="3">'+item.sup_veh+'</td></tr>';
-				    contentString +='</tbody></table></div>';
-					var infowindow = new naver.maps.InfoWindow({
-					    content: contentString
-					});
-				    if (infowindow.getMap()) {
-				        infowindow.close();
-				    } else {
-				        infowindow.open(map, marker);
-				    }
-			   })
-           myIpMap(map,markers);
-		 /*  naver.maps.Event.addListener(map, 'zoom_changed', function() {
-			    updateMarkers(map, markers);
-			    });
-
-		  naver.maps.Event.addListener(map, 'dragend', function() {
-			    updateMarkers(map, markers);
-			    }); */
-	})
-}) 
-
-});
+	 
+	
+ });
 $("#area").change(function() {
 	
 	var selectArea = $("#area").val();
@@ -234,4 +198,51 @@ function myIpMap(map,markers) {
          updateMarkers(map, markers);
          });
 }
+function mapMarkers() {
+	$.ajax({
+		type:"post",
+		url : "/chargerMap/getMapList",
+		contentType:'application/json;charset=utf-8',
+		data : JSON.stringify({max_lon:maxLng,max_lat:maxLat,min_lon:minLng,min_lat:minLat}),
+		success : function(data) {
+		  console.log(data);
+
+		  $.each(data,function(idx,item){
+			   var marker = new naver.maps.Marker({
+				    position: new naver.maps.LatLng(item.lat, item.lon),
+				    map: map
+				    });
+			   markers.push(marker);
+			 //updateMarkers(map, markers)
+				naver.maps.Event.addListener(marker, "click", function(e) {
+					var contentString = "";
+					contentString +='<div class="sub_group" style="width:450px">';
+				    contentString +='<h4 style="text-align: center">상 세 정 보</h4>';
+				    contentString +='<table class="table_02"><tbody>';
+				    contentString +='<tr><th style="width: 100px">위 치</th><td colspan="3">'+item.place+'</td></tr>';
+				    contentString +='<tr><th style="width: 100px">주 소</th><td colspan="3">'+item.addr+'</td></tr>';
+				    contentString +='<tr><th style="width: 100px">급속충전기</th><td>'+item.f_char+'개</td><th style="width: 100px">완속충전기</th><td>'+item.s_char+'개</td></tr>';
+				    contentString +='<tr><th style="width: 100px">충전가능차량</th><td colspan="3">'+item.sup_veh+'</td></tr>';
+				    contentString +='</tbody></table></div>';
+					var infowindow = new naver.maps.InfoWindow({
+					    content: contentString
+					});
+				    if (infowindow.getMap()) {
+				        infowindow.close();
+				    } else {
+				        infowindow.open(map, marker);
+				    }
+			   })
+			
+		 /*  naver.maps.Event.addListener(map, 'zoom_changed', function() {
+			    updateMarkers(map, markers);
+			    });
+
+		  naver.maps.Event.addListener(map, 'dragend', function() {
+			    updateMarkers(map, markers);
+			    }); */
+	})
+}}) 
+
+}//mapmarker
 </script>   

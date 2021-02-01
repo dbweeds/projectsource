@@ -8,8 +8,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.domain.BoundVO;
 import com.company.domain.ChargerMapVO;
 import com.company.service.ChargerMapService;
 
@@ -28,9 +31,10 @@ public class ChargerMapController {
 	public void getest() {
 		log.info("test시작");
 	}
-	@GetMapping(value = "/getMapList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<ChargerMapVO>> getMapList(){
-		List<ChargerMapVO> list = service.chargerMapList();
+	@PostMapping(value = "/getMapList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<ChargerMapVO>> getMapList(@RequestBody BoundVO vo){
+		log.info("안녕"+vo);
+		List<ChargerMapVO> list = service.chargerMapList(vo);
 		return new ResponseEntity<List<ChargerMapVO>>(list,HttpStatus.OK);
 	}
 }
