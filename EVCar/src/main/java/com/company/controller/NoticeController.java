@@ -33,7 +33,7 @@ public class NoticeController {
 		log.info("list: "+cri);
 		
 		model.addAttribute("notice", service.getList(cri));
-		model.addAttribute("pageMaker", new PageDTO(cri, 2));
+		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotalCount(cri)));
 	}
 	
 	@GetMapping("/noticeRegister")
