@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.ChargerMapper">
-    <select id="chargerMapList" resultType="com.company.domain.ChargerMapVO">
+   <select id="chargerMapList" resultType="com.company.domain.ChargerMapVO">
         select * from chargerMap 
         where lon BETWEEN #{min_lon} and #{max_lon} and
         lat between #{min_lat} and #{max_lat}
+    </select>
+    <select id="getXYPoint" resultType="com.company.domain.BoundVO">
+        select x,y from sig_kor_xy
+        where sig_kor_nm = #{point}
     </select>
 </mapper>

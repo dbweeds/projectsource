@@ -9,4 +9,6 @@ public class BoundVO {
 	private double max_lat;
 	private double min_lon;
 	private double min_lat;
+	private double X;
+	private double Y;
 }

@@ -20,4 +20,9 @@ public class ChargerMapServiceImpl implements ChargerMapService {
 		return mapper.chargerMapList(vo);
 	}
 
+	@Override
+	public BoundVO getXYPoint(String point) {
+		return mapper.getXYPoint(point);
+	}
+
 }

@@ -7,4 +7,6 @@ import com.company.domain.ChargerMapVO;
 
 public interface ChargerMapper {
 	public List<ChargerMapVO> chargerMapList(BoundVO vo);
+	
+	public BoundVO getXYPoint(String point);
 }

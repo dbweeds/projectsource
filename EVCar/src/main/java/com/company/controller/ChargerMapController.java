@@ -37,4 +37,11 @@ public class ChargerMapController {
 		List<ChargerMapVO> list = service.chargerMapList(vo);
 		return new ResponseEntity<List<ChargerMapVO>>(list,HttpStatus.OK);
 	}
+	
+	@PostMapping(value = "/getXYPoint", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<BoundVO> getXYPoint(@RequestBody String XYPoint){
+		log.info(XYPoint);
+		BoundVO vo = service.getXYPoint(XYPoint);
+		return new ResponseEntity<BoundVO>(vo,HttpStatus.OK);
+	}
 }
