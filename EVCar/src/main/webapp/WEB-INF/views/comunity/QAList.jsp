@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
+<%@include file="../includes/header.jsp"%>
 <!-- Start Header -->
 <div class="fables-header fables-after-overlay bg-rules">
 	<div class="container">
 		<h2
 			class="fables-page-title fables-second-border-color wow fadeInLeft"
-			data-wow-duration="1.5s" style="margin-top: 90px">공지사항</h2>
+			data-wow-duration="1.5s" style="margin-top: 90px">문의사항</h2>
 	</div>
 </div>
 <!-- /End Header -->
@@ -24,9 +24,8 @@
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
 				<li class="breadcrumb-item"><a href="#"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page"
-					style="font-weight: bolder">공지사항</li>
-				<li class="breadcrumb-item"><a href="/comunity/QAList"
+				<li class="breadcrumb-item" ><a href="/comunity/noticeList">공지사항</a></li>
+				<li class="breadcrumb-item" style="font-weight: bolder"><a href="/comunity/QAList"
 					class="fables-second-text-color">Q&A</a></li>
 				<li class="breadcrumb-item"><a href="#"
 					class="fables-second-text-color">관련 기사</a></li>
@@ -45,7 +44,7 @@
 			<div class="row">
 				<div class="col-md-4 offset-md-4">
 					<!--검색 들어갈 부분-->
-					<form action="qnotice.do" method="post" id="search">
+					<form action="qQA.do" method="post" id="search">
 						<select name="criteria" id="">
 							<option value="n"
 								<c:out value="${empty info.search.criteria?'selected':''}" />>----</option>
@@ -62,9 +61,9 @@
 				</div>
 			</div>
 			<br>
-			<div class="register">
+			<div class="QAregister">
 				<button type="button" class="btn btn-primary" id="regBtn"
-					style="float: right; margin-bottom: 3px">글 작성</button>
+					style="float: right; margin-bottom: 3px">문의글 작성</button>
 			</div>
 			<table class="table" style="text-align:center">
 				<thead>
@@ -77,18 +76,18 @@
 						<th class='text-center'>조회수</th>
 					</tr>
 
-					<c:forEach var="notice" items="${notice}">
+					<c:forEach var="QA" items="${QA}">
 						<tr class="contentTr">
 							<td><c:out
-										value="${notice.bno}" /></td>
+										value="${QA.bno}" /></td>
 							<td><a
-								href='/comunity/noticeGet?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.title}" /></a></td>
-							<td><c:out value="${notice.writer}" /></td>
+								href='/comunity/QAGet?bno=<c:out value="${QA.bno}"/>'><c:out value="${QA.title}" /></a></td>
+							<td><c:out value="${QA.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${notice.regDate}" /></td>
+									value="${QA.regDate}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${notice.updateDate}" /></td>
-							<td><c:out value="${notice.readCnt}" /></td>
+									value="${QA.updateDate}" /></td>
+							<td><c:out value="${QA.readCnt}" /></td>
 						</tr>
 					</c:forEach>
 				</thead>
@@ -112,7 +111,7 @@
 							href="${pageMaker.endPage +1 }" class="page-link">다음</a></li>
 					</c:if>
 				</ul>
-				<form id="actionForm" action="/comunity/noticeList" method="get">
+				<form id="actionForm" action="/comunity/QAList" method="get">
 					<input type="hidden" name="pageNum"
 						value="${pageMaker.cri.pageNum}"> <input type="hidden"
 						name="amount" value="${pageMaker.cri.amount}">
@@ -173,7 +172,7 @@
 
 						$("#regBtn").on("click", function() {
 
-							self.location = "/comunity/noticeRegister";
+							self.location = "/comunity/QARegister";
 
 						});
 
@@ -204,7 +203,7 @@
 																	"href")
 															+ "'>");
 											actionForm.attr("action",
-													"/comunity/noticeGet");
+													"/comunity/QAGet");
 											actionForm.submit();
 
 										});
