@@ -20,5 +20,4 @@ public interface NoticeService {
 	public boolean plusCnt(int bno);
 	
 	public int getTotalCount(Criteria cri);
-	
 }
