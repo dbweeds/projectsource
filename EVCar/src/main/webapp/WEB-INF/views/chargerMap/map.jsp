@@ -69,6 +69,7 @@
 <!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp" %>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=k7zd4tsqx0"></script>
+<script src="/resources/js/MarkerClustering.js"></script>
 <script>
 var mapOptions = {//처음시작 지도 위치
         center: new naver.maps.LatLng(37.55656455180527, 126.97233558686575),
@@ -79,6 +80,33 @@ var map = new naver.maps.Map('map', mapOptions);//지도구현
 var myIp = "";
 var myAddr = [];
 var markers = [];
+
+var htmlMarker1 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker2 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker3 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-3.pngg);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker4 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    },
+    htmlMarker5 = {
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
+        size: N.Size(40, 40),
+        anchor: N.Point(20, 20)
+    };
+
 
 $(function() {//내위치
     $.getJSON("https://api.ipify.org?format=jsonp&callback=?",
@@ -139,6 +167,8 @@ $(function() {//내위치
 	                    }
 	               })
 	    })
+	    console.log("클러스터 실행")
+	    onLoad();
 	}}) 
 
      myIpMap(map,markers);
@@ -209,6 +239,7 @@ $("#area2").change(function() {
 			var point = new naver.maps.LatLng(data.y, data.x);
 			map.setCenter(point);
 			mapMarkers(map);
+			
 		}
 	})
 
@@ -217,10 +248,12 @@ $("#area2").change(function() {
 function myIpMap(map,markers) {
     naver.maps.Event.addListener(map, 'zoom_changed', function() {
     	mapMarkers(map);
+    
 	});
 
    naver.maps.Event.addListener(map, 'dragend',function() {
        mapMarkers(map);
+   
    });
   
 }
@@ -275,6 +308,7 @@ function mapMarkers(map) {
                })
         	  }
         })
+      onLoad();
         }
     })
 } 
@@ -291,14 +325,9 @@ function updateMarkers(map, markers) {
 
         if (!mapBounds.hasLatLng(position)) {
         	hideMarker(map, marker);
+        	markers.splice(i, 1);
         } 
     }
-}
-
-function showMarker(map, marker) {
-
-    if (marker.setMap()) return;
-    marker.setMap(map);
 }
 
 function hideMarker(map, marker) {
@@ -306,4 +335,22 @@ function hideMarker(map, marker) {
     if (!marker.setMap()) return;
     marker.setMap(null);
 }
+function onLoad() {
+    var markerClustering = new MarkerClustering({
+        minClusterSize: 2,
+        maxZoom: 8,
+        map: map,
+        markers: markers,
+        disableClickZoom: false,
+        gridSize: 120,
+        icons: [htmlMarker1,htmlMarker2, htmlMarker3, htmlMarker4,htmlMarker5],
+        indexGenerator: [10, 50, 200, 500, 1000],
+        stylingFunction: function(clusterMarker, count) {
+            $(clusterMarker.getElement()).find('div:first-child').text(count);
+        }
+    });
+}
+
+
+
 </script>  
