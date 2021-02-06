@@ -15,7 +15,7 @@ create table carinfo(
 		mileage number(10,2) not null,     --주행가능거리 km
 		chargetype VARCHAR2(30) not null,  --급속충전타입 dc콤보(공통) / 유럽형(테슬라만)
 		title VARCHAR2(100) , 	   		   --타이틀
-		content VARCHAR2(500)	           --내용,제원
+		content VARCHAR2(800)	           --내용,제원
 );
 
 create sequence carinfo_seq;
@@ -31,13 +31,12 @@ rowprice,highprice,Support,releasedate,fuel,mileage,chargetype, title,content) v
 (carinfo_seq.nextval,'현대','코나 일렉트릭','KONA Electric','소형차',46900000,48900000,8000000,2020,5.6,406,'DC콤보',
 '모빌리티 라이프의 즐거움','한 번 충전으로...');
 
-insert into carinfo (bno,brand,carname,carname_en,cartype,
-rowprice,highprice,releasedate,Support,fuel,mileage,chargetype, title,content) values 
-(carinfo_seq.nextval,'현대','포터 일렉트닉','PorterEV','중형차',40600000,42740000,16000000,2020,3.1,211,'DC콤보',
-'새로운 친환경 EV 트럭','도심에서 탁월한 운송능력...');
+--update carinfo set rowprice = 39950000, highprice = 43950000 where bno=6;
+update carinfo set carname = '푸조 E-2008' where bno=19;
 
 
-
+alter table carinfo modify rowprice number(15,3);
+alter table carinfo modify highprice number(15,3);
 
 
 

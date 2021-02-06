@@ -24,7 +24,7 @@
                 전기차
               </li>
             <li class="breadcrumb-item active" aria-current="page">
-              전기차 모델
+              ${info.brand}
             </li>
             <li class="breadcrumb-item active" aria-current="page">
                 ${info.carname} (${info.carname_en})
