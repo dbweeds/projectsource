@@ -18,8 +18,7 @@
     display: grid;
     }
     .form-group{
-	
-  	
+
     }
    </style>
    
@@ -41,7 +40,7 @@
             <li class="breadcrumb-item">
               <a href="#" class="fables-second-text-color">전기차 </a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page"> 국내운행 차량
+            <li class="breadcrumb-item active" aria-current="page"> 등록페이지
             </li>
           </ol>
         </nav>
@@ -56,32 +55,37 @@
 		<div class="form-group">
 				<label for="exampleFormControlInput1">브랜드</label> <input
 					type="text" class="form-control" id="exampleFormControlInput1"
-					name="brand" placeholder="브랜드명">
+					name="brand" placeholder="브랜드를 입력하세요">
 			</div>		
 			<div class="form-group">		
 				<label for="exampleFormControlInput1">차량모델</label> <input
 					type="text" class="form-control" id="exampleFormControlInput1"
-					name="carname" placeholder="모델명">
+					name="carname" placeholder="모델명을 입려하세요">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">차량 영문명</label> <input
 					type="text" class="form-control" id=""
-					name="carname_en" placeholder="모델명를 입력해주세요">
+					name="carname_en" placeholder="모델 영문명를 입력하세요">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">자동차규격</label> <input
 					type="text" class="form-control" id=""
-					name="cartype" placeholder="ex) 중형차">
+					name="cartype" placeholder="ex) 소형차,중형차">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">최저가</label> <input
 					type="number" class="form-control" id=""
-					name="rowprice" placeholder="최저가격">
+					name="rowprice" placeholder="최저가격 입력하세요">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">최고가</label> <input
 					type="number" class="form-control" id=""
-					name="highprice" placeholder="최고가격">
+					name="highprice" placeholder="최고가격 입력하세요">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">보조금</label> <input
+					type="number" class="form-control" id=""
+					name="support" placeholder="정부 보조금 입력하세요">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">출시연도</label> <input
@@ -95,12 +99,12 @@
 			<div class="form-group">
 				<label for="exampleFormControlInput1">주행거리</label> <input
 					type="number" class="form-control" id=""
-					name="mileage" placeholder="숫자만 입력">
+					name="mileage" placeholder="km제외한 숫자만 입력하세요">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1">충전방식</label> <input
 					type="text" class="form-control" id=""
-					name="chargetype" placeholder="ex) DC콤보">
+					name="chargetype" placeholder="ex) DC콤보, 유럽형">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlInput1" style="text-weight: bolder">제목</label>

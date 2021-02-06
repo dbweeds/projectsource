@@ -5,8 +5,8 @@
 	<!-- 등록 -->
 	<insert id="insert">
 		insert into carinfo 
-		(bno,brand,carname,carname_en,cartype,rowprice,highprice,releasedate,fuel,mileage,chargetype,title,content) values 
-		(carinfo_seq.nextval,#{brand},#{carname},#{carname_en},#{cartype},#{rowprice},#{highprice},#{releasedate},#{fuel},#{mileage},#{chargetype},#{title},#{content})
+		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content) values 
+		(carinfo_seq.nextval,#{brand},#{carname},#{carname_en},#{cartype},#{rowprice},#{highprice},#{highprice},#{releasedate},#{fuel},#{mileage},#{chargetype},#{title},#{content})
 	</insert>
 	<!-- 삭제 -->
 	<delete id="delete">

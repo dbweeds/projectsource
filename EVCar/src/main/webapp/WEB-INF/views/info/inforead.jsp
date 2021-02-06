@@ -81,7 +81,7 @@
 		          </div>
 		              <div class="my-2">
 		            <span class="fables-main-text-color font-15 semi-font">출시가 </span>
-		            <span class="fables-forth-text-color fifth"> : ${info.rowprice} ~ ${info.highprice}원</span>
+		            <span class="fables-forth-text-color fifth"> : ${info.rowprice}~${info.highprice}원</span>
 		          </div>
 		          <div class="my-2">
 		            <span class="fables-main-text-color font-15 semi-font"

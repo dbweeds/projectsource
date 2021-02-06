@@ -19,7 +19,8 @@ public class CarInfoVO {
 		private String cartype; 		// 종류 -상세페이지
 		private int rowprice;  			// 최저가
 		private int highprice; 			// 최대가
-		private float fuel; 				// 연비 -상세페이지
+		private int support; 			// 보조금
+		private float fuel; 			// 연비 -상세페이지
 		private int mileage; 		 	// 주행거리 -상세페이지
 		private String chargetype; 		// 충전방식
 		private int releasedate;		// 출시연도
