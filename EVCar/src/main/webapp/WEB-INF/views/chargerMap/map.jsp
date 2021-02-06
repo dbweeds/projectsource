@@ -73,13 +73,15 @@
 <script>
 var mapOptions = {//처음시작 지도 위치
         center: new naver.maps.LatLng(37.55656455180527, 126.97233558686575),
-        zoom: 13
+        zoom: 13,
+        minZoom: 12
     };
 //var map = new naver.maps.Map();//지도구현
 var map = new naver.maps.Map('map', mapOptions);//지도구현
 var myIp = "";
 var myAddr = [];
 var markers = [];
+var infowindow;
 
 var htmlMarker1 = {
         content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
@@ -92,7 +94,7 @@ var htmlMarker1 = {
         anchor: N.Point(20, 20)
     },
     htmlMarker3 = {
-        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-3.pngg);background-size:contain;"></div>',
+        content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-2.pngg);background-size:contain;"></div>',
         size: N.Size(40, 40),
         anchor: N.Point(20, 20)
     },
@@ -142,10 +144,19 @@ $(function() {//내위치
 	        data : JSON.stringify({max_lon:maxLng,max_lat:maxLat,min_lon:minLng,min_lat:minLat}),
 	        success : function(data) {
 	          $.each(data,function(idx,item){
-	              var marker = new naver.maps.Marker({
-	                    position: new naver.maps.LatLng(item.lat, item.lon),
-	                    map: map
-	                    });
+	        	  var markerOptions = {
+	                        position: new naver.maps.LatLng(item.lat, item.lon),
+	                        map: map,
+	                        icon: {
+	                             url: ' https://ssl.pstatic.net/static/maps/mantle/1x/marker-default.png',
+	                              size: new naver.maps.Size(25, 34),
+	                              scaledSize: new naver.maps.Size(15, 21),
+	                              origin: new naver.maps.Point(0, 0),
+	                              anchor: new naver.maps.Point(12, 34)
+	                        }
+	                    };
+	              var marker = new naver.maps.Marker(markerOptions);
+	            
 	               markers.push(marker);
 	                naver.maps.Event.addListener(marker, "click", function(e) {
 	                    var contentString = "";
@@ -157,9 +168,12 @@ $(function() {//내위치
 	                    contentString +='<tr><th style="width: 100px">급속충전기</th><td>'+item.f_char+'개</td><th style="width: 100px">완속충전기</th><td>'+item.s_char+'개</td></tr>';
 	                    contentString +='<tr><th style="width: 100px">충전가능차량</th><td colspan="3">'+item.sup_veh+'</td></tr>';
 	                    contentString +='</tbody></table></div>';
-	                    var infowindow = new naver.maps.InfoWindow({
-	                        content: contentString
-	                    });
+	                    if(infowindow == null ||infowindow.content != contentString){  	
+	                    console.log(infowindow);
+	                        infowindow = new naver.maps.InfoWindow({
+		                        content: contentString
+		                    });
+	                    }
 	                    if (infowindow.getMap()) {
 	                        infowindow.close();
 	                    } else {
@@ -167,12 +181,8 @@ $(function() {//내위치
 	                    }
 	               })
 	    })
-	    console.log("클러스터 실행")
-	    onLoad();
 	}}) 
-
-     myIpMap(map,markers);
-    
+     myIpMap(map,markers);   
  });
 $("#area").change(function() {
     
@@ -233,9 +243,6 @@ $("#area2").change(function() {
 		contentType:'application/json;charset=utf-8',
 		data : XYPoint,
 		success : function(data){
-			console.log(data);
-			console.log(data.x);
-			console.log(data.y);
 			var point = new naver.maps.LatLng(data.y, data.x);
 			map.setCenter(point);
 			mapMarkers(map);
@@ -250,10 +257,8 @@ function myIpMap(map,markers) {
     	mapMarkers(map);
     
 	});
-
    naver.maps.Event.addListener(map, 'dragend',function() {
-       mapMarkers(map);
-   
+       mapMarkers(map); 
    });
   
 }
@@ -273,14 +278,21 @@ function mapMarkers(map) {
         data : JSON.stringify({max_lon:maxLng,max_lat:maxLat,min_lon:minLng,min_lat:minLat}),
         success : function(data) {
           $.each(data,function(idx,item){
-
-        	  var marker = new naver.maps.Marker({
-                    position: new naver.maps.LatLng(item.lat, item.lon),
-                    map: map
-                    });
+        	  var markerOptions = {
+        			    position: new naver.maps.LatLng(item.lat, item.lon),
+        			    map: map,
+        			    icon: {
+        			    	 url: ' https://ssl.pstatic.net/static/maps/mantle/1x/marker-default.png',
+        	                  size: new naver.maps.Size(25, 34),
+        	                  scaledSize: new naver.maps.Size(15, 21),
+        	                  origin: new naver.maps.Point(0, 0),
+        	                  anchor: new naver.maps.Point(12, 34)
+        			    }
+        			};
+        	  var marker = new naver.maps.Marker(markerOptions);
         	  var notMarker = true;
-        	  for(var i = 0;i<markers.size;i++){
-        		  if(markers[i].getPosition() == marker.getPosition()){
+        	  for(var i = 0;i<markers.length;i++){   		  
+        		  if(markers[i].getPosition().x == marker.getPosition().x){
         			  marker.setMap(null);
         			  notMarker = false;
         		  }
@@ -308,7 +320,6 @@ function mapMarkers(map) {
                })
         	  }
         })
-      onLoad();
         }
     })
 } 
@@ -335,21 +346,7 @@ function hideMarker(map, marker) {
     if (!marker.setMap()) return;
     marker.setMap(null);
 }
-function onLoad() {
-    var markerClustering = new MarkerClustering({
-        minClusterSize: 2,
-        maxZoom: 8,
-        map: map,
-        markers: markers,
-        disableClickZoom: false,
-        gridSize: 120,
-        icons: [htmlMarker1,htmlMarker2, htmlMarker3, htmlMarker4,htmlMarker5],
-        indexGenerator: [10, 50, 200, 500, 1000],
-        stylingFunction: function(clusterMarker, count) {
-            $(clusterMarker.getElement()).find('div:first-child').text(count);
-        }
-    });
-}
+
 
 
 

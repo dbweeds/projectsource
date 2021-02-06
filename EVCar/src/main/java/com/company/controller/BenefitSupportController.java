@@ -15,4 +15,8 @@ public class BenefitSupportController {
 	public void getest() {
 		log.info("test시작");
 	}
+	@GetMapping("/test2")
+	public void getest2() {
+		log.info("test2시작");
+	}
 }
