@@ -8,6 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="Fables" />
 <meta name="author" content="Enterprise Development" />
+<link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="shortcut icon"
 	href="/resources/assets/custom/images/shortcut.png" />
 

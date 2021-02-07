@@ -2,99 +2,75 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- CSS only -->
 
 <%@include file="../includes/header.jsp"%>
-
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">문의사항</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
+<%@include file="../includes/subHeader.jsp"%>
 
 <div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="container">
-				<div class="panel-heading"><c:out value="${QA.title}" /></div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
+	<div class="container">
+		<h2 style="font-weight: bolder; margin: 40px; margin-left:5px;">문의사항</h2>
+		<form role="form" action="/comunity/QAModify" method="get">
 
-					<form role="form" action="/comunity/QAModify" method="get">
-
-
-						<div class="form-group">
-							<label>문의사항 글번호</label> <input class="form-control" name='bno'
-								value='<c:out value="${QA.bno }"/>' readonly="readonly">
-						</div>
-
-						<div class="form-group">
-							<label>제목</label> <input class="form-control" name='title' readonly="readonly"
-								value='<c:out value="${QA.title }"/>'>
-						</div>
-						
-						<div class="form-group">
-							<label>작성자</label> <input class="form-control" name='writer'
-								value='<c:out value="${QA.writer}"/>' readonly="readonly">
-						</div>
-
-						<div class="form-group">
-							<label>내용</label>
-							<textarea class="form-control" rows="3" name='content' readonly="readonly"><c:out 
-									value="${QA.content}" /></textarea>
-						</div>
-
-						
-
-						<div class="form-group">
-							<label>작성일</label> <input class="form-control" name='regDate'
-								value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${QA.regDate}" />'
-								readonly="readonly">
-						</div>
-
-
-
-						<button data-oper='QAModify' class="btn btn-default">수정</button>
-						<button data-oper='QAList' class="btn btn-info">목록보기</button>
-					</form>
-
-
-				</div>
-				<!--  end panel-body -->
+			<div
+				style="border-bottom: 1px dotted #bbb; border-top: 1px solid #bbb;">
+				<input name='title'
+					style="border: 0px; font-size: 150%; margin: 20px; margin-left:5px;"
+					readonly="readonly" value='<c:out value="${QA.title }"/>'>
 			</div>
-		</div>
-		<!--  end panel-body -->
+
+			<div class="form-group" style="border-bottom: 1px solid #bbb;">
+				<div style="padding: 10px;">
+					<label style="font-weight: bold;">작성자</label> <input name='writer'
+						style="border: 0px;" value='<c:out value="${QA.writer}"/>'
+						readonly="readonly"> <label style="font-weight: bold;">작성일</label>
+					<input name='regDate' style="border: 0px;"
+						value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${QA.regDate}" />'
+						readonly="readonly"> <label style="font-weight: bold;">조회수</label>
+					<input style="border: 0px;" name='writer'
+						value='<c:out value="${QA.readCnt}"/>' readonly="readonly">
+				</div>
+
+			</div>
+			<div class="form-group" style="height: 500px; padding-top: 20px">
+				<textarea cols=100 rows=20 name='content'
+					style="overflow: auto; resize: none; border: none;"
+					readonly="readonly"><c:out value="${QA.content}" /></textarea>
+			</div>
+
+
+			<div style="float: right; margin-bottom:20px">
+				<button data-oper='QAModify' class="btn btn-primary">수정</button>
+				<button data-oper='QAList' class="btn btn-secondary">목록</button>
+			</div>
+			
+			<div class="form-group" style="display: none">
+				<label>글번호</label> <input class="form-control" name='bno'
+					value='<c:out value="${QA.bno }"/>' readonly="readonly">
+			</div>
+		</form>
 	</div>
-	<!-- end panel -->
+	<!--  end panel-body -->
 </div>
-<div style="height:500px">
-
-</div>
-<!-- /.row -->
-
+<!-- end panel -->
 <script type="text/javascript">
-$(document).ready(function() {
-  
-  var operForm = $("#operForm"); 
-  
-  $("button[data-oper='QAModify']").on("click", function(e){
-    
-    operForm.attr("action","/QA/QAModify").submit();
-    
-  });
-  
-    
-  $("button[data-oper='QAList']").on("click", function(e){
-    
-    operForm.find("#bno").remove();
-    operForm.attr("action","/comunity/QAList")
-    operForm.submit();
-    
-  });  
-});
+	$(document).ready(function() {
+
+		var formObj = $("form");
+
+		$("button").click(function() {
+			var oper = $(this).data("oper");
+
+			if (oper === 'QAModify') {
+				formObj.attr("action", "/comunity/QAModify");
+
+			} else if (oper === 'QAList') {
+				formObj.attr("action", "/comunity/QAList")
+			}
+
+		});
+	});
 </script>
 <%@include file="../includes/footer.jsp"%>

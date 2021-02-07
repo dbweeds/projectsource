@@ -1,70 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../includes/header.jsp"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- CSS only -->
 
-
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">문의사항 작성</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/subHeader.jsp"%>
+<link rel="stylesheet" href="/resources/css/QARegister.css">
 <!-- /.row -->
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="container" style="border-style:solid; border-width:1.5px">
-				<nav aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item active" aria-current="page">문의사항 작성</li>
-					</ol>
-				</nav>
-				<!-- /.panel-heading -->
-				<div class="panel-body" >
-
-					<form action="/comunity/QARegister" method="post">
-						<div class="form-group">
-							<label for="exampleFormControlInput1" style="text-weight: bolder">제목</label>
-							<input type="text" class="form-control"
-								id="exampleFormControlInput1" name="title"
-								placeholder="제목을 입력해주세요">
-						</div>
-						<div class="form-group">
-							<label for="exampleFormControlInput1">작성자</label> <input
-								type="text" class="form-control" id="exampleFormControlInput1"
-								name="writer" placeholder="작성자를 입력해주세요">
-						</div>
-						<div class="form-group">
-							<label for="exampleFormControlTextarea1">내용</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1"
-								name="content" rows="3" placeholder="내용을 입력해주세요"></textarea>
-						</div>
-						<div>
-							<button type="submit" class="btn btn-primary">작성</button>
-							<button type="button" class="btn btn-light">공지사항 목록</button>
-						</div>
-					</form>
-
-				</div>
+<article>
+	<div class="container" role="main">
+		<h2 style="margin: 20px">문의글 작성</h2>
+		<hr>
+		<form name="form" id="form" role="form" method="post"
+			action="/comunity/QARegister">
+			<div class="mb-3">
+				<label for="title">제목</label> <input type="text"
+					class="form-control" name="title" id="title">
+					<div class="inputInfo">문의글의 제목을 입력해주세요</div>
 			</div>
-			<!--  end panel-body -->
-		</div>
+			<div class="mb-3">
+				<label for="writer">작성자</label> <input type="text"
+					class="form-control" name="writer" id="writer">
+					<div class="inputInfo">문의글의 작성자를 입력해주세요</div>
+			</div>
+
+			<div class="mb-3 main">
+				<label for="password">문의글 비밀번호</label>
+				<input type="password"
+					class="form-control" name="password" id="password">
+					<i id="eyes" class="fa fa-eye fa-lg"></i>
+					<div class="inputInfo">문의글 조회, 수정, 삭제를 하실 때 필요한 비밀번호를 입력해주세요</div>
+			</div>
+
+			<div class="mb-3">
+				<label for="content">내용</label>
+				<div class="inputInfo">문의하실 내용을 입력해주세요</div>
+				<textarea class="form-control" rows="9" name="content" id="content"></textarea>
+			</div>
+			<div class="button">
+				<button type="submit" data-oper='QARegister' class="btn btn-primary">작성</button>
+				<button type="submit"  data-oper='QAList'class="btn btn-light">공지사항 목록</button>
+			</div>
+		</form>
+
+		<div></div>
 	</div>
-</div>
-<!-- <script type="text/javascript">
+</article>
+<script type="text/javascript">
 $(document).ready(function(){
-	var operForm = $("#operForm");
-	
-	$("button[data-oper='list']").on("click", function(e){
-		
-		operForm.find("#bno").remove();
-		operForm.attr("action","/comunity/QAList")
-		orerForm.submit();
-	});
+	var formObj = $("form");
+
+	$('button').on(
+			"click",
+			function(e) {
+
+				e.preventDefault();
+
+				var operation = $(this).data("oper");
+
+				console.log(operation);
+
+				if (operation === 'QARegister') {
+					formObj
+							.attr("action",
+									"/comunity/QARegister");
+
+				} else if (operation === 'QAList') {
+					//move to list
+					formObj.attr("action", "/comunity/QAList")
+							.attr("method", "get");
+					formObj.empty();
+				}
+
+				formObj.submit();
+			});
+    $('.main i').on('click',function(){
+        $('input').toggleClass('active');
+        if($('input').hasClass('active')){
+            $(this).attr('class',"fa fa-eye-slash fa-lg")
+            .prev('input').attr('type',"text");
+        }else{
+            $(this).attr('class',"fa fa-eye fa-lg")
+            .prev('input').attr('type','password');
+        }
+    });
 });
-</script> -->
+
+</script>
 <%@include file="../includes/footer.jsp"%>
