@@ -1,0 +1,29 @@
+.container {
+	width:50%;
+}
+form{
+	height:800px;
+	margin-top:20px;
+}
+.main{
+    position: relative;
+}
+.main i{
+    position: absolute;
+    left: 95%;
+    top: 43px;
+    color: orange;
+    cursor: pointer;
+}
+.inputInfo {
+	margin:10px;
+	font-size:small;
+	color:#222222;
+	margin-left:0px;
+}
+label {
+	font-weight:bold;
+}
+.button {
+	float: right;
+}
