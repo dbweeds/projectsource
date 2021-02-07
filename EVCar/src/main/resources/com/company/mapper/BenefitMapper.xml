@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.mapper.BenefitMapper">
+    <select id="getFuel" resultType="_double">
+        select fuel from carinfo where carname = #{model}
+    </select>
+    <select id="getVO" resultType="com.company.domain.BenefitVO">
+        select bno,carname,rowprice,highprice,support 
+        from carinfo where carname = #{model}
+    </select>
+</mapper>
