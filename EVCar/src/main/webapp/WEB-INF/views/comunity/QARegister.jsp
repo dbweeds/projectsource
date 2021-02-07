@@ -4,11 +4,15 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/resources/js/additional-methods.min.js"></script>
+<script type="text/javascript" src="/resources/js/messages_ko.min.js"></script>
 <!-- CSS only -->
 
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/subHeader.jsp"%>
 <link rel="stylesheet" href="/resources/css/QARegister.css">
+<script src="/resources/js/comunityValidate.js"></script>
 <!-- /.row -->
 
 <article>
