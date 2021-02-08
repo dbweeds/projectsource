@@ -130,8 +130,8 @@
 									value="${(info.support)/10000}" pattern="#,###" />만원
 							</span>
 						</div>
-					<button type="button" class="btn btn-default">수정</button>
 						<div>
+					<button type="button" class="btn btn-primary">수정</button>
 					</div>
 				</div>
 				<!-- /차량 제원 -->
@@ -161,7 +161,7 @@
 	$(function() {
 		var form = $("#myform");
 		
-		$(".btn-default").click(function() {
+		$(".btn-primary").click(function() {
 			form.submit();
 		})
 	})

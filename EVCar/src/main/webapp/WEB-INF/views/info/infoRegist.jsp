@@ -107,15 +107,15 @@
           			  </select>
 				</div>
 				<div class="my-2">
-					<span class="fables-main-text-color font-15 semi-font">최고가</span> 
-					<input type="number" class="form-control" id="highprice" name="highprice"
-						placeholder="최고가격"> 
-					</div>
-				<div class="my-2">
 				<span class="fables-main-text-color font-15 semi-font">최저가</span>
 					<input type="number" class="form-control" id="rowprice" name="rowprice"
 						placeholder="최저가격">
 				</div>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">최고가</span> 
+					<input type="number" class="form-control" id="highprice" name="highprice"
+						placeholder="최고가격"> 
+					</div>
 				<div class="my-2">
 					<span class="fables-main-text-color font-15 semi-font">보조금</span>
 					<input type="number" class="form-control" id="support" name="support"
@@ -124,11 +124,8 @@
 			<div>
 		</div>
 	</div>
-				<!-- 	<button type="submit" class="btn btn-primary">작성</button>
-					<button type="button" class="btn btn-light"
-						onclick="location.href='list'">목록</button> -->
 </div>
-			<!-- /차량 제원 -->
+<!-- /차량 제원 -->
 </div>
 </form>
 </div>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.company.domain.CarInfoVO;
+import com.company.domain.InfoCriateria;
 import com.company.mapper.InfoMapper;
 
 @Service
@@ -15,8 +16,8 @@ public class InfoServiceImpl implements InfoService {
 	private InfoMapper mapper;
 	
 	@Override
-	public List<CarInfoVO> getList() {
-		return mapper.list();
+	public List<CarInfoVO> getList(InfoCriateria cri) {
+		return mapper.list(cri);
 	}
 
 	@Override
@@ -37,6 +38,11 @@ public class InfoServiceImpl implements InfoService {
 	@Override
 	public CarInfoVO getRow(int bno) {
 		return mapper.read(bno);
+	}
+
+	@Override
+	public int getTotalCnt() {
+		return mapper.totalCnt();
 	}
 
 	//검색 못함...

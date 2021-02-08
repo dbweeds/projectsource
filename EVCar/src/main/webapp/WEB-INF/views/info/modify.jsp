@@ -85,7 +85,7 @@
 		            <span class="fables-main-text-color font-15 semi-font"
 		              >출시일
 		            </span>
-		            <span class="fables-forth-text-color fifth"> : ${info.brand} </span>
+		            <span class="fables-forth-text-color fifth"> : ${info.releasedate} 년</span>
 		          </div>
 		          <div class="my-2">
 		            <span class="fables-main-text-color font-15 semi-font"

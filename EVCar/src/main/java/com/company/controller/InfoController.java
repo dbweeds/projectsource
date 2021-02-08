@@ -8,8 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.domain.CarInfoVO;
+import com.company.domain.InfoCriateria;
+import com.company.domain.InfoPageVO;
 import com.company.service.InfoService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,19 +34,27 @@ public class InfoController {
 	
 	//작성
 	@PostMapping("/infoRegist")
-	public String registPost(CarInfoVO info){
+	public String registPost(CarInfoVO info,RedirectAttributes rttr){
 		log.info("차량 등록..."+info);
 		service.regist(info);
+		log.info("글번호"+info.getBno()+info.getCarname());
+		
+		rttr.addFlashAttribute("result", info.getBno());
 		return "redirect:list";
 	}
 	
 	//목록
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, InfoCriateria cri) {
 		log.info("전기차 목록...");
-		List<CarInfoVO> list = service.getList();
+		//목록
+		List<CarInfoVO> list = service.getList(cri);
+		//게시물수
+		int total = service.getTotalCnt();
+		
 		model.addAttribute("list",list);
-
+		model.addAttribute("infoPageVO", new InfoPageVO(cri, total));
+ 
 	}
 	//읽기, 수정
 	@GetMapping({"/inforead","/modify"} )
@@ -55,17 +66,19 @@ public class InfoController {
 	
 	//차량 삭제
 	@PostMapping("/remove")
-	public String remove(int bno) {
+	public String remove(int bno,RedirectAttributes rttr) {
 		log.info("삭제"+bno);
 		service.remove(bno);
+		rttr.addFlashAttribute("result", "success");
 		return "redirect:list";
 	}
 	
 	//차량 수정 -제목,내용
 	@PostMapping("/modify")
-	public String modify(CarInfoVO info) {
+	public String modify(CarInfoVO info,RedirectAttributes rttr) {
 		log.info("내용 수정"+info);
 		service.modify(info);
+		rttr.addFlashAttribute("result", "success");
 		return "redirect:list";
 	}
 	
