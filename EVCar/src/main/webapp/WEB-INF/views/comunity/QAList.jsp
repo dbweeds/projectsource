@@ -81,7 +81,7 @@
 							<td><c:out
 										value="${QA.bno}" /></td>
 							<td><a
-								href='/comunity/QAGet?bno=<c:out value="${QA.bno}"/>'><c:out value="${QA.title}" /></a></td>
+								href='${QA.bno}' class='move'><c:out value="${QA.title}" /></a></td>
 							<td><c:out value="${QA.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${QA.regDate}" /></td>
@@ -145,10 +145,7 @@
 
 <!-- Start Footer 2 Background Image  -->
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-
+	$(document).ready(function() {
 						var result = '<c:out value="${result}"/>';
 
 						checkModal(result);
@@ -203,7 +200,7 @@
 																	"href")
 															+ "'>");
 											actionForm.attr("action",
-													"/comunity/QAGet");
+													"/comunity/password");
 											actionForm.submit();
 
 										});

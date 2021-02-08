@@ -61,11 +61,11 @@
 		resultType="com.company.domain.QAVO">
   <![CDATA[
   select 
-    bno, title, content, writer, regDate, updateDate
+    bno, title, content, writer, regDate, updateDate, readCnt
   from 
       (
       select /*+INDEX_DESC(QA_board pk2_board) */
-        rownum rn, bno, title, content, writer, regDate, updateDate 
+        rownum rn, bno, title, content, writer, regDate, updateDate, readCnt
       from 
         QA_board
       where 
@@ -102,7 +102,9 @@
 	
 	
 	<select id="checkPw" resultType="int">
-		select count(*) from QA_board where password = #{password}	
+		select count(*) from QA_board where password = #{password} and bno=#{bno}
 	</select>
+	
+	
 	
 </mapper>

@@ -70,11 +70,11 @@
 		resultType="com.company.domain.NoticeVO">
   <![CDATA[
   select 
-    bno, title, content, writer, regDate, updateDate
+    bno, title, content, writer, regDate, updateDate, readCnt
   from 
       (
       select /*+INDEX_DESC(notice_board pk_board) */
-        rownum rn, bno, title, content, writer, regDate, updateDate 
+        rownum rn, bno, title, content, writer, regDate, updateDate, readCnt
       from 
         notice_board
       where 

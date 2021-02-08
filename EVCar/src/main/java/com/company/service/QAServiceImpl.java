@@ -72,10 +72,9 @@ public class QAServiceImpl implements QAService {
 	}
 
 	@Override
-	public int checkPw(int password) {
+	public boolean checkPw(int password,int bno) {
 		
-		
-		return password;
+		return mapper.checkPw(password,bno)>0?true:false;	
 		 
 	}
 
