@@ -182,28 +182,28 @@
           >
             <div class="position-relative">
               <div class="image-container translate-effect-right">
-                <a href="#"
-                  ><img
-                    src="/resources/assets/custom/images/news.jpg"
+                <img
+                    src="/resources/intImages/news1.png"
                     alt=""
                     class="img-fluid w-100"
-                /></a>
+                />
                 <span
                   class="above-date position-absolute text-center fables-second-background-color white-color px-3 py-2"
                 >
-                  <span class="bold-font day">25</span>
-                  <span class="month d-block">January</span>
+                  
+                  <span class="bold-font day" id="newsmm1"></span>
+                  <span class="month d-block" id="newsdd1"></span>
                 </span>
               </div>
 
-              <h2 class="font-18 my-3">화재 발생 '제로' 전기차는 어떤 모델?</h2>
-
-              <p class="fables-forth-text-color font-14 mb-2"></p>
-              <a
+              <h2 class="font-14 my-3" id="indexNews1"></h2>
+	<div style="height: 5px"></div>
+              <p class="fables-forth-text-color font-14 mb-2" id="newsLink1"><a
                 href="http://biz.khan.co.kr/khan_art_view.html?artid=202101251608001&code=920508"
                 class="btn fables-second-text-color fables-main-hover-color p-0 font-15 border-0"
                 >읽으러 가기 <i class="fas fa-long-arrow-alt-right"></i
-              ></a>
+              ></a></p>
+              
             </div>
           </div>
           <div
@@ -212,29 +212,28 @@
           >
             <div class="position-relative">
               <div class="image-container translate-effect-right">
-                <a href="#"
-                  ><img
-                    src="/resources/assets/custom/images/new1.jpg"
+                <img
+                    src="/resources/intImages/news1.png"
                     alt=""
                     class="img-fluid w-100"
-                /></a>
+                />
                 <span
                   class="above-date position-absolute text-center fables-second-background-color white-color px-3 py-2"
                 >
-                  <span class="bold-font day">25</span>
-                  <span class="month d-block">January</span>
+                  <span class="bold-font day" id="newsmm2"></span>
+                  <span class="month d-block" id="newsdd2"></span>
                 </span>
               </div>
-              <h2 class="font-18 my-3">
-                리콜 조치 받았는데… 또 불난 코나 전기차
+              <h2 class="font-14 my-3" id="indexNews2">
+               
               </h2>
-
-              <p class="fables-forth-text-color font-14 mb-2"></p>
-              <a
+			<div style="height: 5px"></div>
+              <p class="fables-forth-text-color font-14 mb-2" id="newsLink2"><a
                 href="http://news.kmib.co.kr/article/view.asp?arcid=0924175368&code=11151400&cp=nv"
                 class="btn fables-second-text-color fables-main-hover-color p-0 font-15 border-0"
                 >읽으러 가기 <i class="fas fa-long-arrow-alt-right"></i
-              ></a>
+              ></a></p>
+              
             </div>
           </div>
           <div
@@ -245,27 +244,27 @@
               <div class="image-container translate-effect-right">
                 <a href="#"
                   ><img
-                    src="/resources/assets/custom/images/news2.jpg"
+                    src="/resources/intImages/news1.png"
                     alt=""
                     class="img-fluid w-100"
                 /></a>
                 <span
                   class="above-date position-absolute text-center fables-second-background-color white-color px-3 py-2"
                 >
-                  <span class="bold-font day">25</span>
-                  <span class="month d-block">January</span>
+                  <span class="bold-font day" id="newsmm3"></span>
+                  <span class="month d-block" id="newsdd3"></span>
                 </span>
               </div>
-              <h2 class="font-18 my-3">
-                현대車 컬래버 ‘사과 로고’ 전기차 나온다면?
+              <h2 class="font-14 my-3" id="indexNews3">
+                
               </h2>
-
-              <p class="fables-forth-text-color font-14 mb-2"></p>
-              <a
+				<div style="height: 5px"></div>
+              <p class="fables-forth-text-color font-14 mb-2" id="newsLink3"><a
                 href="https://weekly.donga.com/3/all/11/2387809/1"
                 class="btn fables-second-text-color fables-main-hover-color p-0 font-15 border-0"
                 >읽으러 가기 <i class="fas fa-long-arrow-alt-right"></i
-              ></a>
+              ></a></p>
+              
             </div>
           </div>
         </div>
@@ -332,4 +331,15 @@
     <!-- /End page content -->
 
     <!-- Start Footer 2 Background Image  -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+	crossorigin="anonymous"></script>
+   
+ <script>
+$(function(){
+	getList();	
+})	
+
+</script>
+ <script src=" /resources/js/index.js"></script>
 <%@include file="includes/footer.jsp" %>   
