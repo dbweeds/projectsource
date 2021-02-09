@@ -82,6 +82,7 @@ var myIp = "";
 var myAddr = [];
 var markers = [];
 var infowindow;
+var sliderMarked = $("#myAddr");
 
 var htmlMarker1 = {
         content: '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
@@ -120,12 +121,16 @@ $(function() {//내위치
         function(data) {
             myAddr.push(data.lat);
             myAddr.push(data.lon);
+            console.log(data.lat);
+            console.log(data.lon);
+            console.log($("#myAddr").val());
         }
     );
     $("#myAddr").click(function() {
-        map.setCenter(new naver.maps.LatLng(myAddr[0], myAddr[1]));
+        if($(this).prop("checked")){
+    	map.setCenter(new naver.maps.LatLng(myAddr[0], myAddr[1]));
         mapMarkers(map);
-    })
+        }});
     
 });
              
@@ -169,7 +174,6 @@ $(function() {//내위치
 	                    contentString +='<tr><th style="width: 100px">충전가능차량</th><td colspan="3">'+item.sup_veh+'</td></tr>';
 	                    contentString +='</tbody></table></div>';
 	                    if(infowindow == null ||infowindow.content != contentString){  	
-	                    console.log(infowindow);
 	                        infowindow = new naver.maps.InfoWindow({
 		                        content: contentString
 		                    });
@@ -246,6 +250,7 @@ $("#area2").change(function() {
 			var point = new naver.maps.LatLng(data.y, data.x);
 			map.setCenter(point);
 			mapMarkers(map);
+			sliderMarked.trigger("click");
 			
 		}
 	})
@@ -255,10 +260,12 @@ $("#area2").change(function() {
 function myIpMap(map,markers) {
     naver.maps.Event.addListener(map, 'zoom_changed', function() {
     	mapMarkers(map);
+    	sliderMarked.trigger("click");
     
 	});
    naver.maps.Event.addListener(map, 'dragend',function() {
        mapMarkers(map); 
+       sliderMarked.trigger("click");
    });
   
 }
@@ -309,9 +316,11 @@ function mapMarkers(map) {
                     contentString +='<tr><th style="width: 100px">급속충전기</th><td>'+item.f_char+'개</td><th style="width: 100px">완속충전기</th><td>'+item.s_char+'개</td></tr>';
                     contentString +='<tr><th style="width: 100px">충전가능차량</th><td colspan="3">'+item.sup_veh+'</td></tr>';
                     contentString +='</tbody></table></div>';
-                    var infowindow = new naver.maps.InfoWindow({
-                        content: contentString
-                    });
+                    if(infowindow == null ||infowindow.content != contentString){  	
+                        infowindow = new naver.maps.InfoWindow({
+	                        content: contentString
+	                    });
+                    }
                     if (infowindow.getMap()) {
                         infowindow.close();
                     } else {
@@ -347,7 +356,11 @@ function hideMarker(map, marker) {
     marker.setMap(null);
 }
 
-
-
+/* function sliderMark() {
+	if(sliderMarked.prop("checked")==false){
+		sliderMarked.css('transform','translateX(0px)');
+		sliderMarked.css('background-color','#ccc')
+	}
+} */
 
 </script>  

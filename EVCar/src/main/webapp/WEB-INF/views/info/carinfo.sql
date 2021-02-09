@@ -24,7 +24,7 @@ drop sequence carinfo_seq;
 drop table carinfo;
 
 select * from carinfo;
-
+delete from CARINFO where bno between 2 and 20;
 --샘플데이터
 insert into carinfo (bno,brand,carname,carname_en,cartype,
 rowprice,highprice,Support,releasedate,fuel,mileage,chargetype, title,content) values 
