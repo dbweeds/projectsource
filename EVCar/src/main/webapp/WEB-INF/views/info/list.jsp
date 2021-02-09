@@ -7,6 +7,8 @@
 
 <%@ include file="../includes/header.jsp"%>
 
+
+
 <!-- css임시 -->
 <style>
 /* 검색 */
@@ -14,6 +16,7 @@
 		width:600px;
 		/* margin:0 auto; */
 		}
+		
 	label title {
 		font-weight: bold; 
 		width: 80px; /* 너비 80px */
@@ -61,7 +64,7 @@
 <div class="container"> 
 	<!--옵션 검색-->
 		<div>
-			<form action="" class="navbar-form navbar-left option "> <!-- .option -->
+			<form action="" class="navbar-form navbar-left option " id="searchForm"> 
 			<fieldset style="">
 				<legend>차량검색 옵션</legend>
 				<ul>
@@ -84,6 +87,7 @@
 							<input type="radio" name="chargetype" id="" value="AC상" />AC상(유럽)&nbsp;
 					</li>
 				</ul>
+					<label for="carname" id="title">모델명 :</label> 
 					<input type="text" name="keyword" /> 
 					<button class="btn btn-success" type="button">검색 </button>
 					<button class="btn btn-default" type="button">취소 </button>
@@ -92,81 +96,72 @@
 			</fieldset>
 		</form>
 	</div>
-	<!-- start Pagination -->
-	<div class="text-center">
-		<ul class="pagination">
-			<c:if test="${infoPageVO.prev}">
-				<li class="paginate previous">
-				<a href="${infoPageVO.startPage-1}">Previous</a>
-			</c:if>
-			<c:forEach var="idx" begin="${infoPageVO.startPage}" end="${infoPageVO.endPage}">
-				<li	class="paginate ${infoPageVO.cri.pageNum==idx?'active':''}">
-				<a href='${idx}'> ${idx} </a>
-			</c:forEach>
-			<c:if test="${infoPageVO.next}">
-				<li class="paginate_button next"><a	href="${infoPageVO.endPage+1}">Next</a>
-			</c:if>
-		</ul>
-	</div>
-<!-- end Pagination -->
+	
+
 		
-	<!-- 리스트 반복문 -->
+<!-- 리스트 반복문 -->
 	<c:forEach var="vo" items="${list}" varStatus="status">
-	 	<div class="row mt-4 my-md-5 list" style="width: 50%; display: inline-block; height: 200px; margin-right: 10px" >
-	         <div class="col-12 mb-4 mb-lg-5" style="margin: 0 20px">
-					<div class="image-container">
-						<a href="inforead?bno=${vo.bno}"><img src="/resources/assets/custom/infoimage/${vo.carname}.png" alt=""class="w-100" /></a>
-					</div>
-					<h2 class="my-3">
-						<a href="#"class="fables-main-text-color fables-second-hover-color font-24 semi-font gallery-title">${vo.carname}</a>
-					</h2>
-					<div class="row my-3">
-						<div class="col-12 col-lg-4">
-							<span
-								class="fables-main-text-color semi-font font-14 gallery-subtitle">브랜드</span> 
-								<span class="fables-forth-text-color font-13 gallery-subtitle">: ${vo.brand} </span>
-						</div>
-						<div class="col-12 col-lg-4">
-							<span class="fables-main-text-color semi-font font-14 gallery-subtitle">가격</span> 
-								<span class="fables-forth-text-color font-13 gallery-subtitle">
-								: <fmt:formatNumber value="${(vo.rowprice)/10000}" pattern="#,###"/> ~ 
-								<fmt:formatNumber value="${(vo.highprice)/10000}" pattern="#,###"/>
-								만원</span>
-						</div>
-						<div class="col-12 col-lg-4">
-							<span class="fables-main-text-color semi-font font-14 gallery-subtitle">주행거리(1회)</span> 
-							<span class="fables-forth-text-color font-13 gallery-subtitle">: ${vo.mileage} km </span>
-						</div>
-					</div>
-					<a href="inforead?bno=${vo.bno}"class="btn fables-second-background-color white-color white-color-hover 
-					fables-main-hover-background-color font-15 mt-4 px-5 py-2">
-					상세페이지</a>
+	<div class="row mt-4 my-md-5 list" style="width: 50%; display: inline-block; height: 200px; margin-right: 10px" >
+	       <div class="col-12 mb-4 mb-lg-5" style="margin: 0 20px">
+			<div class="image-container">
+				<a href="inforead?bno=${vo.bno}"><img src="/resources/assets/custom/infoimage/${vo.carname}.png" alt=""class="w-100" /></a>
+			</div>
+			<h2 class="my-3">
+				<a href="inforead?bno=${vo.bno}"class="fables-main-text-color fables-second-hover-color font-24 semi-font gallery-title">${vo.carname}</a>
+			</h2>
+			<div class="row my-3">
+				<div class="col-12 col-lg-4">
+					<span
+						class="fables-main-text-color semi-font font-14 gallery-subtitle">브랜드</span> 
+						<span class="fables-forth-text-color font-13 gallery-subtitle">: ${vo.brand} </span>
+				</div>
+				<div class="col-12 col-lg-4">
+					<span class="fables-main-text-color semi-font font-14 gallery-subtitle">가격</span> 
+						<span class="fables-forth-text-color font-13 gallery-subtitle">
+						: <fmt:formatNumber value="${(vo.rowprice)/10000}" pattern="#,###"/> ~ 
+						<fmt:formatNumber value="${(vo.highprice)/10000}" pattern="#,###"/>
+						만원</span>
+				</div>
+				<div class="col-12 col-lg-4">
+					<span class="fables-main-text-color semi-font font-14 gallery-subtitle">주행거리(1회)</span> 
+					<span class="fables-forth-text-color font-13 gallery-subtitle">: ${vo.mileage} km </span>
 				</div>
 			</div>
-			</c:forEach> <!-- / 반복문 -->
-		<div style="height: 50px;">
+			<a href="inforead?bno=${vo.bno}"class="btn fables-second-background-color white-color white-color-hover 
+			fables-main-hover-background-color font-15 mt-4 px-5 py-2">
+			상세페이지</a>
+		</div>
 	</div>
+	</c:forEach> <!-- /반복문 -->	
 
+<!-- start Pagination -->
+<!-- CSS only -->
+<div style="margin-top:50px;margin-bottom:20px">
+	<ul class="pagination  justify-content-center">
+		<c:if test="${infoPageVO.prev}">
+			<li class="page-item"> 
+			<a href="${infoPageVO.startPage-1}">이전</a>
+			</li>
+		</c:if>
+		
+		<c:forEach var="idx" begin="${infoPageVO.startPage}"
+			end="${infoPageVO.endPage}">
+			<li class="page-item ${infoPageVO.cri.pageNum == idx?'active':''}">
+			<a class="page-link" href="/info/list?pageNum=${idx}&amount=6"> ${idx} </a>
+			</li>
+		</c:forEach>
 
+		<c:if test="${infoPageVO.next}">
+			<li class="page-item next">
+			<a href="${infoPageVO.endPage+1}">다음</a>
+			</li>
+		</c:if>
+	</ul>
+</div>
+<!-- end Pagination -->
 </div> 
 <!-- /container-->
-<!-- 모달 알림 / 안씀!-->
-<!-- <div class="modal" tabindex="-1" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">차량 등록</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>처리완료</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+
 
 <!-- 페이지 링크값 -->
 <form action="">
@@ -176,41 +171,12 @@
 
 
 <!-- 스크립트 -->
-<!-- <script src='{% static "js/jquery-1.11.3.min.js" %}'></script> -->
+<!-- <script src='{% static "js/jquery-1.11.3.min.js" %}'></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
-<script>
-var result = '${result}';
 
-$(function() {
+<!-- <script src="/resources/js/info.js"></script> -->
 
-/* 	checkModal(result);
-	//history 지정
-	history.replaceState({},null,null);
-	
-	//모달 알림
-	function checkModal(result){
-		if(result === history.state){
-			return;
-		}
-		if(parseInt(result)>0){
-			$(".modal-body").html("차량"+result+"번이 등록 완료")
-		}
-		$("#myModal").modal("show");
-		
-	}; */
-	
-	var actionForm =$("actionForm");
-	
-	//페이지 번호 클릭-> 이동
- 	$(".paginate a").click(function() {
-		/* e.preventDefault(); */
-		
-		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-		actionForm.submit();
-	});
-})
-</script>
 <!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp"%>
