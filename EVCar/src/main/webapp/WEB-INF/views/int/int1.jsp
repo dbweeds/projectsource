@@ -37,7 +37,7 @@
 			class="owl-carousel owl-theme default-carousel absolute-dots inside-text-carousel nav-0 mr-4 mb-3">
 			<div class="image-container rotateOut-effect">
 				<a href="#"> <img
-					src="../../resources/assets/custom/images/int1.png" alt=""
+					src="../../resources/intImages/int1.png" alt=""
 					class="w-100">
 				</a>
 			</div>
@@ -60,12 +60,16 @@
 
 		
 		<div>
-			<img alt="" src="../../resources/assets/custom/images/int2.png" width="100%" align="right">
+			<img alt="" src="../../resources/intImages/int2.png" width="100%" align="right">
 		</div>
 		<br>
-		
+		<br>
+		<br>
 	</div>
-	출처 : 환경부 홈페이지
+	<br>
+	<br>
+	<br>
+	<p style="color: #bdbdbd">출처 : 환경부 홈페이지</p>
 	
 	<br>
 	<hr>
