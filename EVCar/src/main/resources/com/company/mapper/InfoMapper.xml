@@ -4,9 +4,13 @@
 
 	<!-- 등록 -->
 	<insert id="insert">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
+			select seq_carinfo.nextval from dual
+		</selectKey>
 		insert into carinfo 
 		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content) values 
-		(carinfo_seq.nextval,#{brand},#{carname},#{carname_en},#{cartype},#{rowprice},#{highprice},#{highprice},#{releasedate},#{fuel},#{mileage},#{chargetype},#{title},#{content})
+		(#{bno}, #{brand}, #{carname}, #{carname_en}, #{cartype}, #{rowprice}, #{highprice}, #{support}, #{releasedate}, 
+		#{fuel}, #{mileage}, #{chargetype}, #{title}, #{content})
 	</insert>
 	<!-- 삭제 -->
 	<delete id="delete">
@@ -20,7 +24,18 @@
 	
 	<!-- 전체 리스트 -->
 	<select id="list" resultType="com.company.domain.CarInfoVO">
-        SELECT * FROM carinfo where bno>=0 order by bno desc
+       <![CDATA[    
+	   select *
+		from (select /*+INDEX_DESC(carinfo pk_carinfo) */
+			rownum rn, bno, brand, carname, rowprice, highprice, mileage
+			from carinfo where rownum <= (#{pageNum}*#{amount}))
+		where rn>(#{pageNum}-1)*#{amount}
+		]]> 
+    </select>
+    
+    <!-- 전체 수 -->
+    <select id="totalCnt" resultType="int">
+    	select count(*) from carinfo where bno>0
     </select>
     
     <!-- 상세페이지 -->

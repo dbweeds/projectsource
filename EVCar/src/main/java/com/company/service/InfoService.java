@@ -3,6 +3,7 @@ package com.company.service;
 import java.util.List;
 
 import com.company.domain.CarInfoVO;
+import com.company.domain.InfoCriateria;
 
 public interface InfoService {
 	
@@ -16,9 +17,11 @@ public interface InfoService {
 	public boolean modify(CarInfoVO info);
 	
 	//목록
-	public List<CarInfoVO> getList(); 
+	public List<CarInfoVO> getList(InfoCriateria cri); 
 
 	//조회(상세페이지)
 	public CarInfoVO getRow(int bno);
 	
+	//게시물수 6
+	public int getTotalCnt();
 }

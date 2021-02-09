@@ -51,14 +51,27 @@ public class QAController {
 		return "redirect:/comunity/QAList";
 	}
 	
+	//조회수 올리기
+	@GetMapping({"/QAHitUpdate"})
+	public String hitUpdate(@RequestParam("bno") int bno,  RedirectAttributes rttr) {
+		
+		log.info("조회수 ");
+		
+		//조회수+1
+		service.plusCnt(bno);
+		
+		rttr.addAttribute("bno", bno);
+		return "redirect:QAGet";
+	}
+	
+	
 	@GetMapping({"/QAGet", "/QAModify"})
 	public void get(@RequestParam("bno") int bno, Model model) {
 		
 		log.info("QAGet or QAModify");
 		model.addAttribute("QA", service.get(bno));
 		
-		//조회수+1
-		service.plusCnt(bno);
+		
 	}
 	
 	@PostMapping("/QAModify")
@@ -81,4 +94,37 @@ public class QAController {
 	 }
 	 return "redirect:/comunity/QAList";
 	 }
+	
+	
+	@GetMapping({"/password"})
+	public void passwordForm(@RequestParam("bno") int bno,Model model) {
+		
+		log.info("비밀번호 확인 "+bno);
+		
+		model.addAttribute("bno", bno);
+		
+		//조회수+1
+		//service.plusCnt(bno);
+	}
+	@PostMapping({"/password"})
+	public String passwordForm(@RequestParam("bno") int bno,@RequestParam("password") int password,RedirectAttributes rttr) {
+		
+		log.info("비밀번호 확인");
+		
+		rttr.addAttribute("bno", bno);
+		
+		//비밀번호 확인
+		if(service.checkPw(password, bno)) {
+			//맞으면 -> QAGet.pa
+			return "redirect:QAHitUpdate";
+			
+			
+		}else {
+		//틀리면 -> 비밀번호 입력
+			return "redirect:password";
+		
+		}
+	}
+	
+	
 } 

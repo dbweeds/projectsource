@@ -21,6 +21,6 @@ public interface QAService {
 	
 	public int getTotalCount(Criteria cri);
 	
-	public int checkPw(int password);
+	public boolean checkPw(int password,int bno);
 	
 }

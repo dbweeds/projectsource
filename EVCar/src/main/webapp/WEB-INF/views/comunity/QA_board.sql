@@ -12,3 +12,5 @@ create table QA_board (
 );
 
 alter table QA_board add constraint pk2_board primary key(bno);
+alter table QA_board modify (content varchar2(1000)) ;
+select * from QA_board;

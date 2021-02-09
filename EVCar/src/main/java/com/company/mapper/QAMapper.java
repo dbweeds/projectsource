@@ -2,6 +2,8 @@ package com.company.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.company.domain.Criteria;
 import com.company.domain.QAVO;
 
@@ -26,6 +28,6 @@ public interface QAMapper {
 	
 	public boolean plusCnt(int bno);
 	
-	public boolean checkPw(int password);
+	public int checkPw(@Param("password") int password,@Param("bno") int bno);
 	
 }

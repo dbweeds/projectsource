@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- CSS only -->
 
 <%@include file="../includes/header.jsp"%>
@@ -12,7 +10,7 @@
 <!-- /.row -->
 
 <article>
-	<div class="container" role="main">
+	<div class="container formData" role="main">
 		<h2 style="margin: 20px">문의글 수정</h2>
 		<hr>
 		<form name="form" id="form" role="form" method="post"
@@ -54,6 +52,12 @@
 		<div></div>
 	</div>
 </article>
+<%@include file="../includes/footer.jsp"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script src="/resources/js/messages_ko.min.js"></script>
+<script src="/resources/js/additional-methods.js"></script>
+<script src="/resources/js/registerValidate.js"></script>
+<script type="text/javascript">
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -87,4 +91,3 @@
 
 			});
 </script>
-<%@include file="../includes/footer.jsp"%>

@@ -1,4 +1,4 @@
-.container {
+.formData {
 	width:50%;
 }
 form{
@@ -26,4 +26,7 @@ label {
 }
 .button {
 	float: right;
+}
+.error{
+     color : red;
 }
