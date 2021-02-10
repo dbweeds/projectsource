@@ -61,8 +61,8 @@
                                     <td><input type="text" id="c" placeholder="하루 주행거리를 입력하세요.(숫자)" /></td>
                                     <th scope="row">한달 주행 횟수</th>
                                     <td>
-                                        <select name="" id="d">
-                                            <option value="">한달 주행 횟수를 선택하세요.</option>
+                                        <select name="d" id="d">
+                                            <option value="0">한달 주행 횟수를 선택하세요.</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
@@ -111,7 +111,7 @@
                                     </td>
                                     <th scope="row">전기차 모델</th>
                                     <td>
-                                        <select name="" id="f">
+                                        <select name="f" id="f">
                                             <option value="">원하는 전기차 모델을 선택하세요.</option>
                                             <option value="포터 일렉트닉">포터 일렉트닉</option>
                                             <option value="코나 일렉트릭">코나 일렉트릭</option>
@@ -163,15 +163,31 @@
     
 <!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp" %> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script src="/resources/js/additional-methods.js"></script>
 <script>
 $("#compute").click(function () {
 	var oil = Number($('input[name=a]').val());
-	var mil = Number($("#b").val());
-	var km = Number($("#c").val());
 	var mon = Number($("#d").val());
-	var year = Number($('input[name=e]').val())
+	var year = Number($('input[name=e]').val());
 	var model = $("#f").val();
 	
+	if(mil === 0 || km === 0||mon === 0||model=="0"||!($('input:radio[name=a]').is(':checked'))||!($('input:radio[name=e]').is(':checked'))){
+		alert("입력란을 확인해주세요.");
+		return false;
+	}
+	if(isNaN($("#b").val())){
+		alert("연비를 확인해 주세요.");
+		$("#b").focus();
+		return false;
+	}
+	if(isNaN($("#c").val())){
+		alert("주행거리를 확인해 주세요.");
+		$("#c").focus();
+		return false;
+	}
+	var mil = Number($("#b").val());
+	var km = Number($("#c").val());
 	$.getJSON({
         type : "post",
         url : "/benefitSupport/evFuel",

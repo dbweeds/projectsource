@@ -48,7 +48,7 @@
                                     <th scope="row">사는 지역</th>
                                     <td>
                                         <select id="area">
-							                <option value="">시도</option>
+							                <option value="0">시도</option>
 							                <option value="4000000">서울</option>
 							                <option value="5000000">부산</option>
 							                <option value="4500000">대구</option>
@@ -73,7 +73,7 @@
                                     <th scope="row">전기차 모델</th>
                                     <td>
                                         <select name="" id="model">
-                                            <option value="">원하는 전기차 모델을 선택하세요.</option>
+                                            <option value="0">원하는 전기차 모델을 선택하세요.</option>
                                             <option value="포터 일렉트닉">포터 일렉트닉</option>
                                             <option value="코나 일렉트릭">코나 일렉트릭</option>
                                             <option value="아이오닉">아이오닉</option>
@@ -132,6 +132,11 @@
 $("#compute").click(function () {
 	var area = Number($("#area").val());
 	var model = $("#model").val();
+	
+	if(area === 0 || model === 0){
+		alert("입력란을 확인해주세요.");
+		return false;
+	}
 	
 	$.getJSON({
         type : "post",

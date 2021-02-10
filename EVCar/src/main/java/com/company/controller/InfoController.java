@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.domain.CarInfoVO;
+import com.company.domain.CarSearchVO;
 import com.company.domain.InfoCriateria;
 import com.company.domain.InfoPageVO;
 import com.company.service.InfoService;
@@ -45,13 +46,16 @@ public class InfoController {
 	
 	//목록
 	@GetMapping("/list")
-	public void list(Model model, InfoCriateria cri) {
+	public void list(Model model, InfoCriateria cri,CarSearchVO vo) {
 		log.info("전기차 목록...");
+		log.info("검색vo"+vo);
+		log.info("페이지cri"+cri);
+		vo.setCri(cri);
 		//목록
-		List<CarInfoVO> list = service.getList(cri);
+		List<CarInfoVO> list = service.getList(vo);
 		//게시물수
-		int total = service.getTotalCnt();
-		
+		int total = service.getTotalCnt(vo);
+		model.addAttribute("vo",vo);
 		model.addAttribute("list",list);
 		model.addAttribute("infoPageVO", new InfoPageVO(cri, total));
  

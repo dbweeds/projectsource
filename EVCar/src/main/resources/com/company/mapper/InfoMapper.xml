@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.mapper.InfoMapper">
-
+	
 	<!-- 등록 -->
 	<insert id="insert">
 		<selectKey keyProperty="bno" order="BEFORE" resultType="int">
 			select seq_carinfo.nextval from dual
 		</selectKey>
 		insert into carinfo 
-		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content) values 
+		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content,thumbnail,carpicture1,carpicture2,carpicture3) values 
 		(#{bno}, #{brand}, #{carname}, #{carname_en}, #{cartype}, #{rowprice}, #{highprice}, #{support}, #{releasedate}, 
-		#{fuel}, #{mileage}, #{chargetype}, #{title}, #{content})
+		#{fuel}, #{mileage}, #{chargetype}, #{title}, #{content},#{thumbnail},#{carpicture1},#{carpicture2},#{carpicture3})
 	</insert>
 	<!-- 삭제 -->
 	<delete id="delete">
@@ -27,20 +27,48 @@
        <![CDATA[    
 	   select *
 		from (select /*+INDEX_DESC(carinfo pk_carinfo) */
-			rownum rn, bno, brand, carname, rowprice, highprice, mileage
-			from carinfo where rownum <= (#{pageNum}*#{amount}))
-		where rn>(#{pageNum}-1)*#{amount}
+			rownum rn, bno, brand, carname, rowprice, highprice, mileage, thumbnail
+			from carinfo where
+			]]>
+			<if test="brand !=''">
+				brand = #{brand} and
+			</if>
+			<if test="type!=''">
+				cartype = #{type} and
+			</if>
+			<if test="chargetype!=''">
+				chargetype = #{chargetype} and
+			</if>
+			<if test="keyword!=''">
+				carname like '%'||#{keyword}||'%' and
+			</if>
+			<![CDATA[
+			rownum <= (#{cri.pageNum}*#{cri.amount}))
+		where rn>(#{cri.pageNum}-1)*#{cri.amount}
 		]]> 
     </select>
     
     <!-- 전체 수 -->
     <select id="totalCnt" resultType="int">
-    	select count(*) from carinfo where bno>0
+    	select count(*) from carinfo where
+    	<if test="brand !=''">
+				brand = #{brand} and
+			</if>
+			<if test="type!=''">
+				cartype = #{type} and
+			</if>
+			<if test="chargetype!=''">
+				chargetype = #{chargetype} and
+			</if>
+			<if test="keyword!=''">
+				carname like '%'||#{keyword}||'%' and
+			</if>
+    	bno>0
     </select>
     
     <!-- 상세페이지 -->
     <select id="read" resultType="com.company.domain.CarInfoVO">
         SELECT * FROM carinfo where bno=#{bno}
     </select>
-
+	
 </mapper>

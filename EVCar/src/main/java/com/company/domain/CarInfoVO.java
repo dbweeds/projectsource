@@ -26,7 +26,10 @@ public class CarInfoVO {
 		private int releasedate;		// 출시연도
 		private String title;  			// 제목 -상세페이지
 		private String content; 		// 설명 -상세페이지
-		
+		private String thumbnail;
+		private String carpicture1;
+		private String carpicture2;
+		private String carpicture3;
 }
 
 

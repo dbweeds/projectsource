@@ -58,7 +58,6 @@
 <script src="/resources/js/additional-methods.js"></script>
 <script src="/resources/js/registerValidate.js"></script>
 <script type="text/javascript">
-<script type="text/javascript">
 	$(document).ready(
 			function() {
 

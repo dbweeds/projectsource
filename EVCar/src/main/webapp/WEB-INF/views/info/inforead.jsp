@@ -43,17 +43,17 @@
 				class="owl-carousel owl-theme default-carousel default-carousel-nav">
 				<div>
 					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carname}-1.png"
+						src="/resources/assets/custom/infoimage/${info.carpicture1}"
 						alt="" class="w-100" /></a>
 				</div>
 				<div>
 					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carname}-2.png"
+						src="/resources/assets/custom/infoimage/${info.carpicture2}"
 						alt="" class="w-100" /></a>
 				</div>
 				<div>
 					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carname}-3.png"
+						src="/resources/assets/custom/infoimage/${info.carpicture3}"
 						alt="" class="w-100" /></a>
 				</div>
 			</div>
@@ -119,7 +119,7 @@
 							<span class="fables-main-text-color font-15 semi-font">가격</span>
 							
 							<span class="fables-forth-text-color fifth"> : <fmt:formatNumber
-									value="${(info.rowprice)/10000}" pattern="#,###" /></span> <span
+									value="${(info.rowprice)}" pattern="#,###" /></span> <span
 								class="fables-forth-text-color fifth"> ~ <fmt:formatNumber
 									value="${info.highprice}" pattern="#,###" />원
 							</span>
@@ -127,11 +127,12 @@
 						<div class="my-2">
 							<span class="fables-main-text-color font-15 semi-font">보조금</span>
 							<span class="fables-forth-text-color fifth"> : <fmt:formatNumber
-									value="${(info.support)/10000}" pattern="#,###" />만원
+									value="${(info.support)}" pattern="#,###" />원
 							</span>
 						</div>
 						<div>
 					<button type="button" class="btn btn-primary">수정</button>
+					<button type="button" class="btn btn-danger">삭제</button>
 					</div>
 				</div>
 				<!-- /차량 제원 -->

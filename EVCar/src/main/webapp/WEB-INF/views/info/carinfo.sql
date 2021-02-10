@@ -116,11 +116,19 @@ rowprice,highprice,Support,releasedate,fuel,mileage,chargetype,title,content) va
 
 update carinfo set CARNAME = '푸조 E-208' where bno=35;
 
+select *
+		from (select /*+INDEX_DESC(carinfo pk_carinfo) */
+			rownum rn, bno, brand, carname, rowprice, highprice, mileage
+			from carinfo where brand = '현대' and rownum <= ( 1 * 6))
+		where rn>(1-1)*6;
 
 
 
-
-
+select *
+		from (select /*+INDEX_DESC(carinfo pk_carinfo) */
+			rownum rn, bno, brand, carname, rowprice, highprice, mileage
+			from carinfo where brand = '현대' and type='소형' and rownum <= ( 1 * 6))
+		where rn>(1-1)*6;
 
 
 

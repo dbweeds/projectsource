@@ -121,9 +121,6 @@ $(function() {//내위치
         function(data) {
             myAddr.push(data.lat);
             myAddr.push(data.lon);
-            console.log(data.lat);
-            console.log(data.lon);
-            console.log($("#myAddr").val());
         }
     );
     $("#myAddr").click(function() {
