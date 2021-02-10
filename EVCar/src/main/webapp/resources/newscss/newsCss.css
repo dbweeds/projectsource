@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+
+.newsline{
+	color : #000000;
+}
+.newsline:hover{
+	text-decoration:underline;
+}

@@ -7,7 +7,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ include file="../includes/header.jsp"%>
-
 <!-- css임시 -->
 <style>
 /* 검색 */
@@ -63,9 +62,11 @@ fieldset legend {
 <!-- 메인 컨텍츠 -->
 <div class="container">
 	<!--옵션 검색-->
+
 	<div>
 		<form action="../info/list" class="navbar-form navbar-left option ">
 			<!-- .option -->
+
 			<fieldset style="">
 				<legend>차량검색 옵션</legend>
 				<ul>
@@ -116,7 +117,7 @@ fieldset legend {
 						class="w-100" /></a>
 				</div>
 				<h2 class="my-3">
-					<a href="#"
+					<a href="inforead?bno=${vo.bno}"
 						class="fables-main-text-color fables-second-hover-color font-24 semi-font gallery-title">${vo.carname}</a>
 				</h2>
 				<div class="row my-3">
@@ -154,41 +155,41 @@ fieldset legend {
 
 </div>
 <!-- /container-->
-	<div class="col-12 col-lg-4" style="display: inline-block;">
-		<!-- 배너 -->
+<div class="col-12 col-lg-4" style="display: inline-block;">
+	<!-- 배너 -->
 
-		<div class="mt-4">
-			<!--인기글-->
-			<h2
-				class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color 
+	<div class="mt-4">
+		<!--인기글-->
+		<h2
+			class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color 
             fables-second-before pl-3 mb-4">인기
-				모델</h2>
-			<div>
-				<c:forEach var="vo" items="${list}" varStatus="status">
-					<ul>
-						<li><a href="#"><img src="" alt="" class=""></a>인기글1</li>
-					</ul>
-				</c:forEach>
-			</div>
+			모델</h2>
+		<div>
+			<c:forEach var="vo" items="${list}" varStatus="status">
+				<ul>
+					<li><a href="#"><img src="" alt="" class=""></a>인기글1</li>
+				</ul>
+			</c:forEach>
 		</div>
-		<!--/인기글-->
-
-		<div class="mt-4">
-			<!--가격순-->
-			<h2
-				class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color 
-            fables-second-before pl-3 mb-4">가격순</h2>
-			<div>
-				<c:forEach var="vo" items="${list}" varStatus="status">
-					<ul>
-						<li><a href="#"><img src="" alt="" class=""></a>가격순1</li>
-					</ul>
-				</c:forEach>
-			</div>
-		</div>
-		<!--/가격순-->
 	</div>
-	<!-- /배너 -->
+	<!--/인기글-->
+
+	<div class="mt-4">
+		<!--가격순-->
+		<h2
+			class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color 
+            fables-second-before pl-3 mb-4">가격순</h2>
+		<div>
+			<c:forEach var="vo" items="${list}" varStatus="status">
+				<ul>
+					<li><a href="#"><img src="" alt="" class=""></a>가격순1</li>
+				</ul>
+			</c:forEach>
+		</div>
+	</div>
+	<!--/가격순-->
+</div>
+<!-- /배너 -->
 
 <div style="margin-top: 50px; margin-bottom: 20px">
 	<ul class="pagination  justify-content-center">
@@ -213,55 +214,18 @@ fieldset legend {
 	</ul>
 </div>
 <!-- end Pagination -->
-
-
-
-
 <!-- 페이지 링크값 -->
 <form action="">
 	<input type="hidden" name="pageNum" value="${infoPageVO.cri.pageNum}">
 	<input type="hidden" name="amount" value="${infoPageVO.cri.amount}">
 </form>
-
-
-
-
 <!-- 스크립트 -->
-<!-- <script src='{% static "js/jquery-1.11.3.min.js" %}'></script> -->
+<!-- <script src='{% static "js/jquery-1.11.3.min.js" %}'></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
-<script>
-var result = '${result}';
 
-$(function() {
+<!-- <script src="/resources/js/info.js"></script> -->
 
-/* 	checkModal(result);
-	//history 지정
-	history.replaceState({},null,null);
-	
-	//모달 알림
-	function checkModal(result){
-		if(result === history.state){
-			return;
-		}
-		if(parseInt(result)>0){
-			$(".modal-body").html("차량"+result+"번이 등록 완료")
-		}
-		$("#myModal").modal("show");
-		
-	}; */
-	
-	var actionForm =$("actionForm");
-	
-	//페이지 번호 클릭-> 이동
- 	$(".paginate a").click(function() {
-		/* e.preventDefault(); */
-		
-		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
-		actionForm.submit();
-	});
-})
-</script>
 <!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp"%>
