@@ -143,7 +143,8 @@
 </div>
 <!-- /End page content -->
 
-<!-- Start Footer 2 Background Image  -->
+<%@include file="../includes/footer.jsp"%>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 						var result = '<c:out value="${result}"/>';
@@ -233,4 +234,3 @@
 
 					});
 </script>
-<%@include file="../includes/footer.jsp"%>
