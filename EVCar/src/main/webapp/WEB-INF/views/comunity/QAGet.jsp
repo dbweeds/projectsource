@@ -2,13 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- CSS only -->
-
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/subHeader.jsp"%>
 
+<div class="fables-light-background-color">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="fables-breadcrumb breadcrumb px-0 py-3">
+                <li class="breadcrumb-item"><a href="../"
+                    class="fables-second-text-color">Home</a></li>
+                <li class="breadcrumb-item"><a href="QAList">Q&A</a></li>
+                <li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>${QA.writer} : ${QA.title}</b></li>
+            </ol>
+        </nav>
+    </div>
+</div>
 <div class="row">
 	<div class="container">
 		<h2 style="font-weight: bolder; margin: 40px; margin-left: 5px; padding-bottom:20px">문의사항</h2>
@@ -136,9 +144,12 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <script>
-
+var admin = '<%=(String)session.getAttribute("admin")%>';
 $(document).ready(function () {
   
+if(admin == "null"){
+	  $("#addReplyBtn").hide();
+  }
   var bnoValue = '<c:out value="${QA.bno}"/>';
   var replyUL = $(".chat");
   

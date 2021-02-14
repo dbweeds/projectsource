@@ -7,7 +7,7 @@
 	<div class="container">
 		<h2
 			class="fables-page-title fables-second-border-color wow fadeInLeft"
-			data-wow-duration="1.5s" style="margin-top: 90px">전기차 보급목적</h2>
+			data-wow-duration="1.5s" style="margin-top: 90px">보급 목적</h2>
 	</div>
 </div>
 <!-- /End Header -->
@@ -21,7 +21,7 @@
 					class="fables-second-text-color">Home</a></li>
 				<li class="breadcrumb-item" ><a href="/int/int1"
 					class="fables-second-text-color">전기차란</a></li>
-				<li class="breadcrumb-item active" aria-current="page" style="color: black"><b>전기차의 보급목적</b></li>
+				<li class="breadcrumb-item active" aria-current="page" style="color: black"><b>보급 목적</b></li>
 			</ol>
 		</nav>
 	</div>

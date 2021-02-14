@@ -17,7 +17,7 @@
         <nav aria-label="breadcrumb">
           <ol class="fables-breadcrumb breadcrumb px-0 py-3">
             <li class="breadcrumb-item"><a href="../" class="fables-second-text-color">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">전기차 충전소</li>
+            <li class="breadcrumb-item active" aria-current="page"style="color: black;"><b>전기차 충전소</b></li>
           </ol>
         </nav> 
     </div>
@@ -25,9 +25,9 @@
 <!-- /End Breadcrumbs -->
      
 <!-- Start page content -->  
-       <div class="container">
+       <div class="container" style="padding-bottom: 20px">
         <!-- 여기가 매인컨택츠 컨테이너 -->
-        <div><!--  -->
+        <div style="padding: 7px 0"><!--  -->
             <select id="area">
                 <option>시도</option>
                 <option>서울</option>

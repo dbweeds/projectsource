@@ -17,14 +17,14 @@
 	<div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">보조금지원 및
-					해택</li>
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../"
+                    class="fables-second-text-color">보조금지원 및
+					해택</a></li>
+				<li class="breadcrumb-item"><a href="PCAmount"
 					class="fables-second-text-color">구매비용계산</a></li>
-				<li class="breadcrumb-item"><a href="#"
-					class="fables-second-text-color">절약금액계산</a></li>
+				<li class="breadcrumb-item active" aria-current="page"style="color: black;"><b>절약금액계산</b></li>
 			</ol>
 		</nav>
 	</div>
@@ -169,7 +169,7 @@
 		</div>
 		<div
 			class="col-12 col-sm-6 col-md-4 text-center mb-5 mb-md-0 wow fadeInDown"
-			data-wow-delay=".8s">
+			data-wow-delay=".8s" >
 			<span class=" fa-3x fables-main-text-color fables-second-hover-color"></span>
 			<h2 class="font-16 semi-font fables-main-text-color my-3">차량
 				모델기준</h2>

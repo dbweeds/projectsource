@@ -22,7 +22,7 @@
 					class="fables-second-text-color">Home</a></li>
 				<li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>전기차란</b></li>
 				<li class="breadcrumb-item"><a href="/int/int2"
-					class="fables-second-text-color">전기자 보급목적</a></li>
+					class="fables-second-text-color">보급 목적</a></li>
 
 			</ol>
 		</nav>

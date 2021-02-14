@@ -106,7 +106,7 @@
 			<div class="row">
 				<div class="col-12 col-md-10 col-lg-9 pr-md-0">
 					<nav class="navbar navbar-expand-md btco-hover-menu py-lg-2">
-						<a class="navbar-brand pl-0" href="index.html"><img
+						<a class="navbar-brand pl-0" href="../"><img
 							src="/resources/assets/custom/images/soologo2.png"
 							alt="Fables Template" class="fables-logo" /></a>
 						<button class="navbar-toggler" type="button"
@@ -117,50 +117,42 @@
 						</button>
 						<div class="collapse navbar-collapse" id="fablesNavDropdown">
 							<ul class="navbar-nav mx-auto fables-nav">
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../"
 									id="sub-nav1" aria-haspopup="true" aria-expanded="false">
 										Home </a></li>
 
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../int/int1"
 									id="sub-nav1" aria-haspopup="true" aria-expanded="false">
 										전기차 </a>
 									<ul class="dropdown-menu" aria-labelledby="sub-nav1">
-										<li><a class="dropdown-item" href="home1.html">전기차
-												소개</a></li>
-										<li><a class="dropdown-item" href="home2.html">보급 목적</a>
-										</li>
-										<li><a class="dropdown-item" href="home3.html">충전 정보</a>
+										<li><a class="dropdown-item" href="../int/int1">전기차란</a></li>
+										<li><a class="dropdown-item" href="../int/int2">보급 목적</a>
 										</li>
 									</ul></li>
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../info/list"
 									id="sub-nav4" aria-haspopup="true" aria-expanded="false">
 										전기차 모델 </a></li>
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../benefitSupport/test"
 									id="sub-nav5" aria-haspopup="true" aria-expanded="false">
 										전기차 계산 </a>
 									<ul class="dropdown-menu" aria-labelledby="sub-nav5">
-										<li><a class="dropdown-item" href="blog-cat1.html">보조금지원
+										<li><a class="dropdown-item" href="../benefitSupport/test">보조금지원
 												범위 및 해택</a></li>
-										<li><a class="dropdown-item" href="blog-cat2.html">구매비용계산</a>
+										<li><a class="dropdown-item" href="../benefitSupport/PCAmount">구매비용계산</a>
 										</li>
-										<li><a class="dropdown-item" href="blog-cat3.html">연비계산
-												및 비교</a></li>
+										<li><a class="dropdown-item" href="../benefitSupport/SvAmount">절약금액계산</a></li>
 									</ul></li>
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../chargerMap/map"
 									id="sub-nav6" aria-haspopup="true" aria-expanded="false">
 										충전소 </a></li>
-								<li class="nav-item dropdown"><a class="nav-link" href="#"
+								<li class="nav-item dropdown"><a class="nav-link" href="../comunity/noticeList"
 									id="sub-nav7" aria-haspopup="true" aria-expanded="false">
 										커뮤니티 </a>
 									<ul class="dropdown-menu" aria-labelledby="sub-nav7">
-										<li><a class="dropdown-item" href="contactus1.html">공지
+										<li><a class="dropdown-item" href="../comunity/noticeList">공지
 												사항</a></li>
-										<li><a class="dropdown-item" href="contactus2.html">관련
-												뉴스</a></li>
-										<li><a class="dropdown-item" href="contactus3.html">Q
-												& A</a></li>
-										<li><a class="dropdown-item" href="contactus3.html">자유
-												게시판</a></li>
+										<li><a class="dropdown-item" href="../comunity/QAList">Q & A</a></li>
+										<li><a class="dropdown-item" href="../news/news">관련 기사</a></li>
 									</ul></li>
 							</ul>
 						</div>

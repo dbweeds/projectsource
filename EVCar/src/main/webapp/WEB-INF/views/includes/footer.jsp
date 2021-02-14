@@ -8,7 +8,7 @@ class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style
   
     <div class="col-12 col-lg-4 mb-4 mb-lg-0">
       <a
-        href="#"
+        href="../"
         class="fables-second-border-color border-bottom pb-0 d-block mb-3 mt-minus-11"
         ><img
           src="/resources/assets/custom/images/soologo2.png"
@@ -69,11 +69,11 @@ class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style
         EXPLORE OUR SITE
       </h2>
       <ul class="nav fables-footer-links">
-        <li><a href="#">About</a></li>
-        <li><a href="#">Car</a></li>
-        <li><a href="#">Price</a></li>
-        <li><a href="#">Charging Station</a></li>
-        <li><a href="#">Q & A</a></li>
+        <li><a href="../int/int1">About</a></li>
+        <li><a href="../info/list">Car</a></li>
+        <li><a href="../benefitSupport/test">Amount</a></li>
+        <li><a href="../chargerMap/map">Charging Station</a></li>
+        <li><a href="../comunity/noticeList">Comunity</a></li>
       </ul>
     </div>
   </div>

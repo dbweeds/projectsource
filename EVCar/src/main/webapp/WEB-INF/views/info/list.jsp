@@ -51,7 +51,7 @@ fieldset legend {
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
 				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home </a></li>
-				<li class="breadcrumb-item active" aria-current="page">국내운행 차량
+				<li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>국내운행 차량</b>
 				</li>
 			</ol>
 		</nav>

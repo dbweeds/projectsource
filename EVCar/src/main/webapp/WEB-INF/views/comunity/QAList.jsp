@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
 <%@include file="../includes/header.jsp"%>
 <!-- Start Header -->
 <div class="fables-header fables-after-overlay bg-rules">
@@ -22,12 +18,12 @@
 	<div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item" ><a href="/comunity/noticeList">공지사항</a></li>
-				<li class="breadcrumb-item" style="font-weight: bolder"><a href="/comunity/QAList"
-					class="fables-second-text-color">Q&A</a></li>
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="/comunity/noticeList">공지사항</a></li>
+				<li class="breadcrumb-item" style="font-weight: bolder"><a
+					href="/comunity/QAList" class="fables-second-text-color">Q&A</a></li>
+				<li class="breadcrumb-item"><a href="../news/news"
 					class="fables-second-text-color">관련 기사</a></li>
 			</ol>
 		</nav>
@@ -65,7 +61,7 @@
 				<button type="button" class="btn btn-primary" id="regBtn"
 					style="float: right; margin-bottom: 3px">문의글 작성</button>
 			</div>
-			<table class="table" style="text-align:center">
+			<table class="table" style="text-align: center">
 				<thead>
 					<tr>
 						<th class='text-center'>번호</th>
@@ -78,10 +74,9 @@
 
 					<c:forEach var="QA" items="${QA}">
 						<tr class="contentTr">
-							<td><c:out
-										value="${QA.bno}" /></td>
-							<td><a
-								href='${QA.bno}' class='move'><c:out value="${QA.title}" /></a></td>
+							<td><c:out value="${QA.bno}" /></td>
+							<td><a href='${QA.bno}' class='move'><c:out
+										value="${QA.title}" /></a></td>
 							<td><c:out value="${QA.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${QA.regDate}" /></td>
@@ -92,23 +87,24 @@
 					</c:forEach>
 				</thead>
 			</table>
-			<div class="text-center" style="text-align:center">
-            	<ul class="pagination" style="display:inline-block">
+			<div class="text-center" style="text-align: center">
+				<ul class="pagination" style="display: inline-block">
 					<c:if test="${pageMaker.prev}">
-						<li class="page-item"><a
-							href="${pageMaker.startPage -1}" class="page-link">이전</a></li>
+						<li class="page-item"><a href="${pageMaker.startPage -1}"
+							class="page-link">이전</a></li>
 					</c:if>
 
-					<c:forEach var="num" begin="${pageMaker.startPage}"	end="${pageMaker.endPage}">
+					<c:forEach var="num" begin="${pageMaker.startPage}"
+						end="${pageMaker.endPage}">
 						<li
-							class="page-item ${pageMaker.cri.pageNum == num ?'active':''} " style="float:left; margin-top:10px;">
-							<a href="${num}" class="page-link">${num}</a>
-						</li>
+							class="page-item ${pageMaker.cri.pageNum == num ?'active':''} "
+							style="float: left; margin-top: 10px;"><a href="${num}"
+							class="page-link">${num}</a></li>
 					</c:forEach>
 
 					<c:if test="${pageMaker.next}">
-						<li class="page-item" ><a 
-							href="${pageMaker.endPage +1 }" class="page-link">다음</a></li>
+						<li class="page-item"><a href="${pageMaker.endPage +1 }"
+							class="page-link">다음</a></li>
 					</c:if>
 				</ul>
 				<form id="actionForm" action="/comunity/QAList" method="get">
@@ -147,13 +143,17 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-						var result = '<c:out value="${result}"/>';
+		var admin = '<%=(String)session.getAttribute("admin")%>';
+		if(admin == "null"){
+            $("#regBtn").hide();
+        }
+	    var result = '<c:out value="${result}"/>';
 
-						checkModal(result);
+		checkModal(result);
 
-						history.replaceState({}, null, null);
+		history.replaceState({}, null, null);
 
-						function checkModal(result) {
+		function checkModal(result) {
 
 							if (result === '' || history.state) {
 								return;
@@ -189,22 +189,19 @@
 									actionForm.submit();
 								});
 
-						$(".move")
-								.on(
-										"click",
-										function(e) {
+						$(".move").on("click",function(e) {
 
-											e.preventDefault();
-											actionForm
-													.append("<input type='hidden' name='bno' value='"
-															+ $(this).attr(
-																	"href")
-															+ "'>");
-											actionForm.attr("action",
-													"/comunity/password");
-											actionForm.submit();
-
-										});
+							e.preventDefault();
+							actionForm.append("<input type='hidden' name='bno' value='"
+												+ $(this).attr("href")+ "'>");
+							  
+							if(admin == "null"){
+							    actionForm.attr("action","/comunity/password");
+							}else{
+								actionForm.attr("action","/comunity/QAGet");
+							}
+							actionForm.submit();
+							    });
 
 						var searchForm = $("#searchForm");
 

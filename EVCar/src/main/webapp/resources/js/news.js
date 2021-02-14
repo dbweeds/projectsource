@@ -111,7 +111,10 @@ function showReplyPage(total) {
 	if (prev) {
 		str += "<li class='page-item'><a class='page-link' href='" + (startPage - 1) + "'>";
 		str += "이전</a></li>";
-	}
+	}else{
+        str += "<li class='page-item'><a class='page-link' href='#'>";
+        str += "이전</a></li>";
+    }
 	for (var i = startPage; i <= endPage; i++) {
 		var active = pageNum == i ? "active" : "";
 		str += "<li class='page-item " + active + "'>";

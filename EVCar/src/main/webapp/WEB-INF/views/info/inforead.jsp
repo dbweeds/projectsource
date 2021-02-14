@@ -25,8 +25,8 @@
 					class="fables-second-text-color">Home</a></li>
 				<li class="breadcrumb-item active" aria-current="page"><a href="list"
                     class="fables-second-text-color">국내운행 차량</a></li>
-				<li class="breadcrumb-item active" aria-current="page">
-					${info.brand} : ${info.carname} (${info.carname_en})</li>
+				<li class="breadcrumb-item active" aria-current="page" style="color: black;">
+					<b>${info.brand} : ${info.carname} (${info.carname_en})</b></li>
 			</ol>
 		</nav>
 	</div>

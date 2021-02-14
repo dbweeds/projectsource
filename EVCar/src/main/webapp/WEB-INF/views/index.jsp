@@ -30,7 +30,7 @@
                   시별 지원금을 확인해 금액을 알아볼수있습니다.
                 </p>
                 <a
-                  href="#"
+                  href="benefitSupport/test"
                   class="btn border border-white white-color rounded-0 my-4 py-2 px-5 wow fadeInLeft bg-white-hover fables-second-hover-color"
                   >지금 알아보기</a
                 >
@@ -213,7 +213,7 @@
             </div>
             <div class="col-12 col-md-4 offset-xl-2 col-xl-2 text-center">
               <a
-                href=""
+                href="comunity/QAList"
                 class="btn fables-second-background-color fables-btn-rounded white-color mt-3 position-relative z-index font-19 px-5 white-color-hover"
                 >Q & A 바로가기</a
               >

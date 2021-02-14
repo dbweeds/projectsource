@@ -2,14 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- CSS only -->
-
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/subHeader.jsp"%>
 <!-- Start Breadcrumbs -->
-
+<div class="fables-light-background-color">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="fables-breadcrumb breadcrumb px-0 py-3">
+                <li class="breadcrumb-item"><a href="../"
+                    class="fables-second-text-color">Home</a></li>
+                <li class="breadcrumb-item"><a href="noticeList">Q&A</a></li>
+                <li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>${notice.title }</b></li>
+            </ol>
+        </nav>
+    </div>
+</div>
 <div class="row">
 	<div class="container">
 		<h2 style="font-weight: bolder; margin: 40px;margin-left:5px;">공지사항</h2>
@@ -43,7 +50,7 @@
 
 
 			<div style="float: right; margin-bottom:20px">
-				<button data-oper='noticeModify' class="btn btn-primary">수정</button>
+				<button data-oper='noticeModify' class="btn btn-primary" id="modify">수정</button>
 				<button data-oper='noticeList' class="btn btn-secondary">목록</button>
 			</div>
 			
@@ -58,7 +65,13 @@
 <!-- end panel -->
 <script type="text/javascript">
 	$(document).ready(function() {
-
+	    
+		var admin = '<%=(String)session.getAttribute("admin")%>';
+	    
+	    if(admin == "null"){
+	        $("#modify").hide();
+	    }
+		
 		var formObj = $("form");
 
 		$("button").click(function() {

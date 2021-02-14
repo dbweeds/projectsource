@@ -24,11 +24,11 @@
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
 				<li class="breadcrumb-item"><a href="/"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../comunity/noticeList"
 					class="fables-second-text-color">공지 사항</a></li>
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../comunity/QAList"
 					class="fables-second-text-color">Q&A</a></li>
-				<li class="breadcrumb-item active" aria-current="page">관련 기사</li>
+				<li class="breadcrumb-item active" aria-current="page"style="color: black;"><b>관련 기사</b></li>
 			</ol>
 		</nav>
 	</div>
@@ -68,18 +68,13 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"
 	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
-
+<%@include file="../includes/footer.jsp"%>
+<script src="/resources/js/news.js"></script>
 <script>
 $(function(){
 	getList(1,1);	
 })	
-
-
-
-
 </script>
-<script src="/resources/js/news.js"></script>
 <!-- /End page content -->
 
 <!-- Start Footer 2 Background Image  -->
-<%@include file="../includes/footer.jsp"%>

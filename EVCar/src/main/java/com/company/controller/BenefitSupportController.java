@@ -27,13 +27,13 @@ public class BenefitSupportController {
 	public void getest() {
 		log.info("test시작");
 	}
-	@GetMapping("/test2")
+	@GetMapping("/SvAmount")
 	public void getest2() {
 		log.info("test2시작");
 	}
-	@GetMapping("/test3")
+	@GetMapping("/PCAmount")
 	public void getest3() {
-		log.info("test2시작");
+		log.info("PCAmount");
 	}
 	
 	@PostMapping(value = "/evFuel", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
