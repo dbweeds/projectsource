@@ -3,6 +3,9 @@ package com.company.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +40,13 @@ public class InfoController {
 	@PostMapping("/infoRegist")
 	public String registPost(CarInfoVO info,RedirectAttributes rttr){
 		log.info("차량 등록..."+info);
-		service.regist(info);
+		boolean yn = service.regist(info);
+		
+		if(yn) {
+			rttr.addFlashAttribute("message", "입력에 성공했습니다.");			
+		}else {
+			rttr.addFlashAttribute("message", "입력에 실패했습니다.");						
+		}
 		log.info("글번호"+info.getBno()+info.getCarname());
 		
 		rttr.addFlashAttribute("result", info.getBno());
@@ -55,7 +64,7 @@ public class InfoController {
 		List<CarInfoVO> list = service.getList(vo);
 		//게시물수
 		int total = service.getTotalCnt(vo);
-		model.addAttribute("vo",vo);
+		model.addAttribute("searchvo",vo);
 		model.addAttribute("list",list);
 		model.addAttribute("infoPageVO", new InfoPageVO(cri, total));
  
@@ -67,13 +76,22 @@ public class InfoController {
 		CarInfoVO info=service.getRow(bno);
 		model.addAttribute("info", info);
 	}
+	@GetMapping("/count")
+	public String count(int bno) {
+		service.count(bno);
+		return "redirect:inforead?bno="+bno;
+	}
 	
 	//차량 삭제
 	@PostMapping("/remove")
 	public String remove(int bno,RedirectAttributes rttr) {
 		log.info("삭제"+bno);
-		service.remove(bno);
-		rttr.addFlashAttribute("result", "success");
+		boolean yn = service.remove(bno);
+		if(yn) {
+			rttr.addFlashAttribute("message", "삭제에 성공했습니다.");			
+		}else {
+			rttr.addFlashAttribute("message", "삭제에 실패했습니다.");						
+		}
 		return "redirect:list";
 	}
 	
@@ -81,12 +99,20 @@ public class InfoController {
 	@PostMapping("/modify")
 	public String modify(CarInfoVO info,RedirectAttributes rttr) {
 		log.info("내용 수정"+info);
-		service.modify(info);
-		rttr.addFlashAttribute("result", "success");
-		return "redirect:list";
+		boolean yn = service.modify(info);
+		if(yn) {
+			rttr.addFlashAttribute("message", "수정에 성공했습니다.");			
+		}else {
+			rttr.addFlashAttribute("message", "수정에 실패했습니다.");						
+		}
+		return "redirect:inforead?bno="+info.getBno();
 	}
-	
-	//검색 ..모르겠다;;
+	@GetMapping(value = "/countlist", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<CarInfoVO>> countList(){
+		List<CarInfoVO> countvo = service.countlist();
+		return new ResponseEntity<List<CarInfoVO>>(countvo,HttpStatus.OK);
+	}
+
 	
 	
 }

@@ -25,4 +25,8 @@ public interface InfoService {
 	
 	//게시물수 6
 	public int getTotalCnt(CarSearchVO vo);
+	
+	public int count(int bno);
+	
+	public List<CarInfoVO> countlist();
 }

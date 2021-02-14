@@ -21,13 +21,12 @@
 	<div class="container">
 		<nav aria-label="breadcrumb">
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
-				<li class="breadcrumb-item"><a href="#"
+				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item active" aria-current="page">전기차</li>
+				<li class="breadcrumb-item active" aria-current="page"><a href="list"
+                    class="fables-second-text-color">국내운행 차량</a></li>
 				<li class="breadcrumb-item active" aria-current="page">
-					${info.brand}</li>
-				<li class="breadcrumb-item active" aria-current="page">
-					${info.carname} (${info.carname_en})</li>
+					${info.brand} : ${info.carname} (${info.carname_en})</li>
 			</ol>
 		</nav>
 	</div>
@@ -36,136 +35,152 @@
 
 <!-- 매인컨텐츠 컨테이너 -->
 <div class="container">
-	<form action="" role="form">
-		<input type="hidden" name="bno" value="${info.bno}" />
-		<!-- <div class="container mt-4 mt-lg-5"> -->
-			<div
-				class="owl-carousel owl-theme default-carousel default-carousel-nav">
-				<div>
-					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carpicture1}"
-						alt="" class="w-100" /></a>
-				</div>
-				<div>
-					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carpicture2}"
-						alt="" class="w-100" /></a>
-				</div>
-				<div>
-					<a href="#"><img
-						src="/resources/assets/custom/infoimage/${info.carpicture3}"
-						alt="" class="w-100" /></a>
-				</div>
+	<input type="hidden" name="bno" value="${info.bno}" />
+	<!-- <div class="container mt-4 mt-lg-5"> -->
+	<div
+		class="owl-carousel owl-theme default-carousel default-carousel-nav">
+		<c:if test="${info.carpicture1 != null}">
+			<div>
+				<a href="#"><img
+					src="/resources/assets/custom/infoimage/${info.carpicture1}" alt=""
+					class="w-100" /></a>
 			</div>
-			<div class="row mb-4 my-lg-5 form-group">
-				<div class="col-12 col-md-8">
-					<h2 class="mb-3">
-						<!-- 차량 이름 -->
-						<a href="#"
-							class="fables-main-text-color fables-second-hover-color font-26 semi-font">${info.carname}
-							(${info.carname_en})</a>
-					</h2>
-					<p class="fables-fifth-text-color font-14">
-						<!-- 차량 타이틀 -->
-					<h5>${info.title}</h5>
-					<br />
-					<br />
-					<!-- 차량 내용 -->
-					${info.content}
-					</p>
-					<!-- 이전 모델 / 다음 모델 연결 -->
-					<div class="fables-single-blog-pag my-4 text-center text-md-left">
-						<a href="/info/inforead?bno=${(info.bno)-1}"
-							class="fables-forth-background-color fables-main-hover-background-color btn white-color white-color-hover px-md-4 py-2 mr-3 font-15">
-							<span class="fables-iconarrow-left"></span> 이전 모델
-						</a> <a href="/info/inforead?bno=${(info.bno)+1}"
-							class="fables-forth-background-color fables-main-hover-background-color btn white-color white-color-hover px-md-4 py-2 mr-3 font-15">
-							다음 모델 <span class="fables-iconarrow-right"></span>
-						</a>
-					</div>
-				</div>
-				<!-- 차량 제원 -->
-				<div class="col-12 col-md-4 col-lg-3 offset-lg-1 mt-md-5 mt-lg-0">
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">제조사
-						</span> <span class="fables-forth-text-color fifth"> :
-							${info.brand} </span>
-					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">출시일
-						</span> <span class="fables-forth-text-color fifth"> :
-							${info.releasedate} 년 </span>
-					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">차종
-						</span> <span class="fables-forth-text-color fifth"> :
-							${info.cartype} </span>
-						<div class="my-2">
-							<span class="fables-main-text-color font-15 semi-font">연비</span>
-							<span class="fables-forth-text-color fifth">: ${info.fuel}
-								km/kWh</span>
-						</div>
-						<div class="my-2">
-							<span class="fables-main-text-color font-15 semi-font">주행거리
-							</span> <span class="fables-forth-text-color fifth">:
-								${info.mileage} km </span>
-						</div>
-						<div class="my-2">
-							<span class="fables-main-text-color font-15 semi-font">충전방식
-							</span> <span class="fables-forth-text-color fifth">:
-								${info.chargetype} </span>
-						</div>
-						<div class="my-2">
-							<span class="fables-main-text-color font-15 semi-font">가격</span>
-							
-							<span class="fables-forth-text-color fifth"> : <fmt:formatNumber
-									value="${(info.rowprice)}" pattern="#,###" /></span> <span
-								class="fables-forth-text-color fifth"> ~ <fmt:formatNumber
-									value="${info.highprice}" pattern="#,###" />원
-							</span>
-						</div>
-						<div class="my-2">
-							<span class="fables-main-text-color font-15 semi-font">보조금</span>
-							<span class="fables-forth-text-color fifth"> : <fmt:formatNumber
-									value="${(info.support)}" pattern="#,###" />원
-							</span>
-						</div>
-						<div>
-					<button type="button" class="btn btn-primary">수정</button>
-					<button type="button" class="btn btn-danger">삭제</button>
-					</div>
-				</div>
-				<!-- /차량 제원 -->
+		</c:if>
+		<c:if test="${info.carpicture2 != null}">
+			<div>
+				<a href="#"><img
+					src="/resources/assets/custom/infoimage/${info.carpicture2}" alt=""
+					class="w-100" /></a>
 			</div>
+		</c:if>
+		<c:if test="${info.carpicture3 != null}">
+			<div>
+				<a href="#"><img
+					src="/resources/assets/custom/infoimage/${info.carpicture3}" alt=""
+					class="w-100" /></a>
+			</div>
+		</c:if>
+	</div>
+	<div class="row mb-4 my-lg-5 form-group">
+		<div class="col-12 col-md-8">
+			<h2 class="mb-3">
+				<!-- 차량 이름 -->
+				<a href="#"
+					class="fables-main-text-color fables-second-hover-color font-26 semi-font">${info.carname}
+					(${info.carname_en})</a>
+			</h2>
+			<p class="fables-fifth-text-color font-14">
+				<!-- 차량 타이틀 -->
+			<h5>${info.title}</h5>
+			<br /> <br />
+			<!-- 차량 내용 -->
+			${info.content}
+			</p>
+		
 		</div>
-		<!-- /자동차 설명 -->
-	</form>
+		<!-- 차량 제원 -->
+		<div class="col-12 col-md-4 col-lg-3 offset-lg-1 mt-md-5 mt-lg-0">
+			<div class="my-2">
+				<span class="fables-main-text-color font-15 semi-font">제조사 </span> <span
+					class="fables-forth-text-color fifth"> : ${info.brand} </span>
+			</div>
+			<div class="my-2">
+				<span class="fables-main-text-color font-15 semi-font">출시일 </span> <span
+					class="fables-forth-text-color fifth"> : ${info.releasedate}
+					년 </span>
+			</div>
+			<div class="my-2">
+				<span class="fables-main-text-color font-15 semi-font">차종 </span> <span
+					class="fables-forth-text-color fifth"> : ${info.cartype} </span>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">연비</span> <span
+						class="fables-forth-text-color fifth">: ${info.fuel} km/kWh</span>
+				</div>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">주행거리
+					</span> <span class="fables-forth-text-color fifth">:
+						${info.mileage} km </span>
+				</div>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">충전방식
+					</span> <span class="fables-forth-text-color fifth">:
+						${info.chargetype} </span>
+				</div>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">가격</span> <span
+						class="fables-forth-text-color fifth"> : <fmt:formatNumber
+							value="${(info.rowprice)}" pattern="#,###" /></span> <span
+						class="fables-forth-text-color fifth"> ~ <fmt:formatNumber
+							value="${info.highprice}" pattern="#,###" />원
+					</span>
+				</div>
+				<div class="my-2">
+					<span class="fables-main-text-color font-15 semi-font">보조금</span> <span
+						class="fables-forth-text-color fifth"> : <fmt:formatNumber
+							value="${(info.support)}" pattern="#,###" />원
+					</span>
+				</div>
+				<div id="updateButton">
+					<button type="button" class="btn btn-primary"
+						onclick="location.href='modify?bno=${info.bno}'">수정</button>
+				</div>
+			</div>
+			<!-- /차량 제원 -->
+		</div>
+	</div>
+	    <hr class="my-0 mx-0_5">
+	<div class="container" style="margin-top: 30px"><!-- 리뷰 -->
+            <div data-tracking-parent="consumer-reviews">
+                <section class="consumer-reviews"
+                    data-tracking-parent="consumer-reviews">
+                    <header class="consumer-review-summary-header">
+                        <h3 class="heading-4 font-weight-medium my-1" _msthash="4285463"
+                            _msttexthash="74350198">가장 유용한 소비자 리뷰</h3>
+                        <br>        
+                    </header>
+                </section>
+            </div>
+            <div class="truncated-text size-16 font-weight-normal row">
+                <div class="col-12">
+                    ${info.reviewtitle1}
+                </div>
+                <div class="form-group" style="height: 500px; padding-top: 20px">
+                <textarea cols=100 rows=20 name='content'
+                    style="overflow: auto; resize: none; border: none;"
+                    readonly="readonly"><c:out value="${info.review1}" /></textarea>
+            </div>
+            </div>
+            <br>
+        </div>
 
-	<!-- 민지님 부분 -->
-	<span> 민지님 리뷰들어가야 하는 부분입니다. </span>
-
-	<!-- /민지님 -->
-
+    <hr class="my-0 mx-0_5">
+    <div class="container">
+        <div
+        style="border: 1ps solid gold; padding: 10px;text-align: center;">
+        <iframe width="100%" height="500px"
+            src="${info.youtubeurl}" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+            <br>
+        </div>
+    </div>
+     <hr class="my-0 mx-0_5">
+       <br>
 </div>
 <!-- /컨테이너 -->
 <!-- /End page content -->
-
-<!-- 수정버튼을 보내면 보낼 폼 -->
-<script src='{% static "js/jquery-1.11.3.min.js" %}'></script>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<form action="modify" id="myform">
-	<input type="hidden" name="bno" value="${info.bno}" />
-</form>
-<script>
-	$(function() {
-		var form = $("#myform");
-		
-		$(".btn-primary").click(function() {
-			form.submit();
-		})
-	})
-</script>
-<!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp"%>
+<script type="text/javascript">
+$(function() {
+var admin = '<%=(String)session.getAttribute("admin")%>';
+    
+if(admin == "null"){
+    $("#updateButton").empty();
+}
+    
+var message = "${message}";
+if(message != ""){
+	alert(message);
+}
+})
+</script>

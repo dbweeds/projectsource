@@ -16,5 +16,7 @@ public interface InfoMapper {
 	
 	public int totalCnt(CarSearchVO vo); //페이지
 	
+	public int count(int bno);
 	//검색
+	public List<CarInfoVO> countList();
 }

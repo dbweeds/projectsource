@@ -9,83 +9,7 @@
         >
           지금 한국에서 제일 인기 있는 전기차 Best3
         </h2>
-        <div class="row">
-          <div
-            class="col-12 col-sm-4 mb-4 wow fadeInUpBig"
-            data-wow-duration="2s"
-          >
-            <div class="image-container translate-effect-right">
-              <a href="#"
-                ><img
-                  src="/resources/assets/custom/images/t-model3.png"
-                  alt=""
-                  class="img-fluid w-100"
-              /></a>
-            </div>
-            <h2 class="font-22 mt-3 mb-2 d-block text-center text-md-left">
-              <a
-                href="#"
-                class="fables-second-text-color fables-main-hover-color"
-              >
-                테슬라 Model 3</a
-              >
-            </h2>
-            <p class="fables-forth-text-color light-font d-none d-md-block">
-              2019.08 출시 : 준중형 : 전기 <br />
-              복합 연비 4.7~5.8 km/kWh
-            </p>
-          </div>
-          
-          <div
-            class="col-12 col-sm-4 mb-4 wow fadeInUpBig"
-            data-wow-duration="2s"
-          >
-            <div class="image-container translate-effect-right">
-              <a href="#"
-                ><img
-                  src="/resources/assets/custom/images/2niro.png"
-                  alt=""
-                  class="img-fluid w-100"
-              /></a>
-            </div>
-            <h2 class="font-22 mt-3 mb-2 d-block text-center text-md-left">
-              <a
-                href="#"
-                class="fables-second-text-color fables-main-hover-color"
-              >
-                기아 니로</a
-              >
-            </h2>
-            <p class="fables-forth-text-color light-font d-none d-md-block">
-              2019.03 출시 : 소형SUV : 전기 <br />
-              복합연비 5.3~5.5 km/kWh
-            </p>
-          </div>
-          <div
-            class="col-12 col-sm-4 mb-4 wow fadeInUpBig"
-            data-wow-duration="2s"
-          >
-            <div class="image-container translate-effect-right">
-              <a href="#"
-                ><img
-                  src="/resources/assets/custom/images/ionic3.png"
-                  alt=""
-                  class="img-fluid w-100"
-              /></a>
-            </div>
-            <h2 class="font-22 mt-3 mb-2 d-block text-center text-md-left">
-              <a
-                href="#"
-                class="fables-second-text-color fables-main-hover-color"
-              >
-                현대 아이오닉</a
-              >
-            </h2>
-            <p class="fables-forth-text-color light-font d-none d-md-block">
-              2019.01 출시 : 준준형 : 전기 <br />
-              복합 연비 6.3 km/kWh
-            </p>
-          </div>
+        <div class="row" id="carcount">
         </div>
       </div>
       </div>
@@ -334,12 +258,27 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"
 	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
 	crossorigin="anonymous"></script>
-   
- <script>
+ <script src=" /resources/js/index.js"></script>   
+ <script type="text/javascript">
 $(function(){
 	getList();	
 })	
-
+$(function() {
+    $.getJSON("info/countlist", function(data) {
+        for(var i = 0;i < 3 ; i++) {
+            var str = '<div class="col-12 col-sm-4 mb-4 wow fadeInUpBig" data-wow-duration="2s">';
+            str += '<div class="image-container translate-effect-right">'
+            str += '<a href="info/count?bno='+data[i].bno+'">'
+            str += '<img src="/resources/assets/custom/infoimage/'+data[i].thumbnail+'" alt="" class="img-fluid w-100" /></a></div>'
+            str += '<h2 class="font-22 mt-3 mb-2 d-block text-center text-md-left">'
+            str += '<a href="info/count?bno='+data[i].bno+'" class="fables-second-text-color fables-main-hover-color">'+data[i].carname+'</a></h2>'
+            str += '<p class="fables-forth-text-color light-font d-none d-md-block">'
+            str += data[i].releasedate+' 출시 : '+data[i].cartype+' : 전기 <br />'
+            str += '연비 '+data[i].fuel+' km/kWh</p></div>'
+            $("#carcount").append(str);
+        
+        }
+    })
+})
 </script>
- <script src=" /resources/js/index.js"></script>
 <%@include file="includes/footer.jsp" %>   

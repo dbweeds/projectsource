@@ -46,5 +46,15 @@ public class InfoServiceImpl implements InfoService {
 		return mapper.totalCnt(vo);
 	}
 
+	@Override
+	public int count(int bno) {
+		return mapper.count(bno);
+	}
+
+	@Override
+	public List<CarInfoVO> countlist() {
+		return mapper.countList();
+	}
+
 	//검색 못함...
 }

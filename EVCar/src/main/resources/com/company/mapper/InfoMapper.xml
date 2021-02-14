@@ -8,9 +8,10 @@
 			select seq_carinfo.nextval from dual
 		</selectKey>
 		insert into carinfo 
-		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content,thumbnail,carpicture1,carpicture2,carpicture3) values 
+		(bno,brand,carname,carname_en,cartype,rowprice,highprice,support,releasedate,fuel,mileage,chargetype,title,content,
+		thumbnail,carpicture1,carpicture2,carpicture3,reviewtitle1,review1,youtubeurl) values 
 		(#{bno}, #{brand}, #{carname}, #{carname_en}, #{cartype}, #{rowprice}, #{highprice}, #{support}, #{releasedate}, 
-		#{fuel}, #{mileage}, #{chargetype}, #{title}, #{content},#{thumbnail},#{carpicture1},#{carpicture2},#{carpicture3})
+		#{fuel}, #{mileage}, #{chargetype}, #{title}, #{content},#{thumbnail},#{carpicture1},#{carpicture2},#{carpicture3},#{reviewtitle1},#{review1},#{youtubeurl})
 	</insert>
 	<!-- 삭제 -->
 	<delete id="delete">
@@ -19,7 +20,16 @@
 	
 	<!-- 수정 -->
 	<update id="update">
-		update carinfo set title=#{title}, content=#{content} where bno=#{bno}
+		update carinfo set brand=#{brand},carname=#{carname},carname_en=#{carname_en},cartype=#{cartype},
+		rowprice=#{rowprice},highprice=#{highprice},support=#{support},fuel=#{fuel},mileage=#{mileage},
+		chargetype=#{chargetype},releasedate=#{releasedate}, title=#{title}, content=#{content},thumbnail=#{thumbnail},
+		carpicture1=#{carpicture1},carpicture2=#{carpicture2},carpicture3=#{carpicture3},
+		reviewtitle1=#{reviewtitle1},review1=#{review1},youtubeurl=#{youtubeurl}
+		where bno=#{bno}
+	</update>
+	
+	<update id="count">
+	   update carinfo set count=count+1 where bno = #{bno}
 	</update>
 	
 	<!-- 전체 리스트 -->
@@ -71,4 +81,9 @@
         SELECT * FROM carinfo where bno=#{bno}
     </select>
 	
+	<select id="countList" resultType="com.company.domain.CarInfoVO">
+	   <![CDATA[
+    	   SELECT * FROM (SELECT rownum rn ,count,bno,brand,cartype,carname,fuel,releasedate,thumbnail FROM (select * from carinfo ORDER BY count DESC)) WHERE rn <= 6 
+	   ]]>
+	</select>
 </mapper>

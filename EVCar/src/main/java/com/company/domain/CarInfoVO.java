@@ -30,6 +30,9 @@ public class CarInfoVO {
 		private String carpicture1;
 		private String carpicture2;
 		private String carpicture3;
+		private String reviewtitle1;
+		private String review1;
+		private String youtubeurl;
 }
 
 

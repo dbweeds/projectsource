@@ -97,65 +97,103 @@
 			</div>
 			<!-- 차량 제원 -->
 			<div class="col-12 col-md-4 col-lg-3 offset-lg-1 mt-md-5 mt-lg-0">
-				<div class="my-2">
-					<span class="fables-main-text-color font-15 semi-font">브랜드 </span>
-					<input type="text" class="form-control"
-						id="exampleFormControlInput1" name="brand"
-						value="${info.brand}">
-				</div>
-				<div class="my-2">
-					<span class="fables-main-text-color font-15 semi-font">출시일 </span>
+				<div class="form-floating mb-3">
+                     <select id="brand" name="brand" class="form-select" aria-label="Floating label select example" >
+                           <option value="" selected>선택해주세요.</option>
+                           <option value="현대" <c:out value="${info.brand=='현대'?'selected':''}"/>>현대</option>
+                           <option value="기아" <c:out value="${info.brand=='기아'?'selected':''}"/>>기아</option>
+                           <option value="쉐보레" <c:out value="${info.brand=='쉐보레'?'selected':''}"/>>쉐보레</option>
+                           <option value="쌍용" <c:out value="${info.brand=='쌍용'?'selected':''}"/>>쌍용</option>
+                           <option value="르노삼성" <c:out value="${info.brand=='르노삼성'?'selected':''}"/>>르노삼성</option>
+                           <option value="테슬라" <c:out value="${info.brand=='테슬라'?'selected':''}"/>>테슬라</option>
+                           <option value="BMW" <c:out value="${info.brand=='BMW'?'selected':''}"/>>BMW</option>
+                           <option value="벤츠" <c:out value="${info.brand=='벤츠'?'selected':''}"/>>벤츠</option>
+                           <option value="아우디" <c:out value="${info.brand=='아우디'?'selected':''}"/>>아우디</option>
+                           <option value="시트로엥" <c:out value="${info.brand=='시트로엥'?'selected':''}"/>>시트로엥</option>
+                           <option value="푸조" <c:out value="${info.brand=='푸조'?'selected':''}"/>>푸조</option>
+                       </select>
+                     <label for="floatingSelect">제조사</label>
+                  </div>
+				
+				<div class="form-floating mb-3">
 					<input type="number" class="form-control" id="releasedate"
 						name="releasedate" value="${info.releasedate}">
+				    <label for="floatingSelect">출시일</label>
 				</div>
-				<div class="my-2">
-					<span class="fables-main-text-color font-15 semi-font">차종 </span>
-					<input
-						type="text" class="form-control" id="cartype" name="cartype"
-						value="${info.cartype}">
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">연비</span> 
-						<input
-							type="number" max="100" min="0" step="0.1" class="form-control"
-							id="fuel" name="fuel" value="${info.fuel}">
-					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">주행거리</span> 
-						<input type="number" class="form-control" id="mileage"
-							name="mileage" value="${info.mileage}">
-					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">충전방식</span>
-						<select id="chargetype" name="chargetype">
+				<div class="form-floating mb-3">
+                         <select id="cartype" name="cartype" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                           <option value="" selected>선택해주세요</option>
+                           <option value="경차" <c:out value="${info.cartype=='경차'?'selected':''}"/>>경차</option>
+                           <option value="소형차" <c:out value="${info.cartype=='소형차'?'selected':''}"/>>소형차</option>
+                           <option value="중형차" <c:out value="${info.cartype=='중형차'?'selected':''}"/>>중형차</option>
+                           <option value="대형차" <c:out value="${info.cartype=='대형차'?'selected':''}"/>>대형차</option>
+                           <option value="SUV" <c:out value="${info.cartype=='SUV'?'selected':''}"/>>SUV</option>
+                         </select>
+                         <label for="floatingSelect">차종</label>
+                   </div> 
+					<div class="form-floating mb-3">
+                     <input class="form-control" type="number" name="fuel" id="fuel" value="${info.fuel}"/>
+                     <label for="floatingInput">연비</label>
+                   </div>
+					 <div class="form-floating mb-3">
+                     <input class="form-control" type="number" name="mileage" id="mileage" value="${info.mileage}"/>
+                     <label for="floatingInput">주행거리</label>
+                   </div>
+
+					 <div class="form-floating mb-3">
+						 <select id="chargetype" name="chargetype" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                           <option value="" selected>선택해주세요</option>
 							<option value="DC콤보" <c:out value="${info.chargetype=='DC콤보'?'selected':''}"/>>DC콤보</option>
 							<option value="AC3상" <c:out value="${info.chargetype=='AC3상'?'selected':''}"/>>AC3상</option>
 						</select>
-						
+						<label for="floatingSelect">충전방식</label>
 					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">최저가</span>
-						<input type="number" class="form-control" id="rowprice"
-							name="rowprice" value="${info.rowprice}">
-					</div>
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">최고가</span>
-						<input type="number" class="form-control" id="highprice"
-							name="highprice" value="${info.highprice}">
-					</div>
+					<div class="form-floating mb-3">
+                     <input class="form-control" type="number" name="rowprice" id="rowprice" value="${info.rowprice}"/>
+                     <label for="floatingInput">최저가격</label>
+                   </div>
+                   
+                 <div class="form-floating mb-3">
+                     <input class="form-control" type="number" name="highprice" id="highprice" value="${info.highprice}"/>
+                     <label for="floatingInput">최고가격</label>
+                   </div>
+                   
+                 <div class="form-floating mb-3">
+                     <input class="form-control" type="number" name="support" id="support" value="${info.support}"/>
+                     <label for="floatingInput">정부보조금</label>
+                   </div>
 
-					<div class="my-2">
-						<span class="fables-main-text-color font-15 semi-font">보조금</span>
-						<input type="number" class="form-control" id="support"
-							name="support" placeholder="정부 보조금" value="${info.support}">
-					</div>
 					<div id="thumbnail"><input type="hidden" name="thumbnail" value="${info.thumbnail}"></div>
-					<div id="carpicture1"><input type="hidden" name="thumbnail" value="${info.carpicture1}"></div>
-					<div id="carpicture2"><input type="hidden" name="thumbnail" value="${info.carpicture2}"></div>
-					<div id="carpicture3"><input type="hidden" name="thumbnail" value="${info.carpicture3}"></div>
-				</div>
+					<div id="carpicture1"><input type="hidden" name="carpicture1" value="${info.carpicture1}"></div>
+					<div id="carpicture2"><input type="hidden" name="carpicture2" value="${info.carpicture2}"></div>
+					<div id="carpicture3"><input type="hidden" name="carpicture3" value="${info.carpicture3}"></div>
+					<input type="hidden" name="bno" value="${info.bno}" />
 			</div>
 			<!-- /차량 제원 -->
 		</div>
+		<div class="container"><!-- 리뷰 -->
+            <div class="truncated-text size-16 font-weight-normal row">
+                <div class="col-12">
+                    <input type="text" class="form-control" id="reviewtitle1" name="reviewtitle1" placeholder="리뷰1 제목을 입력해주세요" value="${info.reviewtitle1}">
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" id="review1" name="review1"
+                        rows="20"placeholder="리뷰1 내용을 입력해주세요"  style="height: 300px;margin-top: 5px">${info.review1}</textarea>
+                </div>
+            </div>
+             <br>
+        </div>
+    <hr class="my-0 mx-0_5">
+    <div class="container" style="display: flex;">
+        <div id="youtube" style="border: 1ps solid gold; padding: 10px;display: inline-block;">
+        <iframe width="200px" height="100px"src="${info.youtubeurl}" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>
+        </div>
+        <div class="col-12" style="display: inline-block;width: 300px;margin-top: 30px;">
+            <input type="text" class="form-control" id="youtubeurl" name="youtubeurl" placeholder="유튜브 url을 입력해주세요" value="${info.youtubeurl}" style="width:300px;">
+            <button type="button" class="btn btn-light" id="change">url 확인해보기</button>
+        </div>
+    </div>
+    <hr class="my-0 mx-0_5">
 		<div class="fables-single-blog-pag my-4 text-center text-md-left">
 			<button type="submit" data-oper='modify' class="btn btn-primary">수정</button>
 			<button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
@@ -163,27 +201,36 @@
 				onclick="location.href='list'">목록</button>
 		</div>
 	</form>
-	<!-- 민지님 부분 -->
-	<span> 민지님 리뷰들어가야 하는 부분입니다. </span>
-
-	<!-- / -->
 
 </div>
 <!-- /컨테이너 -->
 <!-- /End page content -->
-
-<!-- 수정버튼을 보내면 보낼 폼 -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 <form action="" id="myform" method="post">
 	<input type="hidden" name="bno" value="${info.bno}" />
 </form>
+<!-- Start Footer 2 Background Image  -->
+<%@include file="../includes/footer.jsp"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+<script src="/resources/js/messages_ko.min.js"></script>
+<script src="/resources/js/additional-methods.js"></script>
+<script src="/resources/js/infoValidate.js"></script>
 <script>
+$("#change").click(function() {
+    var url = $("#youtubeurl").val();
+    $("#youtube").empty();
+    $("#youtube").append('<iframe width="200px" height="100px"src="'+url+'" frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe>');
+});
 $("input[type='file']").change(function() {
+	var fileForm = /(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$/;
 	var tagid = $(this).attr("id");
-	console.log(tagid);
+	var valtype=$(this).data("value");
 	var files = $(this)[0].files;
+	if(!$(this).val().match(fileForm)){
+        alert("이미지파일만 업로드 가능합니다.");
+        $(this).focus();
+        return false;
+    }
+	
 	var formData = new FormData();
 	formData.append("uploadFile", files[0]);
 	$.ajax({
@@ -209,25 +256,42 @@ $("input[type='file']").change(function() {
 	$(function() {
 		var form = $("#myform");
 		
-		$("button").click(function(e) {
+		$("button[type='submit']").click(function(e) {
 			e.preventDefault();
+			
+			if($('#input-file1').val() == "") {
+		        alert("썸네일을 필수로 넣어주세요");
+		        $("#input-file1").focus();
+		        return false;
+		    }
+		    if($('#input-file2').val() == "") {
+		        alert("차사진1을 필수로 넣어주세요.");
+		        $("#isFile").focus();
+		        return false;
+		    }
 			
 			var oper = $(this).data("oper");
 			console.log(oper);
 			
 			if(oper == 'remove'){
-				form.attr("action","remove");
+				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+					form.attr("action","remove");
+					form.submit();
+				 }else{
+					 return false;
+				 }
+
 			}else if(oper == 'modify'){
 				form = $("form[role='form']");
+				form.submit();
 			}else if(oper == 'list'){
 				form.attr("action","list")
 				.attr("method","get");
 				form.find("input[name='bno']").remove();
+				form.submit();
 			}
-			form.submit();
+			
 			
 		})
 	})
 </script>
-<!-- Start Footer 2 Background Image  -->
-<%@include file="../includes/footer.jsp"%>

@@ -16,7 +16,7 @@
     <div class="container"> 
         <nav aria-label="breadcrumb">
           <ol class="fables-breadcrumb breadcrumb px-0 py-3">
-            <li class="breadcrumb-item"><a href="#" class="fables-second-text-color">Home</a></li>
+            <li class="breadcrumb-item"><a href="../" class="fables-second-text-color">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">전기차 충전소</li>
           </ol>
         </nav> 
@@ -247,7 +247,10 @@ $("#area2").change(function() {
 			var point = new naver.maps.LatLng(data.y, data.x);
 			map.setCenter(point);
 			mapMarkers(map);
+			if($("#myAddr").prop("checked")){
 			sliderMarked.trigger("click");
+				
+			}
 			
 		}
 	})
@@ -257,12 +260,18 @@ $("#area2").change(function() {
 function myIpMap(map,markers) {
     naver.maps.Event.addListener(map, 'zoom_changed', function() {
     	mapMarkers(map);
-    	sliderMarked.trigger("click");
+    	if($("#myAddr").prop("checked")){
+            sliderMarked.trigger("click");
+                
+            }
     
 	});
    naver.maps.Event.addListener(map, 'dragend',function() {
        mapMarkers(map); 
-       sliderMarked.trigger("click");
+       if($("#myAddr").prop("checked")){
+           sliderMarked.trigger("click");
+               
+           }
    });
   
 }
