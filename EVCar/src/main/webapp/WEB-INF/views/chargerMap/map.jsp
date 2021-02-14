@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" type="text/css" href="/resources/css/chargerMapCss.css"/>
 <%@include file="../includes/header.jsp" %>
+<link rel="stylesheet" type="text/css" href="/resources/css/chargerMapCss.css"/>
 <!-- Start Header -->
 <div class="fables-header fables-after-overlay bg-rules">
     <div class="container"> 
-         <h2 class="fables-page-title fables-second-border-color wow fadeInLeft" data-wow-duration="1.5s" style="margin-top: 90px">공지사항</h2>
+         <h2 class="fables-page-title fables-second-border-color wow fadeInLeft" data-wow-duration="1.5s" style="margin-top: 90px">전기차 충전소</h2>
     </div>
 </div>  
 <!-- /End Header -->
@@ -69,7 +69,6 @@
 <!-- Start Footer 2 Background Image  -->
 <%@include file="../includes/footer.jsp" %>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=k7zd4tsqx0"></script>
-<script src="/resources/js/MarkerClustering.js"></script>
 <script>
 var mapOptions = {//처음시작 지도 위치
         center: new naver.maps.LatLng(37.55656455180527, 126.97233558686575),

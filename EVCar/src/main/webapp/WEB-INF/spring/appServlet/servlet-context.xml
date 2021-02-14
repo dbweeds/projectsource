@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:beans="http://www.springframework.org/schema/beans"
     xmlns:context="http://www.springframework.org/schema/context"
-    xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+    xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+ 
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
     
     <!-- Enables the Spring MVC @Controller programming model -->
@@ -24,8 +24,21 @@
     <context:component-scan base-package="com.company.controller" />
     
     <!-- fileupload 객체 생성 -->
-    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-    
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
     </beans:bean>
+   
+    <beans:bean id="LoginInterceptor" class="com.company.interceptor.AdminInterceptor"></beans:bean>
+    
+    <interceptors>
+        <interceptor>
+            <mapping path="/info/modify"/>
+            <mapping path="/info/remove"/>
+            <mapping path="/info/infoRegist"/>
+            <mapping path="/comunity/noticeRegister"/>
+            <mapping path="/comunity/noticeModify"/>
+            <mapping path="/replies/*"/>
+            <beans:ref bean="LoginInterceptor"/>
+        </interceptor>
+    </interceptors>
     
 </beans:beans>

@@ -38,19 +38,18 @@
           </div>
           <div>
             <h1 class="white-color bold-font mt-lg-5 mb-4">
-              Eco-friendly <br />
-              <span class="fables-second-text-color">Electric vehicle</span>
+              충전소 <br />
+              <span class="fables-second-text-color">전기차 충전소</span>
             </h1>
             <p
               class="fables-third-text-color mt-3 mb-5 light-font fables-header-slider-details"
             >
-              If you want to know the current model of the electric car, state
-              subsidies, all the information
+              내 주변 전기차 충전소, 궁금한 위치 주변의 전기차 충전소 위치를 알고싶다면?
             </p>
             <a
-              href="#"
+              href="/chargerMap/map"
               class="btn fables-second-border-color white-color rounded-0 px-md-4 py-2 fables-second-hover-background-color"
-              >Learn More</a
+              >더 보기</a
             >
           </div>
         </div>

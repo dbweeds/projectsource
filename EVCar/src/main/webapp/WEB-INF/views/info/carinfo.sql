@@ -106,6 +106,9 @@ select * from carinfo order by bno desc;
 select * from carinfo;
 --drop sequence seq_carinfo;
 --drop table carinfo;
+
+select thumbnail from carinfo;
+
 select * 
 from ALL_TAB_COLUMNS
 where TABLE_NAME = 'carinfo' ;
