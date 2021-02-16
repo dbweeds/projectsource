@@ -11,9 +11,9 @@ class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style
         href="../"
         class="fables-second-border-color border-bottom pb-0 d-block mb-3 mt-minus-11"
         ><img
-          src="/resources/assets/custom/images/soologo2.png"
+          src="/resources/assets/custom/images/EVCarlogo.png" 
           alt="fables template"
-      /></a>
+      /></a><!-- 기존 soologo2.png" -->
       <p class="font-15 fables-third-text-color">
         어렵게 찾았던 전기차 정보를 쉽게 모아 보여주며 사람들에게 편리하게
         정보를 알려주기위해 노력하고있습니다.

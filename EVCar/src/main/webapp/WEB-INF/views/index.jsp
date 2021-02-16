@@ -230,14 +230,11 @@
               </div>
                <div class="owl-carousel owl-theme nav-0 carousel-items-6 dots-0">
                 
+             <div> 
+                 <a href="https://www.energy.or.kr/"><img src="/resources/assets/custom/images/energy.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"></a>  
+             </div>
             <div> 
                 <a href="https://www.tesla.com/ko_KR/"> <img src="/resources/assets/custom/images/tesla.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"> </a>
-             </div>
-             <div> 
-                 <a href="https://auto.naver.com/"><img src="/resources/assets/custom/images/naver.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"></a>  
-             </div>
-             <div> 
-                  <a href="http://auto.danawa.com/"><img src="/resources/assets/custom/images/danawa.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"> </a> 
              </div>
              <div> 
                   <a href="https://www.kia.com/kr/main.html"><img src="/resources/assets/custom/images/kia.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"> </a> 
@@ -247,6 +244,9 @@
              </div>
              <div> 
                   <a href="https://www.chevrolet.co.kr/index.jsp"><img src="/resources/assets/custom/images/chevrolet.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"></a>  
+             </div>
+             <div> 
+                  <a href="http://auto.danawa.com/"><img src="/resources/assets/custom/images/danawa.png" alt="Fables Template" class="border-hover fables-partner-carousel-img"> </a> 
              </div>
           </div>
         </div>
