@@ -62,73 +62,74 @@ fieldset legend {
 <!-- 메인 컨텍츠 -->
 <div class="container">
 	<!--옵션 검색-->
-
 	<div>
 		<form action="../info/list" class="navbar-form navbar-left option " style="width: 75%;display: inline-block;">
 			<!-- .option -->
-
 			<fieldset>
 				<legend>차량검색 옵션</legend>
 				<ul>
 					<li>
 					<div style=" display: table;">
 					<div id="title" style="display: table-cell;vertical-align: middle; padding-right: 7px;">제조사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</div>
-					<div style="display: inline-block;"> 
-					    <input type="radio" name="brand" id="" value="현대"
-						<c:out value="${vo.brand=='현대'?'chacked':''}"/> />현대&nbsp; <input
-						type="radio" name="brand" id="" value="기아"
-						<c:out value="${vo.brand=='기아'?'chacked':''}"/> />기아&nbsp; <input
-						type="radio" name="brand" id="" value="쉐보레"
-						<c:out value="${vo.brand=='쉐보레'?'chacked':''}"/> />쉐보레&nbsp; <input
-						type="radio" name="brand" id="" value="테슬라"
-						<c:out value="${vo.brand=='테슬라'?'chacked':''}"/> />테슬라&nbsp;
-						<input type="radio" name="brand" id="" value="푸조"
-                        <c:out value="${vo.brand=='푸조'?'chacked':''}"/> />푸조&nbsp;<br>
-						<input type="radio" name="brand" id="" value="시트로엥"
-                        <c:out value="${vo.brand=='시트로엥'?'chacked':''}"/> />시트로엥&nbsp;
-                        <input type="radio" name="brand" id="" value="BMW"
-                        <c:out value="${vo.brand=='BMW'?'chacked':''}"/> />BMW&nbsp;
-                        <input type="radio" name="brand" id="" value="아우디"
-                        <c:out value="${vo.brand=='아우디'?'chacked':''}"/> />아우디&nbsp;
-                        <input type="radio" name="brand" id="" value="벤츠"
-                        <c:out value="${vo.brand=='벤츠'?'chacked':''}"/> />벤츠&nbsp;
-                        <input type="radio" name="brand" id="" value="르노삼성"
-                        <c:out value="${vo.brand=='르노삼성'?'chacked':''}"/> />르노삼성&nbsp;
+						<div style="display: inline-block;"> 
+						    <input type="radio" name="brand" id="" value="현대" 
+						    	<c:out value="${vo.brand=='현대'?'chacked':''}"/> />현대&nbsp; 
+							<input type="radio" name="brand" id="" value="기아" 
+								<c:out value="${vo.brand=='기아'?'chacked':''}"/> />기아&nbsp; 
+							<input type="radio" name="brand" id="" value="쉐보레" 
+								<c:out value="${vo.brand=='쉐보레'?'chacked':''}"/> />쉐보레&nbsp; 
+							<input type="radio" name="brand" id="" value="테슬라" 
+								<c:out value="${vo.brand=='테슬라'?'chacked':''}"/> />테슬라&nbsp;
+							<input type="radio" name="brand" id="" value="푸조"
+	                       		<c:out value="${vo.brand=='푸조'?'chacked':''}"/> />푸조&nbsp;<br>
+							<input type="radio" name="brand" id="" value="시트로엥"
+	                        	<c:out value="${vo.brand=='시트로엥'?'chacked':''}"/> />시트로엥&nbsp;
+	                        <input type="radio" name="brand" id="" value="BMW"
+	                        	<c:out value="${vo.brand=='BMW'?'chacked':''}"/> />BMW&nbsp;
+	                        <input type="radio" name="brand" id="" value="아우디"
+	                        	<c:out value="${vo.brand=='아우디'?'chacked':''}"/> />아우디&nbsp;
+	                        <input type="radio" name="brand" id="" value="벤츠"
+	                        	<c:out value="${vo.brand=='벤츠'?'chacked':''}"/> />벤츠&nbsp;
+	                        <input type="radio" name="brand" id="" value="르노삼성"
+	                        	<c:out value="${vo.brand=='르노삼성'?'chacked':''}"/> />르노삼성&nbsp;
+	                        </div>
                         </div>
-                        </div>
-						</li>
-					<li><label for="type" id="title" style="padding-right: 4px;">차종&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-						<input type="radio" name="type" id="" value="경차"
-                        <c:out value="${vo.type=='경차'?'chacked':''}"/> />경차&nbsp;
-						<input type="radio" name="type" id="" value="소형차"
-						<c:out value="${vo.type=='소형차'?'chacked':''}"/> />소형&nbsp; <input
-						type="radio" name="type" id="" value="중형차"
-						<c:out value="${vo.type=='중형차'?'chacked':''}"/> />중형&nbsp; <input
-						type="radio" name="type" id="" value="대형차"
-						<c:out value="${vo.type=='대형차'?'chacked':''}"/> />대형&nbsp;
-						<input
-                        type="radio" name="type" id="" value="SUV"
-                        <c:out value="${vo.type=='SUV'?'chacked':''}"/> />SUV&nbsp;</li>
-					<li><label for="chargeType" id="title" style="padding-right: 4px;">충전 방식 :</label> <input
-						type="radio" name="chargetype" id="" value="DC콤보"
-						<c:out value="${vo.chargetype=='DC콤보'?'chacked':''}"/> />DC콤보(북미,아시아)&nbsp;
+					</li>
+					
+					<li>
+						<label for="type" id="title" style="padding-right: 4px;">차종&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+							<input type="radio" name="type" id="" value="경차"
+	                       		<c:out value="${vo.type=='경차'?'chacked':''}"/> />경차&nbsp;
+							<input type="radio" name="type" id="" value="소형차"
+								<c:out value="${vo.type=='소형차'?'chacked':''}"/> />소형&nbsp; 
+							<input type="radio" name="type" id="" value="중형차"
+								<c:out value="${vo.type=='중형차'?'chacked':''}"/> />중형&nbsp;
+							<input type="radio" name="type" id="" value="대형차"
+								<c:out value="${vo.type=='대형차'?'chacked':''}"/> />대형&nbsp;
+							<input type="radio" name="type" id="" value="SUV"
+	                        	<c:out value="${vo.type=='SUV'?'chacked':''}"/> />SUV&nbsp;
+                    </li>
+					<li>
+						<label for="chargeType" id="title" style="padding-right: 4px;">충전 방식 :</label>
+						<input type="radio" name="chargetype" id="" value="DC콤보"
+							<c:out value="${vo.chargetype=='DC콤보'?'chacked':''}"/> />DC콤보(북미,아시아)&nbsp;
 						<input type="radio" name="chargetype" id="" value="AC상"
-						<c:out value="${vo.chargetype=='AC상'?'chacked':''}"/> />AC상(유럽)&nbsp;
+							<c:out value="${vo.chargetype=='AC상'?'chacked':''}"/> />AC상(유럽)&nbsp;
 					</li>
 				</ul>
-				<input type="text" name="keyword" /> <input type="hidden"
-					name="pageNum" value="1" /> <input type="hidden" name="amount"
-					value="6" />
+				<input type="text" name="keyword" /> 
+				<input type="hidden" name="pageNum" value="1"/> 
+				<input type="hidden" name="amount" value="6"/>
 			</fieldset>
 			<button class="btn btn-success" type="submit">검색</button>
 			<button class="btn btn-default" type="button" onclick="location.href='../info/list'">취소</button>
 		</form>
 		<div class="mt-4" style="width: 24%;display: inline-block;">
+        
         <!--인기글-->
-        <h2
-            class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color 
-            fables-second-before pl-3 mb-4">인기
-            모델</h2>
+        <h2 class="position-relative font-20 semi-font fables-blog-category-head fables-main-text-color fables-second-before pl-3 mb-4">
+        인기 모델
+        </h2>
         <div id="carcount">
         </div>
     </div>
@@ -137,15 +138,14 @@ fieldset legend {
 	</div>
 	<div align="right" id="updateButton">
 		<!-- 모델 추가 -->
-		<button type="button" class="btn btn-warning" 
-			onclick="location.href='../info/infoRegist'">추가</button>
+		<button type="button" class="btn btn-warning" onclick="location.href='../info/infoRegist'">추가</button>
 	</div>
 	<!-- 리스트 반복문 -->
 	<c:forEach var="vo" items="${list}" varStatus="status">
 		<div class="row mt-4 my-md-5 list"
 			style="width: 50%; display: inline-block; height: 200px; margin-right: 10px">
 			<div class="col-12 mb-4 mb-lg-5" style="margin: 0 20px">
-				<div class="image-container">
+				<div class="image-container zoomIn-effect">
 					<a href="count?bno=${vo.bno}"><img
 						src="/resources/assets/custom/infoimage/${vo.thumbnail}" alt=""
 						class="w-100" /></a>
