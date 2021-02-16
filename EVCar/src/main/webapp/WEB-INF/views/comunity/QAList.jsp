@@ -143,10 +143,6 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var admin = '<%=(String)session.getAttribute("admin")%>';
-		if(admin == "null"){
-            $("#regBtn").hide();
-        }
 	    var result = '<c:out value="${result}"/>';
 
 		checkModal(result);

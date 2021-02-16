@@ -47,7 +47,18 @@
 					style="overflow: auto; resize: none; border: none;"
 					readonly="readonly"><c:out value="${notice.content}" /></textarea>
 			</div>
-
+			<div class="row">
+            	<div class="col-lg-12">
+            		<div class="panel panel-default">
+            			<div class="panel-heading">다운로드</div>
+            			<div class="panel-body">
+            				<div class="uploadResult">
+            					<ul></ul>
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+            </div>  
 
 			<div style="float: right; margin-bottom:20px">
 				<button data-oper='noticeModify' class="btn btn-primary" id="modify">수정</button>
@@ -64,6 +75,7 @@
 </div>
 <!-- end panel -->
 <script type="text/javascript">
+	var bno = $("input[name='bno']").val();
 	$(document).ready(function() {
 	    
 		var admin = '<%=(String)session.getAttribute("admin")%>';
@@ -85,6 +97,32 @@
 			}
 
 		});
+		var uploadResult = $(".uploadResult ul");
+		
+		$.getJSON({
+			url:"/comunity/getFile", 
+			data:{bno:bno},
+			success:function(data) {
+				console.log(data);
+				$("input[name='uploadFile']").val("");
+				var str = "";
+				$(data).each(function(idx, obj) {
+						str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'style='display:inline-block'>";
+						str += "<div>" + obj.fileName + "</a>"
+						str += "<button type='button' class='btn btn-warning btn-circle'>";
+						str += "<i class='fa fa-cloud-download' aria-hidden='true'></i>"
+						str += "</button>";
+						str += "</div></li>"
+						$(".uploadResult ul").append(str);
+						str = "";
+				})
+		}});
+		$(".uploadResult").on("click","button",function(){
+			var targetLi = $(this).closest("li");
+			var path = encodeURIComponent(targetLi.data("path") + "\\" + targetLi.data("uuid") + "_" + targetLi.data("filename"));
+			location.href="/download?fileName="+path;
+		})//x버튼 클릭 이벤트종료
+		
 	});
 </script>
 <%@include file="../includes/footer.jsp"%>

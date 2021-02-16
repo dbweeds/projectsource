@@ -15,6 +15,8 @@ create table notice_board (
 alter table notice_board add constraint pk_board primary key(bno);
 
 select * from notice_board;
+select * from notice_attach;
+alter table notice_attach drop column filetype;
 
 --더미값
 insert into notice_board (bno, title, writer, content)

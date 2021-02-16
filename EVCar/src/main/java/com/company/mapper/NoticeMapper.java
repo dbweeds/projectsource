@@ -3,6 +3,7 @@ package com.company.mapper;
 import java.util.List;
 
 import com.company.domain.Criteria;
+import com.company.domain.FileAttach;
 import com.company.domain.NoticeVO;
 
 public interface NoticeMapper {
@@ -25,5 +26,11 @@ public interface NoticeMapper {
 	public int update(NoticeVO notice);
 	
 	public boolean plusCnt(int bno);
+	
+	public int setFile(FileAttach fVo);
+
+	public List<FileAttach> getFileList(int bno);
+	
+	public int deleteFile(int bno);
 	
 }

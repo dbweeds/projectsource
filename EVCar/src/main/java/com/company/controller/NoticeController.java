@@ -1,6 +1,12 @@
 package com.company.controller;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.company.domain.Criteria;
+import com.company.domain.FileAttach;
 import com.company.domain.NoticeVO;
 import com.company.domain.PageDTO;
 import com.company.service.NoticeService;
@@ -83,4 +90,10 @@ public class NoticeController {
 		 }
 		 return "redirect:/comunity/noticeList";
 		 }
+	
+	@GetMapping(value ="/getFile", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<FileAttach>> getFile(int bno){
+		List<FileAttach> list = service.getFileList(bno);
+		return new ResponseEntity<List<FileAttach>>(list,HttpStatus.OK);
+	}
 } 

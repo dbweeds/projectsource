@@ -41,6 +41,22 @@
 				<div class="inputInfo">문의하실 내용을 입력해주세요</div>
 				<textarea class="form-control" rows="9" name="content" id="content"></textarea>
 			</div>
+			 <div class="row">
+            	<div class="col-lg-12">
+            		<div class="panel panel-default">
+            			<div class="panel-heading">File Attach</div>
+            			<div class="panel-body">
+            				<div class="form-group uploadDiv">
+            					<input type="file" name="uploadFile" id="" multiple/>
+            				</div>
+            				<div class="uploadResult">
+            					<ul></ul>
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+            </div>  
+			
 			<div class="button">
 				<button type="button" data-oper='QARegister' class="btn btn-primary">작성</button>
 				<button type="button"  data-oper='QAList'class="btn btn-light">공지사항 목록</button>
@@ -56,6 +72,38 @@
 <script src="/resources/js/additional-methods.js"></script>
 <script src="/resources/js/registerValidate.js"></script>
 <script type="text/javascript">
+//파일버튼이 클릭되어 변화가 일어나는 경우
+//현재 목록의 파일을 서버로 보내서 저장하기
+$("input[type='file']").change(function() {
+	console.log("업로드 호출");
+	
+	var inputFile = $("input[name='uploadFile']");
+	console.log(inputFile);
+	//첨부 파일 목록
+	var files = inputFile[0].files;
+
+	//<form> ~ </form> 대체로 ajax로 데이터를 쉽게 전송할 수 있도록 해줌
+	var formData = new FormData();
+	//객체 안에 요소 추가
+	for (var i = 0; i < files.length; i++) {
+		formData.append("uploadFile", files[i]);
+	}
+	$.ajax({
+		url: '/uploadAjax',
+		type: 'post',
+		processData: false,//데이터를 query string 형태로 보낼것인지 결정(기본값은 application/x-www-form-urlencoded임)
+		contentType: false,//기본값은 application/x-www-form-urlencoded임(파일첨부임으로 multipart/form-data로 보내야 함)
+		data: formData,
+		success: function(result) {
+			console.log(result);
+			$("input[name='uploadFile']").val("");
+		},
+		error: function(xhr, statues, error) {
+			console.log(status);
+		}
+	});
+})
+
 $(document).ready(function(){
 	var formObj = $("form");
 
@@ -94,4 +142,6 @@ $(document).ready(function(){
         }
     });
 });
+
+
 </script>

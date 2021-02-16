@@ -1,6 +1,7 @@
 package com.company.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -13,5 +14,7 @@ public class NoticeVO {
 	private Date regDate;
 	private Date updateDate;
 	private int readCnt;
+	
+	private List<FileAttach> fVo;
 }
 

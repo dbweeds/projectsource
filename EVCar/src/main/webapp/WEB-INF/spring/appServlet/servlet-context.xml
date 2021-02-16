@@ -31,6 +31,7 @@
     
     <interceptors>
         <interceptor>
+
             <mapping path="/info/modify"/>
             <mapping path="/info/remove"/>
             <mapping path="/info/infoRegist"/>

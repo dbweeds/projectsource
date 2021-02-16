@@ -327,6 +327,8 @@ function showList(page){
 
 
   //댓글 조회 클릭 이벤트 처리 
+if(admin != "null"){
+  	
     $(".chat").on("click", "li", function(e){
       
       var rno = $(this).data("rno");
@@ -347,6 +349,7 @@ function showList(page){
             
       });
     });
+}
   
     
 /*     modalModBtn.on("click", function(e){

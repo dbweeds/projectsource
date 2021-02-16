@@ -15,7 +15,12 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+	
+	<!-- RequestContextHolder -->
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>

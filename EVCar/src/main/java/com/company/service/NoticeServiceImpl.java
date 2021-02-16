@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.company.domain.Criteria;
+import com.company.domain.FileAttach;
 import com.company.domain.NoticeVO;
 import com.company.mapper.NoticeMapper;
 
@@ -22,12 +24,18 @@ public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private NoticeMapper mapper;
 
+	@Transactional
 	@Override
 	public void register(NoticeVO board) {
 
 		log.info("register......" + board);
 
 		mapper.insertSelectKey(board);
+		if (board.getFVo() != null || board.getFVo().size() > 0) {
+			board.getFVo().forEach(attach -> {
+				attach.setBno(board.getBno());
+				mapper.setFile(attach);	});
+		}	
 	}
 
 	@Override
@@ -38,30 +46,28 @@ public class NoticeServiceImpl implements NoticeService {
 		return mapper.read(bno);
 
 	}
-
+	@Transactional
 	@Override
 	public boolean modify(NoticeVO board) {
-
+		mapper.deleteFile(board.getBno());
+		if (board.getFVo() != null || board.getFVo().size() > 0) {
+			board.getFVo().forEach(attach -> {
+				attach.setBno(board.getBno());
+				mapper.setFile(attach);	});
+		}	
 		log.info("modify......" + board);
-
+		
 		return mapper.update(board) == 1;
 	}
-
+	@Transactional
 	@Override
 	public boolean remove(int bno) {
-
+		mapper.deleteFile(bno);
 		log.info("remove...." + bno);
 
 		return mapper.delete(bno) == 1;
 	}
 
-	// @Override
-	// public List<NoticeVO> getList() {
-	//
-	// log.info("getList..........");
-	//
-	// return mapper.getList();
-	// }
 
 	@Override
 	public List<NoticeVO> getList(Criteria cri) {
@@ -79,6 +85,12 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int getTotalCount(Criteria cri) {
 		return mapper.getTotalCount(cri);
+	}
+
+	@Override
+	public List<FileAttach> getFileList(int bno) {
+		
+		return mapper.getFileList(bno);
 	}
 
 }
