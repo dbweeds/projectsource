@@ -81,7 +81,7 @@ var replyService = (function() {
 
 	function update(reply, callback, error) {
 
-		console.log("RNO: " + reply.rno);
+		console.log("reply js RNO: " + reply.rno);
 
 		$.ajax({
 			type : 'put',
@@ -103,7 +103,7 @@ var replyService = (function() {
 
 	function get(rno, callback, error) {
 
-		$.get("/replies/" + rno + ".json", function(result) {
+		$.get("/replies/" + rno, function(result) {
 
 			if (callback) {
 				callback(result);

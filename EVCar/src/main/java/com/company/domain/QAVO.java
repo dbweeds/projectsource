@@ -14,6 +14,7 @@ public class QAVO {
 	private Date regDate;
 	private Date updateDate;
 	private int readCnt;
+	private int replyCnt;
 	
 	
 	//비밀번호 확인

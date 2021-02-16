@@ -42,9 +42,8 @@ public class ReplyController {
 	}
 
 	@GetMapping(value = "/{rno}", 
-			produces = { MediaType.APPLICATION_XML_VALUE, 
-					     MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<ReplyVO> get(@PathVariable("rno") Long rno) {
+			produces = {MediaType.APPLICATION_JSON_UTF8_VALUE })
+	public ResponseEntity<ReplyVO> get(@PathVariable("rno") int rno) {
 
 		log.info("get: " + rno);
 
@@ -56,7 +55,7 @@ public class ReplyController {
 					MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> modify(
 			 @RequestBody ReplyVO vo, 
-			 @PathVariable("rno") Long rno) {
+			 @PathVariable("rno") int rno) {
 
 		vo.setRno(rno);
 
@@ -70,7 +69,7 @@ public class ReplyController {
 	}
 
 	@DeleteMapping(value = "/{rno}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
+	public ResponseEntity<String> remove(@PathVariable("rno") int rno) {
 
 		log.info("remove: " + rno);
 
@@ -86,7 +85,7 @@ public class ReplyController {
 //					 MediaType.APPLICATION_JSON_UTF8_VALUE })
 //	 public ResponseEntity<List<ReplyVO>> getList(
 //			 @PathVariable("page") int page,
-//			 @PathVariable("bno") Long bno) {
+//			 @PathVariable("bno") int bno) {
 //	
 //		 
 //		 log.info("getList.................");
@@ -99,7 +98,7 @@ public class ReplyController {
 	@GetMapping(value = "/pages/{bno}/{page}", 
 			produces = { MediaType.APPLICATION_XML_VALUE,
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("bno") Long bno) {
+	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("bno") int bno) {
 
 		Criteria cri = new Criteria(page, 10);
 		

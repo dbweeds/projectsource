@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.company.domain.Criteria;
 import com.company.domain.ReplyPageDTO;
 import com.company.domain.ReplyVO;
+import com.company.mapper.QAMapper;
 import com.company.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +21,8 @@ public class ReplyServiceImpl implements ReplyService {
 
   @Autowired
   private ReplyMapper mapper;
+  @Autowired
+  private QAMapper qMapper;
 
   
   
@@ -27,13 +30,13 @@ public class ReplyServiceImpl implements ReplyService {
   public int register(ReplyVO vo) {
 
     log.info("register......" + vo);
-
+    qMapper.updateReplyCnt(vo.getBno());
     return mapper.insert(vo);
 
   }
 
   @Override
-  public ReplyVO get(Long rno) {
+  public ReplyVO get(int rno) {
 
     log.info("get......" + rno);
 
@@ -51,16 +54,17 @@ public class ReplyServiceImpl implements ReplyService {
   }
 
   @Override
-  public int remove(Long rno) {
-
+  public int remove(int rno) {
     log.info("remove...." + rno);
+    int bno = qMapper.getBno(rno);
+    qMapper.removeReplyCnt(bno);
 
     return mapper.delete(rno);
 
   }
 
   @Override
-  public List<ReplyVO> getList(Criteria cri, Long bno) {
+  public List<ReplyVO> getList(Criteria cri, int bno) {
 
     log.info("get Reply List of a Board " + bno);
 
@@ -69,7 +73,7 @@ public class ReplyServiceImpl implements ReplyService {
   }
   
   @Override
-  public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+  public ReplyPageDTO getListPage(Criteria cri, int bno) {
        
     return new ReplyPageDTO(
         mapper.getCountByBno(bno), 

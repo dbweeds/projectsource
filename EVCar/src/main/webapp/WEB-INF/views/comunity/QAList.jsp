@@ -76,7 +76,7 @@
 						<tr class="contentTr">
 							<td><c:out value="${QA.bno}" /></td>
 							<td><a href='${QA.bno}' class='move'><c:out
-										value="${QA.title}" /></a></td>
+										value="${QA.title} (${QA.replyCnt })" /></a></td>
 							<td><c:out value="${QA.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${QA.regDate}" /></td>

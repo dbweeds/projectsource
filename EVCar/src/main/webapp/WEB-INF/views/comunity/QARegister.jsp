@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 				formObj.submit(); 
 			});
-    $('.main i').on('click',function(){
+	$('.main i').on('click',function(){
         $('input').toggleClass('active');
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")

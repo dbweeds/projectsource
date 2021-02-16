@@ -39,6 +39,26 @@
 		where bno = #{bno}
 	</update>
 	
+	
+	<!-- 답글 갯수 -->
+	<select id="replyCnt" resultType="int">
+	select count(*) from QA_reply where bno = #{bno}
+	</select>
+	
+	<!-- 댓글 개수 업데이트 -->
+	<update id="updateReplyCnt">
+		update QA_board set replyCnt = replyCnt+1 where bno=#{bno}
+	</update>
+	
+	<!-- 삭제 시 댓글수 -1 -->
+	<update id="removeReplyCnt">
+		update QA_board set replyCnt = replyCnt-1 where bno=#{bno}
+	</update>
+	
+	<select id="getBno" resultType="int">
+		select bno from QA_reply where rno=#{rno}
+	</select>
+	
 	<!-- 조회수 -->
 	<update id="plusCnt" parameterType="int">
 		update QA_board
@@ -61,11 +81,11 @@
 		resultType="com.company.domain.QAVO">
   <![CDATA[
   select 
-    bno, title, content, writer, regDate, updateDate, readCnt
+    bno, title, content, writer, regDate, updateDate, readCnt, replyCnt
   from 
       (
       select /*+INDEX_DESC(QA_board pk2_board) */
-        rownum rn, bno, title, content, writer, regDate, updateDate, readCnt
+        rownum rn, bno, title, content, writer, regDate, updateDate, readCnt, replyCnt
       from 
         QA_board
       where 
