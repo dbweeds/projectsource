@@ -26,12 +26,11 @@
             <p
               class="fables-third-text-color mt-3 mb-5 light-font fables-header-slider-details"
             >
-              전기차의 현재 운행 가능한 모델,국가 보조금, 모든 정보들을 알고
-              싶다면
+              전기차가 모든것이 궁금하다면?
             </p>
 
             <a
-              href="#"
+              href="int/int1"
               class="btn fables-second-border-color white-color rounded-0 px-md-4 py-2 fables-second-hover-background-color"
               >더 보기</a
             >
