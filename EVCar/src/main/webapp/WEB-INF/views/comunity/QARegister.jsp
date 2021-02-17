@@ -74,35 +74,6 @@
 <script type="text/javascript">
 //파일버튼이 클릭되어 변화가 일어나는 경우
 //현재 목록의 파일을 서버로 보내서 저장하기
-$("input[type='file']").change(function() {
-	console.log("업로드 호출");
-	
-	var inputFile = $("input[name='uploadFile']");
-	console.log(inputFile);
-	//첨부 파일 목록
-	var files = inputFile[0].files;
-
-	//<form> ~ </form> 대체로 ajax로 데이터를 쉽게 전송할 수 있도록 해줌
-	var formData = new FormData();
-	//객체 안에 요소 추가
-	for (var i = 0; i < files.length; i++) {
-		formData.append("uploadFile", files[i]);
-	}
-	$.ajax({
-		url: '/uploadAjax',
-		type: 'post',
-		processData: false,//데이터를 query string 형태로 보낼것인지 결정(기본값은 application/x-www-form-urlencoded임)
-		contentType: false,//기본값은 application/x-www-form-urlencoded임(파일첨부임으로 multipart/form-data로 보내야 함)
-		data: formData,
-		success: function(result) {
-			console.log(result);
-			$("input[name='uploadFile']").val("");
-		},
-		error: function(xhr, statues, error) {
-			console.log(status);
-		}
-	});
-})
 
 $(document).ready(function(){
 	var formObj = $("form");
@@ -131,7 +102,7 @@ $(document).ready(function(){
 
 				formObj.submit(); 
 			});
-    $('.main i').on('click',function(){
+	$('.main i').on('click',function(){
         $('input').toggleClass('active');
         if($('input').hasClass('active')){
             $(this).attr('class',"fa fa-eye-slash fa-lg")

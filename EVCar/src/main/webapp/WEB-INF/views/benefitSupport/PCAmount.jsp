@@ -19,7 +19,7 @@
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
 				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item"><a href="../"
+				<li class="breadcrumb-item"><a href="test"
                     class="fables-second-text-color">보조금지원 및
 					해택</a></li>
 				<li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>구매비용계산</b></li>
@@ -40,11 +40,8 @@
         <h1 class="fables-second-text-color font-24 semi-font my-3 mt-md-0">구매
             금액 계산</h1>
         <p class="fables-forth-text-color font-14">
-        <li>전기차 구매의 지역별, 모델별로 금액을 계산해보기</li>
-
-
-
-        </p>
+        전기차 구매의 지역별, 모델별로 금액을 계산해보기
+       </p>
 
 
     </div>

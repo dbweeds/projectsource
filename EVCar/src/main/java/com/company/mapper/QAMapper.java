@@ -27,8 +27,13 @@ public interface QAMapper {
 	public int update(QAVO QA);
 	
 	public boolean plusCnt(int bno);
-	public int updateReplyCnt(@Param("amount")int amount, @Param("bno")int bno);
+	public int updateReplyCnt(int bno);
+	public int getBno(int rno);
+	public int removeReplyCnt(int bno);
 	
 	public int checkPw(@Param("password") int password,@Param("bno") int bno);
+	
+	public int replyCnt(QAVO QA);
+	
 	
 }

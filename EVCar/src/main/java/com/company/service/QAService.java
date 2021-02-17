@@ -23,4 +23,6 @@ public interface QAService {
 	
 	public boolean checkPw(int password,int bno);
 	
+	public int replyCnt(QAVO QA);
+	
 }

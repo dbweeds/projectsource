@@ -6,21 +6,24 @@
 <%@include file="../includes/subHeader.jsp"%>
 
 <div class="fables-light-background-color">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="fables-breadcrumb breadcrumb px-0 py-3">
-                <li class="breadcrumb-item"><a href="../"
-                    class="fables-second-text-color">Home</a></li>
-                <li class="breadcrumb-item"><a href="QAList">Q&A</a></li>
-                <li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>${QA.writer} : ${QA.title}</b></li>
-            </ol>
-        </nav>
-    </div>
+	<div class="container">
+		<nav aria-label="breadcrumb">
+			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
+				<li class="breadcrumb-item"><a href="../"
+					class="fables-second-text-color">Home</a></li>
+				<li class="breadcrumb-item"><a href="QAList">Q&A</a></li>
+				<li class="breadcrumb-item active" aria-current="page"
+					style="color: black;"><b>${QA.writer} : ${QA.title}</b></li>
+			</ol>
+		</nav>
+	</div>
 </div>
 <div class="row">
-	<div class="container">
-		<h2 style="font-weight: bolder; margin: 40px; margin-left: 5px; padding-bottom:20px">문의사항</h2>
-		<form role="form" action="/comunity/QAModify" method="get" style="margin-bottom:100px">
+	<div class="container body">
+		<h2
+			style="font-weight: bolder; margin: 40px; margin-left: 5px; padding-bottom: 20px">문의사항</h2>
+		<form role="form" action="/comunity/QAModify" method="get"
+			style="margin-bottom: 100px">
 
 			<div
 				style="border-bottom: 1px dotted #bbb; border-top: 1px solid #bbb;">
@@ -60,27 +63,35 @@
 			</div>
 		</form>
 		<!-- 댓글 -->
-		<div class='row' >
+		<div class='row'>
 
 			<div class="col-lg-12">
 
 				<!-- /.panel -->
-				<div class="panel panel-default" style="margin-bottom:30px; border: 2px solid #495057; padding:10px; border-radius:20px">
+				<div class="panel panel-default"
+					style="margin-bottom: 30px; border: 2px solid #495057; padding: 10px; border-radius: 20px">
 					<!--       <div class="panel-heading">
         <i class="fa fa-comments fa-fw"></i> Reply
       </div> -->
 
 					<div class="panel-heading">
 						<i class="fa fa-comments fa-fw"></i> 답변
-						<button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>답변 작성</button>
 					</div>
 
 
 					<!-- /.panel-heading -->
 					<div class="panel-body">
-
+						<div>
+							<textarea id="replyArea" rows="5" style="width: 90%; resize: none"></textarea>
+							<button id='addReplyBtn'
+								class='btn btn-primary btn-xs pull-right' style="margin-bottom:40px">답변
+								작성</button>
+							<button id='addModifyBtn'
+							class='btn btn-primary btn-xs pull-right' style="margin-bottom:40px;display:none">답변
+							수정</button>
+						</div>
 						<ul class="chat">
-
+						
 						</ul>
 						<!-- ./ end ul -->
 					</div>
@@ -93,54 +104,12 @@
 			</div>
 			<!-- ./ end row -->
 		</div>
-
-
-
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Replyer</label> <input class="form-control" name='replyer'
-								value='replyer'>
-						</div>
-						<div class="form-group">
-							<label>Reply</label> <input class="form-control" name='reply'
-								value='New Reply!!!!'>
-						</div>
-						<div class="form-group">
-							<label>Reply Date</label> <input class="form-control"
-								name='replyDate' value='2018-01-01 13:13'>
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
-						<button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
-						<button id='modalRegisterBtn' type="button"
-							class="btn btn-primary">Register</button>
-						<button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
 	</div>
-	<!--  end panel-body -->
 </div>
 
 
 
-<%@include file="../includes/footer.jsp"%>
+
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 
 <script>
@@ -160,10 +129,6 @@ function showList(page){
 	  console.log("show list " + page);
     
     replyService.getList({bno:bnoValue,page: page|| 1 }, function(replyCnt, list) {
-      
-    console.log("replyCnt: "+ replyCnt );
-    console.log("list: " + list);
-    console.log(list);
     
     if(page == -1){
       pageNum = Math.ceil(replyCnt/10.0);
@@ -182,7 +147,7 @@ function showList(page){
        str +="  <div><div class='header'><strong class='primary-font'>["
     	   +list[i].rno+"] "+list[i].replyer+"</strong>"; 
        str +="    <small class='pull-right text-muted'>"
-           +replyService.displayTime(list[i].replyDate)+"</small></div>";
+           +replyService.displayTime(list[i].replyDate)+"</small>&nbsp&nbsp<span class='fas fa-times' id='replyDeleteBtn' data-rno='"+list[i].rno+"'></span>&nbsp<a id='replyModifyBtn'><i class='fas fa-edit' data-rno='"+list[i].rno+"'></i></a></div>";
        str +="    <p>"+list[i].reply+"</p></div></li>";
      }
      
@@ -250,230 +215,98 @@ function showList(page){
        
        showList(pageNum);
      });     
-
     
-/*     function showList(page){
-      
-      replyService.getList({bno:bnoValue,page: page|| 1 }, function(list) {
-        
-        var str="";
-       if(list == null || list.length == 0){
-        
-        replyUL.html("");
-        
-        return;
-      }
-       for (var i = 0, len = list.length || 0; i < len; i++) {
-           str +="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-           str +="  <div><div class='header'><strong class='primary-font'>"+list[i].replyer+"</strong>"; 
-           str +="    <small class='pull-right text-muted'>"+replyService.displayTime(list[i].replyDate)+"</small></div>";
-           str +="    <p>"+list[i].reply+"</p></div></li>";
-         }
-
-
-    replyUL.html(str);
-
-      });//end function
-      
-   }//end showList */
-   
-    var modal = $(".modal");
-    var modalInputReply = modal.find("input[name='reply']");
-    var modalInputReplyer = modal.find("input[name='replyer']");
-    var modalInputReplyDate = modal.find("input[name='replyDate']");
-    
-    var modalModBtn = $("#modalModBtn");
-    var modalRemoveBtn = $("#modalRemoveBtn");
-    var modalRegisterBtn = $("#modalRegisterBtn");
-    
-    $("#modalCloseBtn").on("click", function(e){
-    	
-    	modal.modal('hide');
-    });
-    
-    $("#addReplyBtn").on("click", function(e){
-      
-      modal.find("input").val("");
-      modalInputReplyDate.closest("div").hide();
-      modal.find("button[id !='modalCloseBtn']").hide();
-      
-      modalRegisterBtn.show();
-      
-      $(".modal").modal("show");
-      
-    });
+    var replyModifyBtn = $("#replyModifyBtn");
+    var replyDeleteBtn = $("#replyDeleteBtn");
+    var addReplyBtn = $("#addReplyBtn");
     
 
-    modalRegisterBtn.on("click",function(e){
+    addReplyBtn.on("click",function(e){
       
       var reply = {
-            reply: modalInputReply.val(),
-            replyer:modalInputReplyer.val(),
+            reply: $("#replyArea").val(),
+            replyer:"Admin", //어드민으로 고정
             bno:bnoValue
           };
       replyService.add(reply, function(result){
         
         alert(result);
-        
-        modal.find("input").val("");
-        modal.modal("hide");
-        
-        //showList(1);
+
         showList(-1);
         
       });
       
     });
-
-
-  //댓글 조회 클릭 이벤트 처리 
-if(admin != "null"){
-  	
-    $(".chat").on("click", "li", function(e){
-      
-      var rno = $(this).data("rno");
-      
-      replyService.get(rno, function(reply){
-      
-        modalInputReply.val(reply.reply);
-        modalInputReplyer.val(reply.replyer);
-        modalInputReplyDate.val(replyService.displayTime( reply.replyDate))
-        .attr("readonly","readonly");
-        modal.data("rno", reply.rno);
-        
-        modal.find("button[id !='modalCloseBtn']").hide();
-        modalModBtn.show();
-        modalRemoveBtn.show();
-        
-        $(".modal").modal("show");
-            
-      });
-    });
-}
-  
     
-/*     modalModBtn.on("click", function(e){
-      
-      var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
-      
-      replyService.update(reply, function(result){
-            
-        alert(result);
-        modal.modal("hide");
-        showList(1);
-        
-      });
-      
-    });
 
-    modalRemoveBtn.on("click", function (e){
-    	  
-  	  var rno = modal.data("rno");
-  	  
-  	  replyService.remove(rno, function(result){
-  	        
-  	      alert(result);
-  	      modal.modal("hide");
-  	      showList(1);
-  	      
-  	  });
-  	  
-  	}); */
+  	$(".chat").on("click","li div div span",function(e){
+  		e.stopPropagation();
 
-    modalModBtn.on("click", function(e){
-    	  
-   	  var reply = {rno:modal.data("rno"), reply: modalInputReply.val()};
-   	  
-   	  replyService.update(reply, function(result){
-   	        
-   	    alert(result);
-   	    modal.modal("hide");
-   	    showList(pageNum);
-   	    
-   	  });
-   	  
-   	});
-
-
-   	modalRemoveBtn.on("click", function (e){
-   	  
-   	  var rno = modal.data("rno");
+   	  var rno = $(this).data("rno");
    	  
    	  replyService.remove(rno, function(result){
    	        
    	      alert(result);
-   	      modal.modal("hide");
    	      showList(pageNum);
    	      
    	  });
    	  
    	});
+  	
+  	
+  	//수정하기 위한 정보 가져오기
+  	$(".chat").on("click","li div div a i",function(e){
+  		
+  		e.stopPropagation();
+     	  
+  		 var rno = $(this).data("rno");
+  		 console.log("댓글 수정"+rno);
+  		 
+  		 
+  		$("#addReplyBtn").css("display","none");
+  		$("#addModifyBtn").css("display","");
+  		 
+     	  
+   	  replyService.get(rno, function(result){
+   	    console.log(result); 	
+   	    
+   	    $("#replyArea").html(result.reply);
+   	 	$("#replyArea").attr("data-rno",rno);
+   	  
+   	    
+   		 //replyService.update(reply, function(result){
+        
+         showList(pageNum);
+  		 
+         
+      // });
+   	  });
+   	  
+   	});
+  	
+  	//댓글 수정
+  	$("#addModifyBtn").click(function(){
+  		var reply=$("#replyArea").val();
+  		var rno=$("#replyArea").data("rno");
+  		
+  		var reply = {rno, reply};
+  		
+  		console.log("rno"+rno);
+  		console.log("replyupadate"+reply);  		
+  		
+  		
+  			
+  		 replyService.update(reply, function(result){
+  			$("#addReplyBtn").css("display","");
+  	  		$("#addModifyBtn").css("display","none");
+  	  		$("#replyArea").val("");
+  	  		alert(result);
+  	        showList(pageNum);	  	      
+  		});		
 
- 
+  	});
 });
 
-</script>
-
-
-
-<script>
-
-/* console.log("===============");
-console.log("JS TEST");
-
-var bnoValue = '<c:out value="${board.bno}"/>'; */
-
-//for replyService add test
-/* replyService.add(
-    
-    {reply:"JS Test", replyer:"tester", bno:bnoValue}
-    ,
-    function(result){ 
-      alert("RESULT: " + result);
-    }
-); */
-
-
-//reply List Test
-/* replyService.getList({bno:bnoValue, page:1}, function(list){
-    
-	  for(var i = 0,  len = list.length||0; i < len; i++ ){
-	    console.log(list[i]);
-	  }
-});
- */
-
- 
-/*  //17번 댓글 삭제 테스트 
- replyService.remove(17, function(count) {
-
-   console.log(count);
-
-   if (count === "success") {
-     alert("REMOVED");
-   }
- }, function(err) {
-   alert('ERROR...');
- });
- */
- 
-
-//12번 댓글 수정 
-/* replyService.update({
-  rno : 12,
-  bno : bnoValue,
-  reply : "Modified Reply...."
-}, function(result) {
-
-  alert("수정 완료...");
-
-});  
- */
-
-</script>
-
-<!-- 수정, 목록 버튼이동 -->
-<script type="text/javascript">
 $(document).ready(function() {
 
 	var formObj = $("form");
@@ -491,3 +324,4 @@ $(document).ready(function() {
 	});
 });
 </script>
+<%@include file="../includes/footer.jsp"%>

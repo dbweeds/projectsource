@@ -31,13 +31,13 @@
     
     <interceptors>
         <interceptor>
-
             <mapping path="/info/modify"/>
             <mapping path="/info/remove"/>
             <mapping path="/info/infoRegist"/>
             <mapping path="/comunity/noticeRegister"/>
             <mapping path="/comunity/noticeModify"/>
             <mapping path="/replies/*"/>
+            <exclude-mapping path="/resources/**"/>
             <beans:ref bean="LoginInterceptor"/>
         </interceptor>
     </interceptors>

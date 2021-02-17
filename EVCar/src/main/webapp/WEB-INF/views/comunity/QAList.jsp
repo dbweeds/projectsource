@@ -76,7 +76,7 @@
 						<tr class="contentTr">
 							<td><c:out value="${QA.bno}" /></td>
 							<td><a href='${QA.bno}' class='move'><c:out
-										value="${QA.title}" /></a></td>
+										value="${QA.title} (${QA.replyCnt })" /></a></td>
 							<td><c:out value="${QA.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${QA.regDate}" /></td>
@@ -143,13 +143,11 @@
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-	    var result = '<c:out value="${result}"/>';
-
-		checkModal(result);
-
-		history.replaceState({}, null, null);
-
-		function checkModal(result) {
+		var admin = '<%=(String) session.getAttribute("admin")%>';
+						var result = '<c:out value="${result}"/>';
+						checkModal(result);
+						history.replaceState({}, null, null);
+						function checkModal(result) {
 
 							if (result === '' || history.state) {
 								return;
@@ -185,19 +183,27 @@
 									actionForm.submit();
 								});
 
-						$(".move").on("click",function(e) {
+						$(".move")
+								.on(
+										"click",
+										function(e) {
 
-							e.preventDefault();
-							actionForm.append("<input type='hidden' name='bno' value='"
-												+ $(this).attr("href")+ "'>");
-							  
-							if(admin == "null"){
-							    actionForm.attr("action","/comunity/password");
-							}else{
-								actionForm.attr("action","/comunity/QAGet");
-							}
-							actionForm.submit();
-							    });
+											e.preventDefault();
+											actionForm
+													.append("<input type='hidden' name='bno' value='"
+															+ $(this).attr(
+																	"href")
+															+ "'>");
+
+											if (admin == "null") {
+												actionForm.attr("action",
+														"/comunity/password");
+											} else {
+												actionForm.attr("action",
+														"/comunity/QAGet");
+											}
+											actionForm.submit();
+										});
 
 						var searchForm = $("#searchForm");
 

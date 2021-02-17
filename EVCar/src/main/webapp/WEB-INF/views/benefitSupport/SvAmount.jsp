@@ -19,7 +19,7 @@
 			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
 				<li class="breadcrumb-item"><a href="../"
 					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item"><a href="../"
+				<li class="breadcrumb-item"><a href="test"
                     class="fables-second-text-color">보조금지원 및
 					해택</a></li>
 				<li class="breadcrumb-item"><a href="PCAmount"

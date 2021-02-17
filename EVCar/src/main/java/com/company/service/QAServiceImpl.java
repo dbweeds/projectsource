@@ -26,6 +26,8 @@ public class QAServiceImpl implements QAService {
 	@Override
 	public void register(QAVO QA) {
 		
+		//댓글 수 수정
+		
 		log.info("QAregister..."+QA);
 
 		mapper.insertSelectKey(QA);
@@ -76,6 +78,11 @@ public class QAServiceImpl implements QAService {
 		
 		return mapper.checkPw(password,bno)>0?true:false;	
 		 
+	}
+
+	@Override
+	public int replyCnt(QAVO QA) {
+		return mapper.replyCnt(QA);
 	}
 
 }

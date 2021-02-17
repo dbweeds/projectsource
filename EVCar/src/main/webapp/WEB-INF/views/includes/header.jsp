@@ -107,7 +107,7 @@
 				<div class="col-12 col-md-10 col-lg-9 pr-md-0">
 					<nav class="navbar navbar-expand-md btco-hover-menu py-lg-2">
 						<a class="navbar-brand pl-0" href="../"><img
-							src="/resources/assets/custom/images/soologo2.png"
+							src="/resources/assets/custom/images/EVCarlogo.png"
 							alt="Fables Template" class="fables-logo" /></a>
 						<button class="navbar-toggler" type="button"
 							data-toggle="collapse" data-target="#fablesNavDropdown"
