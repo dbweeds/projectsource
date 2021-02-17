@@ -25,7 +25,7 @@
 			<div
 				style="border-bottom: 1px dotted #bbb; border-top: 1px solid #bbb;">
 				<input name='title'
-					style="border: 0px; font-size: 150%; margin: 20px;margin-left:5px;"
+					style="border: 0px; font-size: 150%; margin: 20px;margin-left:5px;width: 100%;"
 					readonly="readonly" value='<c:out value="${notice.title }"/>'>
 			</div>
 
@@ -44,7 +44,7 @@
 			</div>
 			<div class="form-group" style="height: 500px; padding-top: 20px">
 				<textarea cols=100 rows=20 name='content'
-					style="overflow: auto; resize: none; border: none;"
+					style="overflow: auto; resize: none; border: none;width: 100%;"
 					readonly="readonly"><c:out value="${notice.content}" /></textarea>
 			</div>
 			<div class="row">
