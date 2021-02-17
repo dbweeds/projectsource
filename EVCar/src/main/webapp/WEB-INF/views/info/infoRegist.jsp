@@ -217,6 +217,7 @@
 <script src="/resources/js/additional-methods.js"></script>
 <script src="/resources/js/infoValidate.js"></script>
 <script type="text/javascript">
+var form = $("#form");
 $("button[type='submit']").click(function (e) {
 	e.preventDefault();	
 	if($('#input-file1').val() == "") {
@@ -229,6 +230,7 @@ $("button[type='submit']").click(function (e) {
 	    $("#isFile").focus();
 	    return false;
 	}
+	form.submit();
 })
 
 $("#change").click(function() {

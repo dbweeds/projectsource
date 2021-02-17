@@ -271,8 +271,6 @@ $("input[type='file']").change(function() {
 		    }
 			
 			var oper = $(this).data("oper");
-			console.log(oper);
-			
 			if(oper == 'remove'){
 				if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 					form.attr("action","remove");
