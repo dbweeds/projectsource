@@ -24,8 +24,8 @@
 			</div>
 			<div class="mb-3">
 				<label for="writer">작성자</label> <input type="text"
-					class="form-control" name="writer" id="writer">
-					<div class="inputInfo">공지사항의 작성자를 입력해주세요</div>
+					class="form-control" name="writer" id="writer" value="EVCar" readonly="readonly">
+					<div class="inputInfo"><br></div>
 			</div>
 
 			<div class="mb-3">
@@ -36,7 +36,7 @@
 			<div class="row">
             	<div class="col-lg-12">
             		<div class="panel panel-default">
-            			<div class="panel-heading">File Attach</div>
+            			<div class="inputInfo">파일</div>
             			<div class="panel-body">
             				<div class="form-group uploadDiv">
             					<input type="file" name="uploadFile" id="" multiple/>

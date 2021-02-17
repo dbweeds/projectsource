@@ -177,9 +177,7 @@ $("#searchForm button").on(
          e.preventDefault();
 
          searchForm.submit();
-
-      });
-
+ 
 });
 
 </script>

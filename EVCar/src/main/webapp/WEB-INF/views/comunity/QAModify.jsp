@@ -22,16 +22,9 @@
 			</div>
 			<div class="mb-3">
 				<label for="writer">작성자</label> <input type="text"
-					class="form-control" name="writer" id="writer" value='<c:out value="${QA.writer}"/>'>
-				<div class="inputInfo">수정하실 문의글의 작성자를 입력해주세요</div>
+					class="form-control" name="writer" id="writer" value='<c:out value="${QA.writer}"/>' readonly="readonly">
+				<div class="inputInfo"><br></div>
 			</div>
-
-			<!-- <div class="mb-3 main">
-				<label for="password">문의글 비밀번호</label> <input type="password"
-					class="form-control" name="password" id="password"> <i
-					id="eyes" class="fa fa-eye fa-lg"></i>
-				<div class="inputInfo">문의글 조회, 수정, 삭제를 하실 때 필요한 비밀번호를 입력해주세요</div>
-			</div> -->
 
 			<div class="mb-3">
 				<label for="content">내용</label>

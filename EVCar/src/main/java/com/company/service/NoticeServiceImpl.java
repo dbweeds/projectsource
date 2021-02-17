@@ -31,7 +31,7 @@ public class NoticeServiceImpl implements NoticeService {
 		log.info("register......" + board);
 
 		mapper.insertSelectKey(board);
-		if (board.getFVo() != null || board.getFVo().size() > 0) {
+		if (board.getFVo() != null && board.getFVo().size() > 0) {
 			board.getFVo().forEach(attach -> {
 				attach.setBno(board.getBno());
 				mapper.setFile(attach);	});
@@ -50,7 +50,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public boolean modify(NoticeVO board) {
 		mapper.deleteFile(board.getBno());
-		if (board.getFVo() != null || board.getFVo().size() > 0) {
+		if (board.getFVo() != null && board.getFVo().size() > 0) {
 			board.getFVo().forEach(attach -> {
 				attach.setBno(board.getBno());
 				mapper.setFile(attach);	});

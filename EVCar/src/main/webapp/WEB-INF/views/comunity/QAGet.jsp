@@ -118,6 +118,8 @@ $(document).ready(function () {
   
 if(admin == "null"){
 	  $("#addReplyBtn").hide();
+	  $("#replyArea").hide();
+	  
   }
   var bnoValue = '<c:out value="${QA.bno}"/>';
   var replyUL = $(".chat");
@@ -146,9 +148,11 @@ function showList(page){
        str +="<li class='left clearfix' data-rno='"+list[i].rno+"'>";
        str +="  <div><div class='header'><strong class='primary-font'>["
     	   +list[i].rno+"] "+list[i].replyer+"</strong>"; 
+       if(admin != "null"){
        str +="    <small class='pull-right text-muted'>"
-           +replyService.displayTime(list[i].replyDate)+"</small>&nbsp&nbsp<span class='fas fa-times' id='replyDeleteBtn' data-rno='"+list[i].rno+"'></span>&nbsp<a id='replyModifyBtn'><i class='fas fa-edit' data-rno='"+list[i].rno+"'></i></a></div>";
-       str +="    <p>"+list[i].reply+"</p></div></li>";
+           +replyService.displayTime(list[i].replyDate)+"</small>&nbsp&nbsp<span class='fas fa-times' id='replyDeleteBtn' data-rno='"+list[i].rno+"'></span>&nbsp<a id='replyModifyBtn'><i class='fas fa-edit' data-rno='"+list[i].rno+"'></i></a>";    	   
+       }
+       str +="    </div><p>"+list[i].reply+"</p></div></li>";
      }
      
      replyUL.html(str);
