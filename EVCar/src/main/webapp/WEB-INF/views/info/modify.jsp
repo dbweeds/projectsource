@@ -259,12 +259,12 @@ $("input[type='file']").change(function() {
 		$("button[type='submit']").click(function(e) {
 			e.preventDefault();
 			
-			if($('#input-file1').val() == "") {
+			if($('input[name="thumbnail"]').val() == "") {
 		        alert("썸네일을 필수로 넣어주세요");
 		        $("#input-file1").focus();
 		        return false;
 		    }
-		    if($('#input-file2').val() == "") {
+		    if($('input[name="carpicture1"]').val() == "") {
 		        alert("차사진1을 필수로 넣어주세요.");
 		        $("#isFile").focus();
 		        return false;
