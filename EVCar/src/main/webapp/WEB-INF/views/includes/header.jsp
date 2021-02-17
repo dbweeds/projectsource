@@ -10,7 +10,7 @@
 <meta name="author" content="Enterprise Development" />
 <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="shortcut icon"
-	href="/resources/assets/custom/images/shortcut.png" />
+	href="/resources/assets/custom/images/favicon-01.ico" />
 
 <title>전기차의 모든것</title>
 

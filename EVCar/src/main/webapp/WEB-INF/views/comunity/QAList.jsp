@@ -15,221 +15,263 @@
 
 <!-- Start Breadcrumbs -->
 <div class="fables-light-background-color">
-	<div class="container">
-		<nav aria-label="breadcrumb">
-			<ol class="fables-breadcrumb breadcrumb px-0 py-3">
-				<li class="breadcrumb-item"><a href="../"
-					class="fables-second-text-color">Home</a></li>
-				<li class="breadcrumb-item"><a href="/comunity/noticeList">공지사항</a></li>
-				<li class="breadcrumb-item" style="font-weight: bolder"><a
-					href="/comunity/QAList" class="fables-second-text-color">Q&A</a></li>
-				<li class="breadcrumb-item"><a href="../news/news"
-					class="fables-second-text-color">관련 기사</a></li>
-			</ol>
-		</nav>
-	</div>
+   <div class="container">
+      <nav aria-label="breadcrumb">
+         <ol class="fables-breadcrumb breadcrumb px-0 py-3">
+            <li class="breadcrumb-item"><a href="../"
+               class="fables-second-text-color">Home</a></li>
+            <li class="breadcrumb-item"><a href="/comunity/noticeList">공지사항</a></li>
+            <li class="breadcrumb-item" style="font-weight: bolder"><a
+               href="/comunity/QAList" class="fables-second-text-color">Q&A</a></li>
+            <li class="breadcrumb-item"><a href="../news/news"
+               class="fables-second-text-color">관련 기사</a></li>
+         </ol>
+      </nav>
+   </div>
 </div>
 <!-- /EndBreadcrumbs -->
 
 <!-- Start page content -->
 <div class="container" style="margin-bottom: 50px">
-	<!-- Main content -->
-	<section class="content">
-		<div class="box box-primary">
+   <!-- Main content -->
+   <section class="content">
+      <div class="box box-primary">
+         <br>
+         <div class="QAregister">
+            <button type="button" class="btn btn-primary" id="regBtn"
+               style="float: right; margin-bottom: 3px">문의글 작성</button>
+         </div>
+         <table class="table" style="text-align: center">
+            <thead>
+               <tr>
+                  <th class='text-center'>번호</th>
+                  <th class='text-center'>제목</th>
+                  <th class='text-center'>작성자</th>
+                  <th class='text-center'>작성일</th>
+                  <th class='text-center'>수정일</th>
+                  <th class='text-center'>조회수</th>
+               </tr>
 
-			<div class="row">
-				<div class="col-md-4 offset-md-4">
-					<!--검색 들어갈 부분-->
-					<form action="qQA.do" method="post" id="search">
-						<select name="criteria" id="">
-							<option value="n"
-								<c:out value="${empty info.search.criteria?'selected':''}" />>----</option>
-							<option value="title"
-								<c:out value="${info.search.criteria=='title'?'selected':''}" />>title
-							</option>
-							<option value="content"
-								<c:out value="${info.search.criteria=='content'?'selected':''}" />>content</option>
-							<option value="name"
-								<c:out value="${info.search.criteria=='name'?'selected':''}" />>name</option>
-						</select> <input type="text" name="keyword" value="${info.search.keyword}" />
-						<input type="button" value="검색" class="btn btn-primary" />
-					</form>
-				</div>
-			</div>
-			<br>
-			<div class="QAregister">
-				<button type="button" class="btn btn-primary" id="regBtn"
-					style="float: right; margin-bottom: 3px">문의글 작성</button>
-			</div>
-			<table class="table" style="text-align: center">
-				<thead>
-					<tr>
-						<th class='text-center'>번호</th>
-						<th class='text-center'>제목</th>
-						<th class='text-center'>작성자</th>
-						<th class='text-center'>작성일</th>
-						<th class='text-center'>수정일</th>
-						<th class='text-center'>조회수</th>
-					</tr>
+               <c:forEach var="QA" items="${QA}">
+                  <tr class="contentTr">
+                     <td><c:out value="${QA.bno}" /></td>
+                     <td><a href='${QA.bno}' class='move'><c:out
+                              value="${QA.title} (${QA.replyCnt })" /></a></td>
+                     <td><c:out value="${QA.writer}" /></td>
+                     <td><fmt:formatDate pattern="yyyy-MM-dd"
+                           value="${QA.regDate}" /></td>
+                     <td><fmt:formatDate pattern="yyyy-MM-dd"
+                           value="${QA.updateDate}" /></td>
+                     <td><c:out value="${QA.readCnt}" /></td>
+                  </tr>
+               </c:forEach>
+            </thead>
+         </table>
+         <!-- 검색 -->
+         <!-- 댓글 -->
+         <div class='row'>
+               <div class="col-lg-12">
 
-					<c:forEach var="QA" items="${QA}">
-						<tr class="contentTr">
-							<td><c:out value="${QA.bno}" /></td>
-							<td><a href='${QA.bno}' class='move'><c:out
-										value="${QA.title} (${QA.replyCnt })" /></a></td>
-							<td><c:out value="${QA.writer}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${QA.regDate}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${QA.updateDate}" /></td>
-							<td><c:out value="${QA.readCnt}" /></td>
-						</tr>
-					</c:forEach>
-				</thead>
-			</table>
-			<div class="text-center" style="text-align: center">
-				<ul class="pagination" style="display: inline-block">
-					<c:if test="${pageMaker.prev}">
-						<li class="page-item"><a href="${pageMaker.startPage -1}"
-							class="page-link">이전</a></li>
-					</c:if>
+                  <form id='searchForm' action="/comunity/QAList" method='get'>
+                     <select name='type'>
+                        <option value=""
+                           <c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+                        <option value="T"
+                           <c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
+                        <option value="C"
+                           <c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
+                        <option value="W"
+                           <c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
+                        <option value="TC"
+                           <c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
+                           or 내용</option>
+                     </select> <input type='text' name='keyword'
+                        value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
+                        type='hidden' name='pageNum'
+                        value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
+                        type='hidden' name='amount'
+                        value='<c:out value="${pageMaker.cri.amount}"/>' />
+                     <button class='btn btn-default'>검색</button>
+                  </form>
+               </div>
+            </div>
+         <div class="text-center" style="text-align: center">
+            <ul class="pagination" style="display: inline-block">
+               <c:if test="${pageMaker.prev}">
+                  <li class="page-item"><a href="${pageMaker.startPage -1}"
+                     class="page-link">이전</a></li>
+               </c:if>
 
-					<c:forEach var="num" begin="${pageMaker.startPage}"
-						end="${pageMaker.endPage}">
-						<li
-							class="page-item ${pageMaker.cri.pageNum == num ?'active':''} "
-							style="float: left; margin-top: 10px;"><a href="${num}"
-							class="page-link">${num}</a></li>
-					</c:forEach>
+               <c:forEach var="num" begin="${pageMaker.startPage}"
+                  end="${pageMaker.endPage}">
+                  <li
+                     class="page-item ${pageMaker.cri.pageNum == num ?'active':''} "
+                     style="float: left; margin-top: 10px;"><a href="${num}"
+                     class="page-link">${num}</a></li>
+               </c:forEach>
 
-					<c:if test="${pageMaker.next}">
-						<li class="page-item"><a href="${pageMaker.endPage +1 }"
-							class="page-link">다음</a></li>
-					</c:if>
-				</ul>
-				<form id="actionForm" action="/comunity/QAList" method="get">
-					<input type="hidden" name="pageNum"
-						value="${pageMaker.cri.pageNum}"> <input type="hidden"
-						name="amount" value="${pageMaker.cri.amount}">
-				</form>
-				<div class="modal" id="myModal" tabindex="-1">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">공지사항</h5>
-								<button type="button" class="close" data-dismiss="modal"
-									aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<p>처리가 완료되었습니다.</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary"
-									data-dismiss="modal">확인</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div style="height: 20px"></div>
+               <c:if test="${pageMaker.next}">
+                  <li class="page-item"><a href="${pageMaker.endPage +1 }"
+                     class="page-link">다음</a></li>
+               </c:if>
+            </ul>
+            <div class="modal" id="myModal" tabindex="-1">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title">공지사항</h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                           aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body">
+                        <p>처리가 완료되었습니다.</p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"
+                           data-dismiss="modal">확인</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <form id='actionForm' action="/comunity/QAList" method='get'>
+            <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+            <input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+
+            <input type='hidden' name='type'
+               value='<c:out value="${ pageMaker.cri.type }"/>'> <input
+               type='hidden' name='keyword'
+               value='<c:out value="${ pageMaker.cri.keyword }"/>'>
+
+
+         </form>
+         </div>
+      </div>
+   </section>
+   <div style="height: 20px"></div>
 </div>
 <!-- /End page content -->
 
 <%@include file="../includes/footer.jsp"%>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		var admin = '<%=(String) session.getAttribute("admin")%>';
-						var result = '<c:out value="${result}"/>';
-						checkModal(result);
-						history.replaceState({}, null, null);
-						function checkModal(result) {
+$("#searchForm button").on(
+      "click",
+      function(e) {
 
-							if (result === '' || history.state) {
-								return;
-							}
+         if (!searchForm.find("option:selected")
+               .val()) {
+            alert("검색종류를 선택하세요");
+            return false;
+         }
 
-							if (parseInt(result) > 0) {
-								$(".modal-body").html(
-										"게시글 " + parseInt(result)
-												+ " 번이 등록되었습니다.");
-							}
+         if (!searchForm.find(
+               "input[name='keyword']").val()) {
+            alert("키워드를 입력하세요");
+            return false;
+         }
 
-							$("#myModal").modal("show");
-						}
+         searchForm.find("input[name='pageNum']")
+               .val("1");
+         e.preventDefault();
 
-						$("#regBtn").on("click", function() {
+         searchForm.submit();
 
-							self.location = "/comunity/QARegister";
+      });
 
-						});
+});
 
-						var actionForm = $("#actionForm");
+</script>
+<script type="text/javascript">
+   $(document).ready(function() {
+      var admin = '<%=(String) session.getAttribute("admin")%>';
+                  var result = '<c:out value="${result}"/>';
+                  checkModal(result);
+                  history.replaceState({}, null, null);
+                  function checkModal(result) {
 
-						$(".page-item a").on(
-								"click",
-								function(e) {
+                     if (result === '' || history.state) {
+                        return;
+                     }
 
-									e.preventDefault();
+                     if (parseInt(result) > 0) {
+                        $(".modal-body").html(
+                              "게시글 " + parseInt(result)
+                                    + " 번이 등록되었습니다.");
+                     }
 
-									console.log('click');
+                     $("#myModal").modal("show");
+                  }
 
-									actionForm.find("input[name='pageNum']")
-											.val($(this).attr("href"));
-									actionForm.submit();
-								});
+                  $("#regBtn").on("click", function() {
 
-						$(".move")
-								.on(
-										"click",
-										function(e) {
+                     self.location = "/comunity/QARegister";
 
-											e.preventDefault();
-											actionForm
-													.append("<input type='hidden' name='bno' value='"
-															+ $(this).attr(
-																	"href")
-															+ "'>");
+                  });
 
-											if (admin == "null") {
-												actionForm.attr("action",
-														"/comunity/password");
-											} else {
-												actionForm.attr("action",
-														"/comunity/QAGet");
-											}
-											actionForm.submit();
-										});
+                  var actionForm = $("#actionForm");
 
-						var searchForm = $("#searchForm");
+                  $(".page-item a").on(
+                        "click",
+                        function(e) {
 
-						$("#searchForm button").on(
-								"click",
-								function(e) {
+                           e.preventDefault();
 
-									if (!searchForm.find("option:selected")
-											.val()) {
-										alert("검색종류를 선택하세요");
-										return false;
-									}
+                           console.log('click');
 
-									if (!searchForm.find(
-											"input[name='keyword']").val()) {
-										alert("키워드를 입력하세요");
-										return false;
-									}
+                           actionForm.find("input[name='pageNum']")
+                                 .val($(this).attr("href"));
+                           actionForm.submit();
+                        });
 
-									searchForm.find("input[name='pageNum']")
-											.val("1");
-									e.preventDefault();
+                  $(".move")
+                        .on(
+                              "click",
+                              function(e) {
 
-									searchForm.submit();
+                                 e.preventDefault();
+                                 actionForm
+                                       .append("<input type='hidden' name='bno' value='"
+                                             + $(this).attr(
+                                                   "href")
+                                             + "'>");
 
-								});
+                                 if (admin == "null") {
+                                    actionForm.attr("action",
+                                          "/comunity/password");
+                                 } else {
+                                    actionForm.attr("action",
+                                          "/comunity/QAGet");
+                                 }
+                                 actionForm.submit();
+                              });
 
-					});
+                  var searchForm = $("#searchForm");
+
+                  $("#searchForm button").on(
+                        "click",
+                        function(e) {
+
+                           if (!searchForm.find("option:selected")
+                                 .val()) {
+                              alert("검색종류를 선택하세요");
+                              return false;
+                           }
+
+                           if (!searchForm.find(
+                                 "input[name='keyword']").val()) {
+                              alert("키워드를 입력하세요");
+                              return false;
+                           }
+
+                           searchForm.find("input[name='pageNum']")
+                                 .val("1");
+                           e.preventDefault();
+
+                           searchForm.submit();
+
+                        });
+
+               });
 </script>
