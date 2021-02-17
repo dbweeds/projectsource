@@ -5,7 +5,7 @@
     <div
       class="fables-header fables-after-overlay overlay-lighter bg-rules"
       style="
-        background-image: url(/resources/assets/custom/images/header-car.jpg);
+        background-image: url(/resources/assets/custom/images/EVcar_header_10.png);
         height: 450px;
       "
     >

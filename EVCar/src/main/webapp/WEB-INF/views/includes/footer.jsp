@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <div
-class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style="height: 300px;"
+class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style="height: 300px;background-image: url(/resources/assets/custom/images/EVcar_header_06.png);"
 >
 <div class="container">
   <div class="row">

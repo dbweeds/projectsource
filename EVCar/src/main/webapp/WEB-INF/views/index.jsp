@@ -17,7 +17,7 @@
         <div class="row mt-0 mt-lg-5">
           <div class="col-12 col-md-6 p-0">
             <div
-              style="background-image: url(/resources/assets/custom/images/overlay1.jpg)"
+              style="background-image: url(/resources/assets/custom/images/EVcar_header_14.png)"
             >
               <div class="fables-second-color-transparent p-6">
                 <h2
@@ -195,7 +195,7 @@
       </div>
 
       <div
-        class="fables-testimonial fables-after-overlay bg-rules py-4 py-lg-5"
+        class="fables-testimonial fables-after-overlay bg-rules py-4 py-lg-5" style="background-image: url(/resources/assets/custom/images/EVcar_header_06.png);"
       >
         <div class="container">
           <div class="row">

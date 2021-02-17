@@ -3,7 +3,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<div class="fables-header fables-after-overlay bg-rules">
+<div class="fables-header fables-after-overlay bg-rules" style="background-image: url(/resources/assets/custom/images/EVcar_header_03.png)">
 	<div class="header">
 		<h2
 			class="fables-page-title fables-second-border-color wow fadeInLeft"

@@ -3,11 +3,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@include file="../includes/header.jsp"%>
 <!-- Start Header -->
-<div class="fables-header fables-after-overlay bg-rules">
+<div class="fables-header fables-after-overlay bg-rules" style="background-image: url(/resources/assets/custom/images/EVcar_header_03.png)">
 	<div class="container">
 		<h2
 			class="fables-page-title fables-second-border-color wow fadeInLeft"
-			data-wow-duration="1.5s" style="margin-top: 90px">공지사항</h2>
+			data-wow-duration="1.5s" style="margin-top: 90px">절약금액계산</h2>
 	</div>
 </div>
 <!-- /End Header -->
