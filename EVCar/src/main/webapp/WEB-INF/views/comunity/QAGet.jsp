@@ -28,26 +28,26 @@
 			<div
 				style="border-bottom: 1px dotted #bbb; border-top: 1px solid #bbb;">
 				<input name='title'
-					style="border: 0px; font-size: 150%; margin: 20px; margin-left: 5px;width: 100%;"
+					style="border: 0px; font-size: 150%; margin: 20px; margin-left: 5px;width: 100%; outline: none;"
 					readonly="readonly" value='<c:out value="${QA.title }"/>'>
 			</div>
 
 			<div class="form-group" style="border-bottom: 1px solid #bbb;">
 				<div style="padding: 10px;">
 					<label style="font-weight: bold;">작성자</label> <input name='writer'
-						style="border: 0px;" value='<c:out value="${QA.writer}"/>'
+						style="border: 0px; outline: none;" value='<c:out value="${QA.writer}"/>'
 						readonly="readonly"> <label style="font-weight: bold;">작성일</label>
-					<input name='regDate' style="border: 0px;"
+					<input name='regDate' style="border: 0px; outline: none;"
 						value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${QA.regDate}" />'
 						readonly="readonly"> <label style="font-weight: bold;">조회수</label>
-					<input style="border: 0px;" name='writer'
+					<input style="border: 0px; outline: none;" name='writer'
 						value='<c:out value="${QA.readCnt}"/>' readonly="readonly">
 				</div>
 
 			</div>
 			<div class="form-group" style="height: 400px; padding-top: 20px">
 				<textarea cols=100 rows=20 name='content'
-					style="overflow: auto; resize: none; border: none;width: 100%;"
+					style="overflow: auto; resize: none; border: none;width: 100%; outline: none;"
 					readonly="readonly"><c:out value="${QA.content}" /></textarea>
 			</div>
 
