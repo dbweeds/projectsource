@@ -114,7 +114,7 @@
 							<th scope="row" style="padding-left: 250px">전기차 모델</th>
 							<td><select name="f" id="f">
 									<option value="">모델을 선택하세요.</option>
-									<option value="포터 일렉트닉">포터 일렉트닉</option>
+									<option value="포터 일렉트릭">포터 일렉트릭</option>
 									<option value="코나 일렉트릭">코나 일렉트릭</option>
 									<option value="아이오닉">아이오닉</option>
 									<option value="쏘울EV">쏘울EV</option>

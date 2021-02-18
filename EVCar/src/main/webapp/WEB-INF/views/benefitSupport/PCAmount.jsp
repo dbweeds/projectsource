@@ -82,7 +82,7 @@
                             <td style="padding-left: 20px; padding-top: 30px"><select
                                 name="" id="model">
                                     <option value="0">모델을 선택하세요.</option>
-                                    <option value="포터 일렉트닉">포터 일렉트닉</option>
+                                    <option value="포터 일렉트릭">포터 일렉트릭</option>
                                     <option value="코나 일렉트릭">코나 일렉트릭</option>
                                     <option value="아이오닉">아이오닉</option>
                                     <option value="쏘울EV">쏘울EV</option>
