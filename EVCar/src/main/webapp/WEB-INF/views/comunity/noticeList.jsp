@@ -86,7 +86,8 @@
                         <option value="TC"
                            <c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
                            or 내용</option>
-                     </select> <input type='text' name='keyword'
+                     </select>
+                     <input type='text' name='keyword'
                         value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
                         type='hidden' name='pageNum'
                         value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input

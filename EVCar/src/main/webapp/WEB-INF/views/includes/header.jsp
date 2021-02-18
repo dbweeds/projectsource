@@ -74,12 +74,13 @@
 	<div class="search-section">
 		<a class="close-search" href="#"></a>
 		<div class="d-flex justify-content-center align-items-center h-100">
-			<form method="post" action="#" class="w-50">
+			<form method="get" action="/comunity/allSearch" class="w-50">
 				<div class="row">
 					<div class="col-10">
-						<input type="search" value=""
+					<!-- 통합검색칸 -->
+						<input type="search" value="" name="keyword"
 							class="form-control palce bg-transparent border-0 search-input"
-							placeholder="Search Here ..." />
+							placeholder="검색할 내용을 입력해주세요" />
 					</div>
 					<div class="col-2 mt-3">
 						<button type="submit" class="btn bg-transparent text-white">
