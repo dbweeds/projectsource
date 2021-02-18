@@ -96,4 +96,11 @@ public class NoticeController {
 		List<FileAttach> list = service.getFileList(bno);
 		return new ResponseEntity<List<FileAttach>>(list,HttpStatus.OK);
 	}
+	
+	@GetMapping("/allSearch")
+	public void allSearch(String keyword, Model model) {
+		log.info("==== 통합검색내용 ====" + keyword);
+		
+		model.addAttribute("keyword", keyword);
+	}
 } 
