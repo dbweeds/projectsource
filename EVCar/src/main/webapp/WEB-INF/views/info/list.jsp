@@ -162,8 +162,8 @@ fieldset legend {
 						style="padding-right: 4px; padding-bottom: 20px;">충전 방식 :</label>
 						<input type="radio" name="chargetype" id="" value="DC콤보"
 						<c:out value="${vo.chargetype=='DC콤보'?'chacked':''}"/> />DC콤보(북미,아시아)&nbsp;
-						<input type="radio" name="chargetype" id="" value="AC상"
-						<c:out value="${vo.chargetype=='AC상'?'chacked':''}"/> />AC상(유럽)&nbsp;
+						<input type="radio" name="chargetype" id="" value="AC3상"
+						<c:out value="${vo.chargetype=='AC3상'?'chacked':''}"/> />AC3상(유럽)&nbsp;
 					</li>
 				</ul>
 				<div>
