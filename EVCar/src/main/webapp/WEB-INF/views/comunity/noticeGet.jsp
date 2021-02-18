@@ -42,15 +42,16 @@
 				</div>
 
 			</div>
-			<div class="form-group" style="height: 500px; padding-top: 20px">
-				<textarea cols=100 rows=20 name='content'
+			<div class="form-group" style="height: 600px; padding-top: 20px">
+				<textarea cols=100 rows=25 name='content'
 					style="overflow: auto; resize: none; border: none;width: 100%; outline: none;"
 					readonly="readonly"><c:out value="${notice.content}" /></textarea>
 			</div>
+			<hr>
 			<div class="row">
             	<div class="col-lg-12">
             		<div class="panel panel-default">
-            			<div class="panel-heading">다운로드</div>
+            			<div class="panel-heading"><b>다운로드</b></div>
             			<div class="panel-body">
             				<div class="uploadResult">
             					<ul></ul>
@@ -108,9 +109,9 @@
 				var str = "";
 				$(data).each(function(idx, obj) {
 						str += "<li data-path='"+obj.uploadPath+"' data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"'style='display:inline-block'>";
-						str += "<div>" + obj.fileName + "</a>"
+						str += "<div>" + obj.fileName+" &nbsp&nbsp";
 						str += "<button type='button' class='btn btn-warning btn-circle'>";
-						str += "<i class='fa fa-cloud-download' aria-hidden='true'></i>"
+						str += "<i class='fa fa-cloud-download-alt' aria-hidden='true'></i>"
 						str += "</button>";
 						str += "</div></li>"
 						$(".uploadResult ul").append(str);

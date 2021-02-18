@@ -58,7 +58,7 @@ class="fables-footer-image fables-after-overlay white-color py-4 bg-rules" style
           Mail
         </h4>
         <p class="font-14 fables-fifth-text-color mt-2 ml-4">
-          blind1215@gmail.com
+          EVCar@gmail.com
         </p>
       </div>
     </div>
