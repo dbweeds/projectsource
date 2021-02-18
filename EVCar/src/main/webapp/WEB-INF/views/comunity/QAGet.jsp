@@ -48,7 +48,7 @@
 			<div class="form-group" style="height: 400px; padding-top: 20px">
 				<textarea cols=100 rows=20 name='content'
 					style="overflow: auto; resize: none; border: none;width: 100%; outline: none;"
-					readonly="readonly"><c:out value="${QA.content}" /></textarea>
+					readonly="readonly">${QA.content}</textarea>
 			</div>
 
 
@@ -115,7 +115,6 @@
 <script>
 var admin = '<%=(String)session.getAttribute("admin")%>';
 $(document).ready(function () {
-  
 if(admin == "null"){
 	  $("#addReplyBtn").hide();
 	  $("#replyArea").hide();
