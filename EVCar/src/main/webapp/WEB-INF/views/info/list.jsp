@@ -175,7 +175,7 @@ fieldset legend {
 			<div style="text-align: center;">
 				<button class="btn btn-outline-dark" type="submit">검색</button>
 				<button class="btn btn-outline-danger" type="button"
-					onclick="location.href='../info/list'">취소</button>
+					onclick="location.href='../info/list'">초기화</button>
 			</div>
 			<hr>
 		</form>
