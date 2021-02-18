@@ -3,6 +3,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
+<style>
+	a{
+		color:black;
+	}
+</style>
 <!-- Start Header -->
 <div class="fables-header fables-after-overlay bg-rules" style="background-image: url(/resources/assets/custom/images/EVcar_header_03.png)">
 	<div class="container">
@@ -55,7 +60,7 @@
                <c:forEach var="QA" items="${QA}">
                   <tr class="contentTr">
                      <td><c:out value="${QA.bno}" /></td>
-                     <td><a href='${QA.bno}' class='move'><c:out
+                     <td style="text-align:left;"><a href='${QA.bno}' class='move'><c:out
                               value="${QA.title} (${QA.replyCnt })" /></a></td>
                      <td><c:out value="${QA.writer}" /></td>
                      <td><fmt:formatDate pattern="yyyy-MM-dd"

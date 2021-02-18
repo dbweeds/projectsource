@@ -3,6 +3,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
+<style>
+	a{
+		color:black;
+	}
+</style>
 <!-- Start Header -->
 <div class="fables-header fables-after-overlay bg-rules" style="background-image: url(/resources/assets/custom/images/EVcar_header_03.png)">
 	<div class="container">
@@ -57,7 +62,7 @@
                   <tr class="contentTr">
                      <td><c:out
                               value="${notice.bno}" /></td>
-                     <td><a
+                     <td style="text-align:left;"><a
                         href='/comunity/noticeGet?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.title}" /></a></td>
                      <td><c:out value="${notice.writer}" /></td>
                      <td><fmt:formatDate pattern="yyyy-MM-dd"

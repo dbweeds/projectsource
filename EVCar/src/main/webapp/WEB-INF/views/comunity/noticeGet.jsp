@@ -42,10 +42,9 @@
 				</div>
 
 			</div>
-			<div class="form-group" style="height: 600px; padding-top: 20px">
-				<textarea cols=100 rows=25 name='content'
-					style="overflow: auto; resize: none; border: none;width: 100%; outline: none;"
-					readonly="readonly"><c:out value="${notice.content}" /></textarea>
+			<div class="form-group"
+				style="overflow: auto; height: 700px; white-space: pre-line;">
+				<c:out value="${notice.content}" escapeXml="false" />
 			</div>
 			<hr>
 			<div class="row">

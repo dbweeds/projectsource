@@ -19,7 +19,9 @@ import com.company.domain.Criteria;
 import com.company.domain.FileAttach;
 import com.company.domain.NoticeVO;
 import com.company.domain.PageDTO;
+import com.company.domain.QAVO;
 import com.company.service.NoticeService;
+import com.company.service.QAService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,7 +33,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
-	
+	@Autowired
+	private QAService qaservice;
 	
 	
 	@GetMapping("/noticeList")
@@ -98,9 +101,14 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/allSearch")
-	public void allSearch(String keyword, Model model) {
-		log.info("==== 통합검색내용 ====" + keyword);
+	public void allSearch(Criteria cri, Model model) {
+		log.info("==== 통합검색내용 ====" +cri);
+		List<NoticeVO> Nkeyword=service.getList(cri);
+		List<QAVO> Qkeyword=qaservice.getList(cri);
+		log.info("dd"+Qkeyword);
+		model.addAttribute("Nkeyword", Nkeyword);
+		model.addAttribute("Qkeyword", Qkeyword);
+		model.addAttribute("cri", cri);
 		
-		model.addAttribute("keyword", keyword);
 	}
 } 

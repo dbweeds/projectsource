@@ -81,6 +81,7 @@
 						<input type="search" value="" name="keyword"
 							class="form-control palce bg-transparent border-0 search-input"
 							placeholder="검색할 내용을 입력해주세요" />
+							<input type="hidden" name="type" value="TC"/>
 					</div>
 					<div class="col-2 mt-3">
 						<button type="submit" class="btn bg-transparent text-white">
@@ -161,7 +162,7 @@
 				</div>
 				<div class="col-12 col-md-2 col-lg-3 pr-md-0 icons-header-mobile">
 					<div class="fables-header-icons">
-						<a href="#"
+						<a href="/comunity/allSearch"
 							class="open-search fables-third-text-color right top-header-link px-3 px-md-2 px-lg-4 fables-second-hover-color border-0 max-line-height">
 							<span class="fables-iconsearch-icon"></span>
 						</a>

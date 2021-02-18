@@ -45,13 +45,11 @@
 				</div>
 
 			</div>
-			<div class="form-group" style="height: 400px; padding-top: 20px">
-				<textarea cols=100 rows=20 name='content'
-					style="overflow: auto; resize: none; border: none;width: 100%; outline: none;"
-					readonly="readonly">${QA.content}</textarea>
+			<div class="form-group"
+				style="overflow: auto; height: 700px; white-space: pre-line;">
+				<c:out value="${QA.content}" escapeXml="false" />
 			</div>
-
-
+			
 			<div style="float: right; margin-bottom: 20px">
 				<button data-oper='QAModify' class="btn btn-primary">수정</button>
 				<button data-oper='QAList' class="btn btn-secondary">목록</button>
