@@ -41,21 +41,6 @@
 				<div class="inputInfo">문의하실 내용을 입력해주세요</div>
 				<textarea class="form-control" rows="9" name="content" id="content"></textarea>
 			</div>
-			 <div class="row">
-            	<div class="col-lg-12">
-            		<div class="panel panel-default">
-            			<div class="panel-heading">File Attach</div>
-            			<div class="panel-body">
-            				<div class="form-group uploadDiv">
-            					<input type="file" name="uploadFile" id="" multiple/>
-            				</div>
-            				<div class="uploadResult">
-            					<ul></ul>
-            				</div>
-            			</div>
-            		</div>
-            	</div>
-            </div>  
 			
 			<div class="button">
 				<button type="button" data-oper='QARegister' class="btn btn-primary">작성</button>

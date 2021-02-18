@@ -214,7 +214,8 @@ $("#compute").click(function () {
 	var mil = Number($("#b").val());
 	var km = Number($("#c").val());
 	var mon = Number($("#d").val());
-	var year = Number($('input[name=e]').val());
+	var year = Number($('input[name="e"]:checked').val());
+	console.log(year);
 	var model = $("#f").val();
 	
 	if(mil === 0 || km === 0||mon === 0||model=="0"||!($('input:radio[name=a]').is(':checked'))||!($('input:radio[name=e]').is(':checked'))){
@@ -240,10 +241,10 @@ $("#compute").click(function () {
         	$("#modelname").empty();
             $("#modelname").append(model);          
             
-        	var result1 = Math.round((km*mon*year)/mil*oil);
+        	var result1 = Math.round((km*mon*year*12)/mil*oil);
             $(".result1").empty();
             $(".result1").append(result1);        	
-        	var result2 = Math.round((km*mon*year)/data*115.5);
+        	var result2 = Math.round((km*mon*year*12)/data*115.5);
             $(".result2").empty();
             $(".result2").append(result2);
             var result3 = result1 - result2;

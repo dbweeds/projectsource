@@ -11,7 +11,7 @@
             <ol class="fables-breadcrumb breadcrumb px-0 py-3">
                 <li class="breadcrumb-item"><a href="../"
                     class="fables-second-text-color">Home</a></li>
-                <li class="breadcrumb-item"><a href="noticeList">Q&A</a></li>
+                <li class="breadcrumb-item"><a href="noticeList">공지사항</a></li>
                 <li class="breadcrumb-item active" aria-current="page" style="color: black;"><b>${notice.title }</b></li>
             </ol>
         </nav>

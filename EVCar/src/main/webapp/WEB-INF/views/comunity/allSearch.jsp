@@ -81,10 +81,10 @@
          	<div>
                   	<div style="display: inline-block;width: 8%;height: 60px;overflow: hidden;"><p>${notice.bno}</p></div>
 	         		<div style="display: inline-block;width: 30%;height: 60px;overflow: hidden;"><p><a
-                        href='/comunity/QAGet?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.title}" /></a></p></div>
+                        href='/comunity/password?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.title}" /></a></p></div>
 	         		<div style="display: inline-block;width: 8%;height: 60px;overflow: hidden;"><p>${notice.writer}</p></div>
 	         		<div style="display: inline-block;width: 49%;height: 60px;overflow: hidden;"><p><a
-                        href='/comunity/noticeGet?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.content}" /></a></p></div>
+                        href='/comunity/password?bno=<c:out value="${notice.bno}"/>'><c:out value="${notice.content}" /></a></p></div>
          	</div>
                </c:forEach>
          </div>
